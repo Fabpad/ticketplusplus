@@ -11,7 +11,6 @@ sec_session_start();
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<script src="styles/bootstrap/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -34,14 +33,15 @@ sec_session_start();
         <a class="nav-link" href="#">Neues Ticket</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Meine Tickets
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">offene Tickets</a>
-          <a class="dropdown-item" href="#">geschlossene Tickets</a>
-          <a class="dropdown-item" href="#">wartende Tickets</a>
-        </div>
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Meine Tickets
+       </a>
+       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		<a class="dropdown-item" href="#">alle Tickets</a>
+		<a class="dropdown-item" href="#">offene Tickets</a>
+		<a class="dropdown-item" href="#">geschlossene Tickets</a>
+		<a class="dropdown-item" href="#">wartende Tickets</a>
+       </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -65,7 +65,7 @@ sec_session_start();
 		
         <?php else : ?>
             <p>
-                <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
+                <span class="error">Sie sind nich für diese Seite berechtigt.</span> bitte <a href="login.php">loggen </a>.
             </p>
         <?php endif; ?>
 </body
