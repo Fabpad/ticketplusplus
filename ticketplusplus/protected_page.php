@@ -18,7 +18,8 @@ sec_session_start();
 	<title> Ticketplusplus </title>
 </head>
 <body>
-	    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<?php if (login_check($mysqli) == true) : ?>
+		    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Ticket ++</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -47,10 +48,7 @@ sec_session_start();
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Suchen</button>
     </form>
-  </div>
-</nav>
-	<?php if (login_check($mysqli) == true) : ?>
-		<div class="dropdown">
+	<div class="dropdown">
 			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
 				<?php echo htmlentities($_SESSION['username']); ?>
@@ -62,6 +60,9 @@ sec_session_start();
 				<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
 			</ul>
 		</div>
+  </div>
+</nav>
+		
         <?php else : ?>
             <p>
                 <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
