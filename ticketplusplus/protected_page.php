@@ -11,6 +11,7 @@ sec_session_start();
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles/table.css" />
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">		
 	<title> Ticketplusplus </title>
@@ -58,9 +59,36 @@ sec_session_start();
 				<li role="separator" class="divider"></li>
 				<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
 			</ul>
-		</div>
-  </div>
+	</div>
+	</div>
 </nav>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Betreff</th>
+    <th>Status</th>
+	<th>Mitarbeiter</th>
+	<th>Priorit&auml;t</th>
+	<th>Erstellt am</th>
+  </tr>
+  <tr>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+	<td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+  
+  <tr>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+	<td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+</table>
 		
         <?php else : ?>
             <p>
