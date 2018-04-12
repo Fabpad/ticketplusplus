@@ -19,13 +19,16 @@ if (login_check($mysqli) == true) {
 	<script type="text/JavaScript" src="js/sha512.js"></script> 
 	<script type="text/JavaScript" src="js/forms.js"></script> 
 </head>
-<body>
+<body style="background-color:#ffb516">
 	<?php
         if (isset($_GET['error'])) {
             echo '<p class="error">Error Logging In!</p>';
         }
     ?> 
-       <form action="includes/process_login.php" method="post" name="login_form">                      
+		<div class="imgbox">
+			<img class="center-fit" src="assets/TPPlogo2.png" alt="Logo" style="width:auto;">
+		</div>
+		<form action="includes/process_login.php" method="post" name="login_form">                      
 		Email: </br>
 		<input type="text" size="40" maxlength="250" name="email" /></br>
 		Password: </br>
