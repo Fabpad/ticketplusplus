@@ -18,82 +18,78 @@ sec_session_start();
 </head>
 <body>
 	<?php if (login_check($mysqli) == true) : ?>
-		    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Ticket ++</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Startseite <span class="sr-only">(current)</span></a>
-      </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="#">Neues Ticket</a>
-      </li>
-      <li class="nav-item dropdown">
-       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		Meine Tickets
-       </a>
-       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		<a class="dropdown-item" href="#">alle Tickets</a>
-		<a class="dropdown-item" href="#">offene Tickets</a>
-		<a class="dropdown-item" href="#">geschlossene Tickets</a>
-		<a class="dropdown-item" href="#">wartende Tickets</a>
-       </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Suchen</button>
-    </form>
-	<div class="dropdown">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
-				<?php echo htmlentities($_SESSION['username']); ?>
-				<span class="caret"> </span>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Ticket ++</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
-				<li role="separator" class="divider"></li>
-				<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
-			</ul>
-	</div>
-	</div>
-</nav>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Betreff</th>
-    <th>Status</th>
-	<th>Mitarbeiter</th>
-	<th>Priorit&auml;t</th>
-	<th>Erstellt am</th>
-  </tr>
-  <tr>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-	<td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-  
-  <tr>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-	<td> </td>
-    <td> </td>
-    <td> </td>
-  </tr>
-</table>
-		
-        <?php else : ?>
-            <p>
-                <span class="error">Sie sind nich für diese Seite berechtigt.</span> bitte <a href="login.php">loggen </a>.
-            </p>
-        <?php endif; ?>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Startseite <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Neues Ticket</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meine Tickets</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">alle Tickets</a>
+							<a class="dropdown-item" href="#">offene Tickets</a>
+							<a class="dropdown-item" href="#">geschlossene Tickets</a>
+							<a class="dropdown-item" href="#">wartende Tickets</a>
+						</div>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Suchen</button>
+				</form>
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
+						<?php echo htmlentities($_SESSION['username']); ?>
+						<span class="caret"> </span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
+						<li role="separator" class="divider"></li>
+						<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	<table>
+	  <tr>
+		<th>ID</th>
+		<th>Betreff</th>
+		<th>Status</th>
+		<th>Mitarbeiter</th>
+		<th>Priorit&auml;t</th>
+		<th>Erstellt am</th>
+	  </tr>
+	  <tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+	  </tr>
+	  <tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+	  </tr>
+	</table>
+    <?php else : ?>
+		<p>
+			<span class="error">Sie sind nicht für diese Seite berechtigt.</span> Bitte <a href="login.php">loggen</a> Sie sich ein.
+		</p>
+	<?php endif; ?>
 </body
 </html>
