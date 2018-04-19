@@ -23,6 +23,7 @@ sec_session_start();
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+<<<<<<< HEAD
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
@@ -91,5 +92,48 @@ sec_session_start();
 			<span class="error">Sie sind nicht für diese Seite berechtigt.</span> Bitte <a href="login.php">loggen</a> Sie sich ein.
 		</p>
 	<?php endif; ?>
+=======
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
+				<li role="separator" class="divider"></li>
+				<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
+			</ul>
+	</div>
+	</div>
+</nav>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Betreff</th>
+    <th>Status</th>
+	<th>Mitarbeiter</th>
+	<th>Priorit&auml;t</th>
+	<th>Erstellt amasd</th>
+  </tr>
+  <tr>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+	<td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+  
+  <tr>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+	<td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+</table>
+		
+        <?php else : ?>
+            <p>
+                <span class="error">Sie sind nich für diese Seite berechtigt.</span> bitte <a href="login.php">loggen </a>.
+            </p>
+        <?php endif; ?>
+>>>>>>> fdc6c8c8642e1e9def5ac0c406f3cbea38d68d27
 </body
 </html>
