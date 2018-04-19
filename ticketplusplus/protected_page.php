@@ -69,7 +69,7 @@ sec_session_start();
     <th>Status</th>
 	<th>Mitarbeiter</th>
 	<th>Priorit&auml;t</th>
-	<th>Erstellt am</th>
+	<th>Erstellt amasd</th>
   </tr>
   <tr>
     <td> </td>
