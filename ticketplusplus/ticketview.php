@@ -17,7 +17,7 @@ sec_session_start();
 </head>
 <body>
 	<?php if (login_check($mysqli) == true) : ?>
-	<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#ffb516">
+	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="#">Ticket ++</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@ sec_session_start();
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Suchen</button>
 			</form>
 			<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:#ffb516">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
 					<?php echo htmlentities($_SESSION['username']); ?>
 					<span class="caret"> </span>
