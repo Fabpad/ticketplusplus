@@ -46,7 +46,7 @@ sec_session_start();
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Suchen</button>
 			</form>
-			<div class="dropdown">
+			<div class="dropdown ml-5">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:#ffb516">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
 					<?php echo htmlentities($_SESSION['username']); ?>
@@ -54,13 +54,13 @@ sec_session_start();
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 					<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
-					<li role="separator" class="divider"></li>
+					<li role="separator" class="dropdown-divider"></li>
 					<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	
+
 	 <?php else : ?>
             <p>
                 <span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
