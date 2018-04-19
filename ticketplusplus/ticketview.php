@@ -60,7 +60,46 @@ sec_session_start();
 			</div>
 		</div>
 	</nav>
-
+	
+	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+		Betreff:
+		<input class="form-control" type="text" placeholder="Betreff" aria-label="Betreff" />
+	</div>
+	
+	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+		Beschreibung:
+		<textarea class="form-control" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none"></textarea>
+	</div>
+	
+	<div class="dropdown ml-5 mt-5 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 row">
+		<div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+			Kategorie:
+			<button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="menu_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				---Bitte wählen---
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				
+				<a class="dropdown-item" href="#">Hardware</a>
+				<a class="dropdown-item" href="#">Software</a>
+				<a class="dropdown-item" href="#">Organisation</a>
+			</div>
+		</div>
+		<div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+			Unterkategorie:
+			<button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="menu_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				---Bitte wählen---
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				
+				<a class="dropdown-item" href="#">Zu</a>
+				<a class="dropdown-item" href="#">faul</a>
+				<a class="dropdown-item" href="#">für</a>
+				<a class="dropdown-item" href="#">alle</a>
+				<a class="dropdown-item" href="#">Unterkategorien</a>
+			</div>
+		</div>
+	</div>
+		
 	 <?php else : ?>
             <p>
                 <span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
