@@ -12,7 +12,8 @@ sec_session_start();
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">		
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	
+	<link rel="stylesheet" href="styles/ticketview.css" />	
 	<title> Platzhalter Ticketbetreff </title>
 </head>
 <body>
@@ -63,7 +64,7 @@ sec_session_start();
 	
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		Betreff:
-		<input class="form-control" type="text" placeholder="Betreff" aria-label="Betreff" />
+		<input class="form-control" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" />
 	</div>
 	
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
@@ -71,31 +72,131 @@ sec_session_start();
 		<textarea class="form-control" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none"></textarea>
 	</div>
 	
+	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 row">
+		<div>
+			Benutzer:
+			<input class="form-control" type="text">
+		</div>
+		<div>
+			Dringlichkeit:
+			<input class="form-control" type="text" placeholder="Durch Combobox ersetzen">
+		</div>
+		<div>
+			Status:
+			<input class="form-control" type="text" placeholder="Durch Combobox ersetzen">
+		</div>
+	</div>
+	
 	<div class="dropdown ml-5 mt-5 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 row">
 		<div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
-			Kategorie:
 			<button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="menu_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				---Bitte wählen---
+				Kategorie:
 			</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				
-				<a class="dropdown-item" href="#">Hardware</a>
-				<a class="dropdown-item" href="#">Software</a>
-				<a class="dropdown-item" href="#">Organisation</a>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #ffb516;">
+				<li>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="category"> Hardware
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="category"> Software
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="category"> Organisation
+						</label>
+					</div>
+				</li>
 			</div>
 		</div>
 		<div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
-			Unterkategorie:
 			<button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="menu_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				---Bitte wählen---
+				Unterkategorie:
 			</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				
-				<a class="dropdown-item" href="#">Zu</a>
-				<a class="dropdown-item" href="#">faul</a>
-				<a class="dropdown-item" href="#">für</a>
-				<a class="dropdown-item" href="#">alle</a>
-				<a class="dropdown-item" href="#">Unterkategorien</a>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #ffb516;">
+				<li>
+					<h6 class="dropdown-header">Hardware</h6>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Anforderungen neue Hardware
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Drucker defekt
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> PC defekt
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> WLAN / LAN defekt
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Sonstiges
+						</label>
+					</div>
+					<h6 class="dropdown-header">Software</h6>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> OS
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Programmanforderung
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Programm defekt
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Update
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Sonstiges
+						</label>
+					</div>
+					<h6 class="dropdown-header">Organisation</h6>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Benutzer entsperren
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Benutzer anlegen
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Kennwort vergessen
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Speicherplatz erweitern
+						</label>
+					</div>
+					<div class="ml-2">
+						<label>
+							<input type="radio" name="specification"> Sonstiges
+						</label>
+					</div>
+				</li>
 			</div>
 		</div>
 	</div>
