@@ -28,13 +28,17 @@ if (login_check($mysqli) == true) {
 	<div class="input-group-addon">
 		<img class="center-fit" src="assets/TPPlogo2.png" alt="Logo" style="width:auto;">
 	</div>	
-	<form action="includes/process_login.php" method="post" name="login_form" class="login_form col-sm-4 col-md-4 col-lg-4"> 
-		<input type="text" class="form-control" placeholder="Email" size="40" maxlength="250" name="email" id="email" /></br>
-		<input type="password" class="form-control" placeholder="Passwort" size="40" maxlength="250" name="password" id="password"/></br>
+	<form action="includes/process_login.php" method="post" name="login_form" class="login_form">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="email@example.de" size="40" maxlength="250" name="email" id="email" required autofocus />
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" placeholder="Passwort" size="40" maxlength="250" name="password" id="password" required />
+		</div>
 		<input type="button" class="btn btn-secondary" value="Login" onclick="formhash(this.form, this.form.password);" id="login" />
 		<script type="text/JavaScript" src="js/login_on_enter.js"></script> 
-		<p>If you are done, please <a href="includes/logout.php">log out</a>.</p>
-		<p>You are currently logged <?php echo $logged ?>.</p>				   
-	</form>
-    </body>
+		If you are done, please <a href="includes/logout.php">log out</a>.
+		You are currently logged <?php echo $logged ?>.
+	</form>	
+</body>
 </html>

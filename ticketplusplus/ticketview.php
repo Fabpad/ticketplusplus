@@ -63,143 +63,98 @@ sec_session_start();
 	</nav>
 	
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-		Betreff:
-		<input class="form-control" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" />
+		<label for="txt_betreff">Betreff</label>
+		<input class="form-control" id="txt_betreff" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" />
 	</div>
 	
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
-		Beschreibung:
-		<textarea class="form-control" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none"></textarea>
+		<label for="txt_beschreibung">Beschreibung</label>
+		<textarea class="form-control" id="txt_beschreibung" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none"></textarea>
 	</div>
 	
-	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 row">
-		<div>
-			Benutzer:
-			<input class="form-control" type="text">
+	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
+		<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+			<label for="txt_user">Benutzer</label>
+			<input class="form-control" type="text" id="txt_user">
 		</div>
-		<div>
-			Dringlichkeit:
-			<input class="form-control" type="text" placeholder="Durch Combobox ersetzen">
-		</div>
-		<div>
-			Status:
-			<input class="form-control" type="text" placeholder="Durch Combobox ersetzen">
-		</div>
-	</div>
-	
-	<div class="dropdown ml-5 mt-5 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 row">
-		<div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
-			<button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="menu_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Kategorie:
-			</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #ffb516;">
-				<li>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="category"> Hardware
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="category"> Software
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="category"> Organisation
-						</label>
-					</div>
-				</li>
+		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+			<label for="status_menu">Status</label>
+			<select class="custom-select d-block w-100" id="status_menu" required>
+				<option value=""> --- Bitte wählen --- </option>
+				<option>Abgeschlossen</option>
+				<option>In Bearbeitung</option>
+				<option>Warten</option>
+				<option>Offen</option>
+			</select>
+			<div class="invalid-feedback">
+				Bitte einen Status auswählen.
 			</div>
 		</div>
-		<div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
-			<button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="menu_category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Unterkategorie:
-			</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #ffb516;">
-				<li>
-					<h6 class="dropdown-header">Hardware</h6>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Anforderungen neue Hardware
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Drucker defekt
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> PC defekt
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> WLAN / LAN defekt
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Sonstiges
-						</label>
-					</div>
-					<h6 class="dropdown-header">Software</h6>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> OS
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Programmanforderung
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Programm defekt
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Update
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Sonstiges
-						</label>
-					</div>
-					<h6 class="dropdown-header">Organisation</h6>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Benutzer entsperren
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Benutzer anlegen
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Kennwort vergessen
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Speicherplatz erweitern
-						</label>
-					</div>
-					<div class="ml-2">
-						<label>
-							<input type="radio" name="specification"> Sonstiges
-						</label>
-					</div>
-				</li>
+		<div class="ml-2 col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+			<label for="priority_menu">Dringlichkeit</label>
+			<select class="custom-select d-block w-100" id="priority_menu" required>
+				<option value=""> --- Bitte wählen --- </option>
+				<option>High</option>
+				<option>Normal</option>
+				<option>Low</option>
+			</select>
+			<div class="invalid-feedback">
+				Bitte eine Dringlichkeit auswählen.
 			</div>
 		</div>
 	</div>
+	
+	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
+		<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+			<label for="category_menu">Kategorie</label>
+			<select class="custom-select d-block w-100" id="category_menu" required>
+				<option value=""> --- Bitte wählen --- </option>
+				<option>Hardware</option>
+				<option>Software</option>
+				<option>Organisation</option>
+			</select>
+			<div class="invalid-feedback">
+				Bitte eine Kategorie auswählen.
+			</div>
+		</div>
+		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+			<label for="specification_menu">Unterkategorie</label>
+			<select class="custom-select d-block w-100" id="specification_menu" required>
+				<option value=""> --- Bitte wählen --- </option>
+				<optgroup label="Hardware">
+				<option>Anforderungen neue Hardware</option>
+				<option>Drucker defekt</option>
+				<option>PC defekt</option>
+				<option>WLAN / LAN defekt</option>
+				<option>Sonstiges</option>
+				<optgroup label="Software">
+				<option>OS</option>
+				<option>Programmanforderung</option>
+				<option>Programm defekt</option>
+				<option>Sonstiges</option>
+				<optgroup label="Organisation">
+				<option>Benutzer entsperren</option>
+				<option>Benutzer anlegen</option>
+				<option>Kennwort vergessen</option>
+				<option>Speicherplatz erweitern</option>
+				<option>Sonstiges</option>
+			</select>
+			<div class="invalid-feedback">
+				Bitte eine Unterkategorie auswählen.
+			</div>
+		</div>
+	</div>
+	
+	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+		<label for="txt_loesung">Lösung</label>
+		<textarea class="form-control" id="txt_loesung" placeholder="Lösung" aria-label="Lösung" rows="20" style="resize:none"></textarea>
+	</div>
+	
+	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+		<label for="txt_notizen">Notizen</label>
+		<textarea class="form-control" id="txt_notizen" placeholder="Notizen" aria-label="Notizen" rows="10" style="resize:none"></textarea>
+	</div>
+	<input type="submit" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Speichern">
 		
 	 <?php else : ?>
             <p>
