@@ -43,7 +43,7 @@ include_once 'includes/functions.php';
 								<label class="input-group-text" for="inputGroupSelect01">Rolle</label>
 							</div>
 							<select class="custom-select" id="inputGroupSelect01">
-								<option selected>Wähle die Berechtigung des Nutzers...</option>
+								<option selected>Berechtigung des Nutzers...</option>
 								<option value="1">User</option>
 								<option value="2">Agent</option>
 								<option value="3">Administrator</option>
