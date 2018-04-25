@@ -9,6 +9,9 @@ include_once 'includes/functions.php';
         <title>Secure Login: Registration Form</title>
         <script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script>
+		<script src="js/jQuery-v3.3.1.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="styles/bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     </head>
     <body>
@@ -27,13 +30,25 @@ include_once 'includes/functions.php';
 				<div class="col-sm-12 col-md-4 col-lg-4">
 					<form action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post" name="registration_form">
 			
-						<input type="text" class="form-control" name='username' id='username' placeholder="Nutzername" /><br>
+						<input type="text" class="form-control" name="username" id="username" placeholder="Nutzername" /><br>
 
 						<input type="text" class="form-control" name="email" id="email" placeholder="Email" /><br>
 						
 						<input type="password" class="form-control" name="password" id="password" placeholder="Passwort" /><br>
 						
 						<input type="password" class="form-control" name="confirmpwd" id="confirmpwd" placeholder="Passwort bestätigen" /><br>
+						
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="inputGroupSelect01">Rolle</label>
+							</div>
+							<select class="custom-select" id="inputGroupSelect01">
+								<option selected>Wähle die Berechtigung des Nutzers...</option>
+								<option value="1">User</option>
+								<option value="2">Agent</option>
+								<option value="3">Administrator</option>
+							</select>
+						</div><br>
 						
 						<input type="button" class="btn btn-secondary" value="Registrieren" onclick="return regformhash(this.form,this.form.username,this.form.email,this.form.password,this.form.confirmpwd);" /> 
 						
