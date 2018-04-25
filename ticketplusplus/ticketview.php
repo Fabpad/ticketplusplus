@@ -11,6 +11,8 @@ sec_session_start();
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script type="text/JavaScript" src="js/fill_specifications.js"></script> 
+	<script type ="text/JavaScript" src="js/jquery-3.3.1.js"></script>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	
 	<link rel="stylesheet" href="styles/ticketview.css" />	
@@ -81,22 +83,31 @@ sec_session_start();
 			<label for="status_menu">Status</label>
 			<select class="custom-select d-block w-100" id="status_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
-				<option>Abgeschlossen</option>
-				<option>In Bearbeitung</option>
-				<option>Warten</option>
-				<option>Offen</option>
+				<?php
+					//Run Query
+					$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.status";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($category) = mysqli_fetch_row($result)){
+						echo '<option value="'.$category.'">'.$category.'</option>';
+					}
+				?>
 			</select>
 			<div class="invalid-feedback">
 				Bitte einen Status auswählen.
 			</div>
 		</div>
 		<div class="ml-2 col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-			<label for="priority_menu">Dringlichkeit</label>
+			<label for="priority_menu">Priorität</label>
 			<select class="custom-select d-block w-100" id="priority_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
-				<option>High</option>
-				<option>Normal</option>
-				<option>Low</option>
+				<?php
+					//Run Query
+					$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.priority";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($category) = mysqli_fetch_row($result)){
+						echo '<option value="'.$category.'">'.$category.'</option>';
+					}
+				?>
 			</select>
 			<div class="invalid-feedback">
 				Bitte eine Dringlichkeit auswählen.
@@ -109,9 +120,14 @@ sec_session_start();
 			<label for="category_menu">Kategorie</label>
 			<select class="custom-select d-block w-100" id="category_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
-				<option>Hardware</option>
-				<option>Software</option>
-				<option>Organisation</option>
+				<?php
+					//Run Query
+					$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.category";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($category) = mysqli_fetch_row($result)){
+						echo '<option value="'.$category.'">'.$category.'</option>';
+					}
+				?>
 			</select>
 			<div class="invalid-feedback">
 				Bitte eine Kategorie auswählen.
@@ -121,23 +137,7 @@ sec_session_start();
 			<label for="specification_menu">Unterkategorie</label>
 			<select class="custom-select d-block w-100" id="specification_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
-				<optgroup label="Hardware">
-				<option>Anforderungen neue Hardware</option>
-				<option>Drucker defekt</option>
-				<option>PC defekt</option>
-				<option>WLAN / LAN defekt</option>
-				<option>Sonstiges</option>
-				<optgroup label="Software">
-				<option>OS</option>
-				<option>Programmanforderung</option>
-				<option>Programm defekt</option>
-				<option>Sonstiges</option>
-				<optgroup label="Organisation">
-				<option>Benutzer entsperren</option>
-				<option>Benutzer anlegen</option>
-				<option>Kennwort vergessen</option>
-				<option>Speicherplatz erweitern</option>
-				<option>Sonstiges</option>
+		
 			</select>
 			<div class="invalid-feedback">
 				Bitte eine Unterkategorie auswählen.

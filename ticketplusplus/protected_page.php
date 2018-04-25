@@ -55,7 +55,7 @@ sec_session_start();
 					<span class="caret"> </span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
+					<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="accview.php">  Konto</a></li>
 					<li role="separator" class="dropdown-divider"></li>
 					<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
 				</ul>
