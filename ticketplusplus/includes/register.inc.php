@@ -26,7 +26,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     // verletzt werden.
     //
  
-    $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
+    $prep_stmt = "SELECT id FROM users WHERE email = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
  
     if ($stmt) {
@@ -55,7 +55,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $password = hash('sha512', $password . $random_salt);
  
         // Trage den neuen Benutzer in die Datenbank ein 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
             $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
             // Führe die vorbereitete Anfrage aus.
             if (! $insert_stmt->execute()) {
