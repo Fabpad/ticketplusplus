@@ -62,6 +62,57 @@ sec_session_start();
 		</div>
 	</nav>
 	
+	<div class="ml-5 mt-5 input-group">
+		<label for="username">Benutzername</label>
+		<div>
+			<input id="username" type="text" class="form-control ml-3">
+		</div>
+	</div>
+	<div class="ml-5 input-group">
+		<label for="vorname">Vorname</label>
+		<div>
+			<input id="vorname" type="text" class="form-control ml-3">
+		</div>
+	</div>
+	<div class="ml-5 input-group">
+		<label for="nachname">Nachname</label>
+		<div>
+			<input id="nachname" type="text" class="form-control ml-3">
+		</div>
+	</div>
+	<div class="ml-5 input-group">
+		<label for="abteilung">Abteilung</label>
+		<div>
+			<input id="abteilung" type="text" class="form-control ml-3">
+		</div>
+	</div>
+	<div class="ml-5 input-group">
+		<label for="role">Rolle</label>
+		<div>
+			<input id="role" type="text" class="form-control ml-3">
+		</div>
+	</div>
+	<label for="kontanktdaten" class="h3 ml-5">Kontakt</label>
+	<div id="kontanktdaten">
+		<div class="ml-5 input-group">
+			<label for="telnummer">Telefonnummer</label>
+			<div>
+				<input id="telnummer" type="text" class="form-control ml-3">
+			</div>
+		</div>
+		<div class="ml-5 input-group">
+			<label for="email">E-Mail</label>
+			<div>
+				<input id="email" type="text" class="form-control ml-3">
+			</div>
+		</div>
+	</div>
+	<div>
+		<button class="btn btn-default ml-5" style="background-color:#ffb516">
+			<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			Passwort ändern
+		</button>
+	</div>
 	 <?php else : ?>
             <p>
                 <span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
