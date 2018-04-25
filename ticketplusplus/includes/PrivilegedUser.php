@@ -1,5 +1,5 @@
 <?php
-class PrivilegedUser extends User
+class PrivilegedUser //extends User
 {
     private $roles;
 

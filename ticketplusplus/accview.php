@@ -1,6 +1,6 @@
 <?php
-require_once "Role.php";
-require_once "PrivilegedUser.php";
+require_once "includes/Role.php";
+require_once "includes/PrivilegedUser.php";
 
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
@@ -11,12 +11,12 @@ sec_session_start();
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script src="js/jQuery-v3.3.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="styles/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	
-	<link rel="stylesheet" href="styles/ticketview.css" />	
+	<link rel="stylesheet" href="styles/table.css" />
 	<title> Platzhalter Konto </title>
 </head>
 <body>

@@ -1,6 +1,6 @@
 <?php
-require_once "Role.php";
-require_once "PrivilegedUser.php";
+require_once "includes/Role.php";
+require_once "includes/PrivilegedUser.php";
 
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
@@ -12,7 +12,7 @@ include_once 'includes/functions.php';
         <title>Secure Login: Registration Form</title>
         <script type="text/JavaScript" src="js/sha512.js"></script> 
         <script type="text/JavaScript" src="js/forms.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     </head>
     <body>
 	

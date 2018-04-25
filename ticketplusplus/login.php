@@ -1,6 +1,6 @@
 <?php
-require_once "Role.php";
-require_once "PrivilegedUser.php";
+require_once "includes/Role.php";
+require_once "includes/PrivilegedUser.php";
 
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
@@ -18,7 +18,7 @@ if (login_check($mysqli) == true) {
 <html>
 <head>
 	<title>Ticket++</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/loginstyle.css" />
 	<script type="text/JavaScript" src="js/sha512.js"></script> 
 	<script type="text/JavaScript" src="js/forms.js"></script> 
