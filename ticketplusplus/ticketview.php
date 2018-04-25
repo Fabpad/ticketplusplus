@@ -8,13 +8,12 @@ sec_session_start();
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script src="js/jQuery-v3.3.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="styles/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/JavaScript" src="js/fill_specifications.js"></script> 
-	<script type ="text/JavaScript" src="js/jQuery-3.3.1.js"></script>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">	
+	<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles/ticketview.css" />	
 	<title> Platzhalter Ticketbetreff </title>
 </head>
@@ -46,19 +45,23 @@ sec_session_start();
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Suchen</button>
+				<div class="input-group">
+					<input class="form-control" type="search" placeholder="" aria-label="Search">
+					<div class="input-group-append">
+						<button class="btn btn-secondary " type="submit">Suchen</button>
+					</div>
+				</div>
 			</form>
 			<div class="dropdown ml-5">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:#ffb516">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
+					<span class="fas fa-user" aria-hidden="true"> </span>
 					<?php echo htmlentities($_SESSION['username']); ?>
 					<span class="caret"> </span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
+					<li><span class="fas fa-cog" aria-hidden="true"></span><a href="#">  Konto</a></li>
 					<li role="separator" class="dropdown-divider"></li>
-					<li><span class="glyphicon glyphicon-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
+					<li><span class="fas fa-power-off" aria-hidden="true"></span><a href="includes/logout.php">  Logout</a></li>
 				</ul>
 			</div>
 		</div>
@@ -75,11 +78,11 @@ sec_session_start();
 	</div>
 	
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
-		<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="txt_user">Benutzer</label>
 			<input class="form-control" type="text" id="txt_user">
 		</div>
-		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="status_menu">Status</label>
 			<select class="custom-select d-block w-100" id="status_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
@@ -96,7 +99,7 @@ sec_session_start();
 				Bitte einen Status auswählen.
 			</div>
 		</div>
-		<div class="ml-2 col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 			<label for="priority_menu">Priorität</label>
 			<select class="custom-select d-block w-100" id="priority_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
@@ -110,13 +113,13 @@ sec_session_start();
 				?>
 			</select>
 			<div class="invalid-feedback">
-				Bitte eine Dringlichkeit auswählen.
+				Bitte eine Priorität auswählen.
 			</div>
 		</div>
 	</div>
 	
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
-		<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="category_menu">Kategorie</label>
 			<select class="custom-select d-block w-100" id="category_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
@@ -133,11 +136,10 @@ sec_session_start();
 				Bitte eine Kategorie auswählen.
 			</div>
 		</div>
-		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="specification_menu">Unterkategorie</label>
 			<select class="custom-select d-block w-100" id="specification_menu" required>
-				<option value=""> --- Bitte wählen --- </option>
-		
+				<option value=""> --- Eine Kategorie wählen --- </option>
 			</select>
 			<div class="invalid-feedback">
 				Bitte eine Unterkategorie auswählen.

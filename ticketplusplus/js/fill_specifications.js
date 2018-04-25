@@ -1,10 +1,9 @@
 $(document).ready(function () {
 	$("#category_menu").change(function () {
-
-		var obj = {kategorie: $(this).val()};
+	var val = $(this).val();
 		
-		$.post('../includes/query_specifications.php', obj , function (resp) {
-			 $("#specification_menu").html(resp);
+		$.post('../includes/query_specifications.php', {kategorie: `${val}`}).done(function (resp) {
+			 $("#specification_menu").html(`${resp}`);
 		});
 	});
 });
