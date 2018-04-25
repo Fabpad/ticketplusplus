@@ -1,7 +1,4 @@
 <?php
-require_once "includes/Role.php";
-require_once "includes/PrivilegedUser.php";
-
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
 
