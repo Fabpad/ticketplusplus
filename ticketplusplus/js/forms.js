@@ -27,6 +27,7 @@ function regformhash(form, uid, email, password, conf, role) {
         return false;
     }
  
+	// Überprüfe den Benutzernamen
     re = /^\w+$/; 
     if(!re.test(form.username.value)) { 
         alert("Username must contain only letters, numbers and underscores. Please try again"); 
