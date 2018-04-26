@@ -40,9 +40,9 @@ include_once 'includes/functions.php';
 						
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<label class="input-group-text" for="role">Rolle</label>
+								<label class="input-group-text" for="inputGroupSelect01">Rolle</label>
 							</div>
-							<select class="custom-select" id="role" name="role">
+							<select class="custom-select" id="inputGroupSelect01">
 								<option selected>Berechtigung des Nutzers...</option>
 								<option value="1">User</option>
 								<option value="2">Agent</option>
@@ -50,7 +50,7 @@ include_once 'includes/functions.php';
 							</select>
 						</div><br>
 						
-						<input type="button" class="btn btn-secondary" value="Registrieren" onclick="return regformhash(this.form,this.form.username,this.form.email,this.form.password,this.form.confirmpwd,this.form.role);" /> 
+						<input type="button" class="btn btn-secondary" value="Registrieren" onclick="return regformhash(this.form,this.form.username,this.form.email,this.form.password,this.form.confirmpwd);" /> 
 						
 					</form>
 				</div>
