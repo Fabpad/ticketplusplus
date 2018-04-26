@@ -1,4 +1,5 @@
 <?php
+include_once 'includes/db_connect.php';
 include_once 'includes/register.inc.php';
 include_once 'includes/functions.php';
 sec_session_start();
@@ -16,6 +17,7 @@ sec_session_start();
 		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     </head>
     <body>
+	<?php if (login_check($mysqli) == true) : ?>
 	
         <?php
         if (!empty($error_msg)) {
@@ -81,5 +83,10 @@ sec_session_start();
 				</div>
 			</div>
 		</footer>
+		<?php else : ?>
+				<p>
+					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
+				</p>
+		<?php endif; ?>
     </body>
 </html>
