@@ -1,23 +1,11 @@
-<?php
-include_once 'includes/db_connect.php';
-include_once 'includes/register.inc.php';
-include_once 'includes/functions.php';
-sec_session_start();
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Secure Login: Registration Form</title>
-        <script type="text/JavaScript" src="js/sha512.js"></script> 
-        <script type="text/JavaScript" src="js/forms.js"></script>
-		<script src="js/jQuery-v3.3.1.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="styles/bootstrap/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
-    </head>
-    <body>
-	<?php if (login_check($mysqli) == true) : ?>
+<?php $title = 'Register - Ticketplusplus'; ?>
+<?php $currentPage = 'Register'; ?>
+<?php $metaTags = 'tag1 tag2'; ?>
+<?php include_once 'includes/register.inc.php'; ?>
+<?php include('head.php'); ?>
+<body>
+		<?php if (login_check($mysqli) == true) : ?>
+<?php include('nav-bar.php'); ?>
 	
         <?php
         if (!empty($error_msg)) {
@@ -100,19 +88,11 @@ sec_session_start();
 				</div>
 			</div>
 		</div>
-		<footer class="page-footer pt-4 mt-4">
-			<div class="container-fluid text-center text-md-left">
-				<div class="row">
-					<div class="col-md-12">
-						<p>Zurück zur <a href="login.php">Anmeldeseite</a>.</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<?php else : ?>
+		
+		
+<?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
 				</p>
-		<?php endif; ?>
-    </body>
-</html>
+<?php endif; ?>
+<?php include('footer.php'); ?>
