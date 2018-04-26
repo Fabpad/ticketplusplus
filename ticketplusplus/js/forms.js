@@ -14,21 +14,15 @@ function formhash(form, password) {
     // Reiche das Formular ein. 
     form.submit();
 }
- 
-function regformhash(form, uid, email, password, conf, role) {
-	
-	var e = document.getElementById("role");
-	var rolevalue = e.options[e.selectedIndex].text;
-	
+
+function regformhash(form, uid, email, password, conf) {
      // Überprüfe, ob jedes Feld einen Wert hat
     if (uid.value == ''         || 
           email.value == ''     || 
           password.value == ''  || 
-          conf.value == ''		||
-		  rolevalue == 'Berechtigung des Nutzers...') {
+          conf.value == '') {
  
         alert('You must provide all the requested details. Please try again');
-		
         return false;
     }
  

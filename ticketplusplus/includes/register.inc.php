@@ -4,7 +4,7 @@ include_once 'psl-config.php';
  
 $error_msg = "";
  
-if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
+if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     // Bereinige und überprüfe die Daten
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -20,15 +20,13 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
         // Wenn nicht, dann ist etwas sehr seltsames passiert
         $error_msg .= '<p class="error">Invalid password configuration.</p>';
     }
-	
-	$role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
  
     // Benutzername und Passwort wurde auf der Benutzer-Seite schon überprüft.
     // Das sollte genügen, denn niemand hat einen Vorteil, wenn diese Regeln   
     // verletzt werden.
     //
  
-    $prep_stmt = "SELECT id FROM users WHERE email = ? LIMIT 1";
+    $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
  
     if ($stmt) {
@@ -57,8 +55,8 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
         $password = hash('sha512', $password . $random_salt);
  
         // Trage den neuen Benutzer in die Datenbank ein 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt, role) VALUES (?, ?, ?, ?, ?)")) {
-            $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt, $role);
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
+            $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
             // Führe die vorbereitete Anfrage aus.
             if (! $insert_stmt->execute()) {
                 header('Location: ../error.php?err=Registration failure: INSERT');
