@@ -20,13 +20,12 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
         // Wenn nicht, dann ist etwas sehr seltsames passiert
         $error_msg .= '<p class="error">Invalid password configuration.</p>';
     }
-	
-	$role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
  
+	$role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
+	
     // Benutzername und Passwort wurde auf der Benutzer-Seite schon überprüft.
     // Das sollte genügen, denn niemand hat einen Vorteil, wenn diese Regeln   
     // verletzt werden.
-    //
  
     $prep_stmt = "SELECT id FROM users WHERE email = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
@@ -44,11 +43,6 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
         $error_msg .= '<p class="error">Database error</p>';
     }
  
-    // Noch zu tun: 
-    // Wir müssen uns noch um den Fall kümmern, wo der Benutzer keine
-    // Berechtigung für die Anmeldung hat indem wir überprüfen welche Art 
-    // von Benutzer versucht diese Operation durchzuführen.
- 
     if (empty($error_msg)) {
         // Erstelle ein zufälliges Salt
         $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
@@ -58,7 +52,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
  
         // Trage den neuen Benutzer in die Datenbank ein 
         if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt, role) VALUES (?, ?, ?, ?, ?)")) {
-            $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt, $role);
+            $insert_stmt->bind_param('sssss', $username, $email, $password, $random_salt, $role);
             // Führe die vorbereitete Anfrage aus.
             if (! $insert_stmt->execute()) {
                 header('Location: ../error.php?err=Registration failure: INSERT');

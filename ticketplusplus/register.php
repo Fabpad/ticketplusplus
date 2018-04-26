@@ -1,6 +1,8 @@
 <?php
 include_once 'includes/db_connect.php';
+include_once 'includes/register.inc.php';
 include_once 'includes/functions.php';
+sec_session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,14 +17,14 @@ include_once 'includes/functions.php';
 		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     </head>
     <body>
+	<?php if (login_check($mysqli) == true) : ?>
 	
         <?php
         if (!empty($error_msg)) {
             echo $error_msg;
         }
         ?>
-		
-		<div class="container">
+        <div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-12">
 					<h1>Nutzer anlegen</h1>
@@ -44,18 +46,18 @@ include_once 'includes/functions.php';
 							</div>
 							<select class="custom-select" id="role" name="role">
 								<option selected>Berechtigung des Nutzers...</option>
-								<option value="1">User</option>
-								<option value="2">Agent</option>
-								<option value="3">Administrator</option>
+								<option value="User">User</option>
+								<option value="Agent">Agent</option>
+								<option value="Administrator">Administrator</option>
 							</select>
 						</div><br>
 						
-						<input type="button" class="btn btn-secondary" value="Registrieren" onclick="return regformhash(this.form,this.form.username,this.form.email,this.form.password,this.form.confirmpwd,this.form.role);" /> 
-						
+						<input type="button" class="btn btn-secondary" value="Register" onclick="return regformhash(this.form, this.form.username, this.form.email, this.form.password, this.form.confirmpwd, this.form.role.value);" /> 
+					
 					</form>
 				</div>
 				
-				<div class="col-sm-12 col-md-8 col-lg-8">
+			<div class="col-sm-12 col-md-8 col-lg-8">
 					<ul class="list-group">
 						<li class="list-group-item">Benutzernamen dürfen nur Ziffern, Groß- und Kleinbuchstaben und Unterstriche enthalten.</li>
 						<li class="list-group-item">E-Mail-Adressen müssen ein gültiges Format haben.</li>
@@ -81,5 +83,10 @@ include_once 'includes/functions.php';
 				</div>
 			</div>
 		</footer>
+		<?php else : ?>
+				<p>
+					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
+				</p>
+		<?php endif; ?>
     </body>
 </html>

@@ -16,24 +16,18 @@ function formhash(form, password) {
 }
  
 function regformhash(form, uid, email, password, conf, role) {
-	
-	var e = document.getElementById("role");
-	var rolevalue = e.options[e.selectedIndex].text;
-	
      // Überprüfe, ob jedes Feld einen Wert hat
     if (uid.value == ''         || 
           email.value == ''     || 
           password.value == ''  || 
           conf.value == ''		||
-		  rolevalue == 'Berechtigung des Nutzers...') {
+		  role == 'Berechtigung des Nutzers...') {
  
         alert('You must provide all the requested details. Please try again');
-		
         return false;
     }
  
-    // Überprüfe den Benutzernamen
- 
+	// Überprüfe den Benutzernamen
     re = /^\w+$/; 
     if(!re.test(form.username.value)) { 
         alert("Username must contain only letters, numbers and underscores. Please try again"); 
