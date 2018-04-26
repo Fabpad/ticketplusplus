@@ -15,18 +15,17 @@ function formhash(form, password) {
     form.submit();
 }
  
-function regformhash(form, uid, email, password, conf) {
+function regformhash(form, uid, email, password, conf, role) {
      // Überprüfe, ob jedes Feld einen Wert hat
     if (uid.value == ''         || 
           email.value == ''     || 
           password.value == ''  || 
-          conf.value == '') {
+          conf.value == ''		||
+		  role == 'Berechtigung des Nutzers...') {
  
         alert('You must provide all the requested details. Please try again');
         return false;
     }
- 
-    // Überprüfe den Benutzernamen
  
     re = /^\w+$/; 
     if(!re.test(form.username.value)) { 

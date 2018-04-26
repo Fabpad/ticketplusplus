@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/db_connect.php';
+include_once 'includes/register.inc.php';
 include_once 'includes/functions.php';
 ?>
 <!DOCTYPE html>
@@ -21,8 +21,7 @@ include_once 'includes/functions.php';
             echo $error_msg;
         }
         ?>
-		
-		<div class="container">
+        <div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-12">
 					<h1>Nutzer anlegen</h1>
@@ -40,22 +39,22 @@ include_once 'includes/functions.php';
 						
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<label class="input-group-text" for="inputGroupSelect01">Rolle</label>
+								<label class="input-group-text" for="role">Rolle</label>
 							</div>
-							<select class="custom-select" id="inputGroupSelect01">
+							<select class="custom-select" id="role" name="role">
 								<option selected>Berechtigung des Nutzers...</option>
-								<option value="1">User</option>
-								<option value="2">Agent</option>
-								<option value="3">Administrator</option>
+								<option value="User">User</option>
+								<option value="Agent">Agent</option>
+								<option value="Administrator">Administrator</option>
 							</select>
 						</div><br>
 						
-						<input type="button" class="btn btn-secondary" value="Registrieren" onclick="return regformhash(this.form,this.form.username,this.form.email,this.form.password,this.form.confirmpwd);" /> 
-						
+						<input type="button" class="btn btn-secondary" value="Register" onclick="return regformhash(this.form, this.form.username, this.form.email, this.form.password, this.form.confirmpwd, this.form.role.value);" /> 
+					
 					</form>
 				</div>
 				
-				<div class="col-sm-12 col-md-8 col-lg-8">
+			<div class="col-sm-12 col-md-8 col-lg-8">
 					<ul class="list-group">
 						<li class="list-group-item">Benutzernamen dürfen nur Ziffern, Groß- und Kleinbuchstaben und Unterstriche enthalten.</li>
 						<li class="list-group-item">E-Mail-Adressen müssen ein gültiges Format haben.</li>
