@@ -34,7 +34,13 @@ sec_session_start();
 			
 						<input type="text" class="form-control" name="username" id="username" placeholder="Nutzername" /><br>
 
+						<input type="text" class="form-control" name="vorname" id="vorname" placeholder="Vorname" /><br>
+						
+						<input type="text" class="form-control" name="nachname" id="nachname" placeholder="Nachname" /><br>
+						
 						<input type="text" class="form-control" name="email" id="email" placeholder="Email" /><br>
+						
+						<input type="text" class="form-control" name="telnummer" id="telnummer" placeholder="Telefonnummer" /><br>
 						
 						<input type="password" class="form-control" name="password" id="password" placeholder="Passwort" /><br>
 						
@@ -46,9 +52,29 @@ sec_session_start();
 							</div>
 							<select class="custom-select" id="role" name="role">
 								<option selected>Berechtigung des Nutzers...</option>
-								<option value="User">User</option>
-								<option value="Agent">Agent</option>
-								<option value="Administrator">Administrator</option>
+								<?php
+									$stmt = "SELECT DISTINCT role_name FROM ticketplusplus.roles";
+									$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+									while(list($role) = mysqli_fetch_row($result)){
+										echo '<option value="'.$role.'">'.$role.'</option>';
+									}
+								?>
+							</select>
+						</div><br>
+		
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<label class="input-group-text" for="dept">Abteilung</label>
+							</div>
+							<select class="custom-select" id="dept" name="dept">
+								<option selected>Abteilung des Nutzers...</option>
+								<?php
+									$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.department";
+									$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+									while(list($dept) = mysqli_fetch_row($result)){
+										echo '<option value="'.$dept.'">'.$dept.'</option>';
+									}
+								?>
 							</select>
 						</div><br>
 						

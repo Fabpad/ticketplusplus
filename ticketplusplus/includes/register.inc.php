@@ -4,7 +4,7 @@ include_once 'psl-config.php';
  
 $error_msg = "";
  
-if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
+if (isset($_POST['username'], $_POST['vorname'], $_POST['nachname'],$_POST['telnummer'], $_POST['email'], $_POST['p'], $_POST['role'], $_POST['dept'])) {
     // Bereinige und überprüfe die Daten
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -22,6 +22,10 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
     }
  
 	$role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
+	$dept = filter_input(INPUT_POST, 'dept', FILTER_SANITIZE_STRING);
+	$vorname = filter_input(INPUT_POST, 'vorname', FILTER_SANITIZE_STRING);
+	$nachname = filter_input(INPUT_POST, 'nachname', FILTER_SANITIZE_STRING);
+	$telnummer = filter_input(INPUT_POST, 'telnummer', FILTER_SANITIZE_STRING);
 	
     // Benutzername und Passwort wurde auf der Benutzer-Seite schon überprüft.
     // Das sollte genügen, denn niemand hat einen Vorteil, wenn diese Regeln   
@@ -50,14 +54,33 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['role'])) {
         // Erstelle saltet Passwort 
         $password = hash('sha512', $password . $random_salt);
  
+		// ID der ausgewählte Rollen abfragen
+		$stmt = "SELECT role_id FROM ticketplusplus.roles WHERE role_name = '$role'";
+		$result = mysqli_query($mysqli,$stmt) or die($mysqli);
+		
+		while(list($temp) = mysqli_fetch_row($result)) {
+			$roleID = $temp;
+		}
+		
+		// ID der ausgewählten Abteilung abfragen
+		$stmt = "SELECT dept_id FROM ticketplusplus.department WHERE beschreibung = '$dept'";
+		$result = mysqli_query($mysqli,$stmt) or die($mysqli);
+		
+		while(list($temp) = mysqli_fetch_row($result)) {
+			$deptID = $temp;
+		}
+ 
         // Trage den neuen Benutzer in die Datenbank ein 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt, role) VALUES (?, ?, ?, ?, ?)")) {
-            $insert_stmt->bind_param('sssss', $username, $email, $password, $random_salt, $role);
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO users (username, email, password, salt, vorname, nachname, telefonnummer, dept_id, role_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+            $insert_stmt->bind_param('sssssssii', $username, $email, $password, $random_salt, $vorname, $nachname, $telnummer, $deptID, $roleID);
             // Führe die vorbereitete Anfrage aus.
             if (! $insert_stmt->execute()) {
-                header('Location: ../error.php?err=Registration failure: INSERT');
+                header("Location: ../error.php?err=Registration failure: INSERT $stmt");
             }
-        }
-        header('Location: ./register_success.php');
+			else{
+		header('Location: ./register_success.php');
+			}
+		}
+        
     }
 }
