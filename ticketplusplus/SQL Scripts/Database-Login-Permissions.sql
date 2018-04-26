@@ -14,6 +14,6 @@ CREATE TABLE ticketplusplus.login_attempts (
     time VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB;
 
-INSERT INTO ticketplusplus.users VALUES(1, 'test_user', 'test@example.com',
-'00807432eae173f652f2064bdca1b61b290b52d40e429a7d295d76a71084aa96c0233b82f1feac45529e0726559645acaed6f3ae58a286b9f075916ebf66cacc',
-'f9aab579fc1b41ed0c44fe4ecdbfcdb4cb99b9023abb241a6db833288f4eea3c02f76e0d35204a8695077dcf81932aa59006423976224be0390395bae152d4ef');
+INSERT INTO ticketplusplus.users VALUES(1, 'Admin', 'admin@ticketplusplus.de',
+'bffb9458952cda19dfa56f4b2fed240448d5a9410f3956977bfd9d7e48b56406d307f6395d56a286d34d30070aeffcc6068881162b9e7252b9ccfe32407b7171',
+'918ef7c1c76a3d7c44c6a48ed766e30aa63e2f15ed423beb27d70380abb969e4b0e311aac6348c653bcc637951e482faf137516d329dc0101a5b73b5807f1cd6', 'Administrator');
