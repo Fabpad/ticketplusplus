@@ -129,46 +129,31 @@
 			<span class="fas fa-cog" aria-hidden="true"></span>
 			Passwort ändern
 		</button>
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			<form>
-				<label for="old_pw"><b>Altes Password eingeben:</b></label>
-				<input type="password" placeholder="" name="old_pw" class="form-control " required>
-				<label for="new_pw"><b>Neues Passwort eingeben:</b></label>
-				<input type="password" placeholder="" name="new_pw" class="form-control " required>
-				<label for="conf_new_pw"><b>Neues Passwort bestätigen:</b></label>
-				<input type="password" placeholder="" name="conf_new_pw" class="form-control" required>
-				<button type="submit" class="btn btn-default" style="background-color:#ffb516">Ändern</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="background-color:#ffb516">
+			<form class="mt-3 ml-3">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<i class="input-group-text">Altes Password eingeben </i>
+					</div>
+					<input type="password" placeholder="" name="old_pw" class="form-control " required>
+				</div>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<i class="input-group-text">Neues Passwort eingeben </i>
+					</div>
+					<input type="password" placeholder="" name="new_pw" class="form-control " required>
+				</div>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<i class="input-group-text">Neues Passwort bestätigen </i>
+					</div>
+					<input type="password" placeholder="" name="conf_new_pw" class="form-control" required>
+				</div>
+				<button type="submit" class="btn btn-default">Ändern</button>
 			</form>
 		</ul>
 	</div>
 
-	<div id="pwform" class="modal">
-		<form class="modal-content col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" action="/change_password.php">
-			<div class="container">
-				<label for="old_pw"><b>Altes Password eingeben:</b></label>
-				<input type="password" placeholder="" name="old_pw" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" required>
-				<label for="new_pw"><b>Neues Passwort eingeben:</b></label>
-				<input type="password" placeholder="" name="new_pw" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" required>
-				<label for="conf_new_pw"><b>Neues Passwort bestätigen:</b></label>
-				<input type="password" placeholder="" name="conf_new_pw" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" required>
-				<button type="button" onclick="document.getElementById('pwform').style.display='none'" class="btn btn-default" style="background-color:#ffb516">Cancel</button>
-				<button type="submit" class="btn btn-default" style="background-color:#ffb516">Sign Up</button>
-				</div>
-			</div>
-		</form>
-	</div>
-
-	<script>
-		// Get the modal
-		var modal = document.getElementById('pwform');
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
 <?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
