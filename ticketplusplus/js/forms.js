@@ -125,3 +125,8 @@ function showChangePassword(){
 		x.style.display = "none";
 	}
 }
+
+function createnewticket(form, betreff, beschreibung, user, status, priority, category, specifiaction) {
+	form.submit();
+    return true;
+}
