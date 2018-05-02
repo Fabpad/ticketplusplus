@@ -90,7 +90,7 @@ INSERT INTO `login_attempts` (`user_id`, `time`) VALUES
 --
 
 CREATE TABLE `priority` (
-  `priotity_id` int(10) UNSIGNED NOT NULL,
+  `priority_id` int(10) UNSIGNED NOT NULL,
   `beschreibung` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -98,7 +98,7 @@ CREATE TABLE `priority` (
 -- Daten für Tabelle `priority`
 --
 
-INSERT INTO `priority` (`priotity_id`, `beschreibung`) VALUES
+INSERT INTO `priority` (`priority_id`, `beschreibung`) VALUES
 (1, 'High'),
 (2, 'Normal'),
 (3, 'Low');
@@ -224,7 +224,7 @@ ALTER TABLE `department`
 -- Indizes für die Tabelle `priority`
 --
 ALTER TABLE `priority`
-  ADD PRIMARY KEY (`priotity_id`);
+  ADD PRIMARY KEY (`priority_id`);
 
 --
 -- Indizes für die Tabelle `roles`
@@ -273,7 +273,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT für Tabelle `priority`
 --
 ALTER TABLE `priority`
-  MODIFY `priotity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `priority_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT für Tabelle `roles`
