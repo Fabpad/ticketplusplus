@@ -14,6 +14,35 @@ function formhash(form, password) {
     // Reiche das Formular ein. 
     form.submit();
 }
+
+function changepwhash(form, old_pw, new_pw, new_pw_conf) {
+	//Erstelle Elemente für die gehashten Passwörter.
+	var op = document.createElement("oldPW");
+	var np = document.createElement("newPW");
+	var npc = document.createElement("newPWC");
+	
+	//Formular hinzufügen
+	form.appendChild(op);
+	form.appendChild(np);
+	form.appendChild(npc);
+	op.name = "op";
+	op.type = "hidden";
+	op.value = hex_sha512(old_pw.value);
+	
+	np.name = "np";
+	np.type = "hidden";
+	np.value = hex_sha512(new_pw.value);
+	
+	npc.name = "npc";
+	npc.type = "hidden";
+	npc.value = hex_sha512(new_pw_conf.value);
+	
+	old_pw.value = "";
+	new_pw.value = "";
+	new_pw_conf.value = "";
+	
+	form.submit();
+}
  
 function regformhash(form, uid, email, password, conf, role) {
      // Überprüfe, ob jedes Feld einen Wert hat
