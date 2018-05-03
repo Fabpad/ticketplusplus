@@ -128,7 +128,14 @@ function showChangePassword(){
 	}
 }
 
-function createnewticket(form, betreff, beschreibung, user, status, priority, category, specifiaction) {
+function createnewticket(form, betreff, beschreibung, user, status, priority, category, specification) {
+	alert(betreff.value);
+	alert(beschreibung.value);
+	alert(user.value);
+	alert(status);
+	alert(priority);
+	alert(category);
+	alert(specification);
 	form.submit();
     return true;
 }
