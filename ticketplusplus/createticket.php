@@ -6,6 +6,11 @@
 <body>
 		<?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
+<?php
+        if (!empty($$message)) {
+            echo $$message;
+        }
+        ?>
 	<form action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post" name="createticket_form">
 		<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<label for="txt_betreff">Betreff</label>
@@ -86,15 +91,14 @@
 				</div>
 			</div>
 		</div>
-		
-		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Speichern" onclick="createnewticket(	this.from, 
-																																this.form.betreff, 
-																																this.form.beschreibung, 
-																																this.form.user, 
-																																this.form.status_menu.value, 
-																																this.form.priority_menu.value,
-																																this.form.category_menu.value,
-																																this.form.specification_menu.value)">																										
+		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Ticket anlegen" onclick="return createnewticket(	this.form, 
+																																			this.form.betreff, 
+																																			this.form.beschreibung, 
+																																			this.form.user, 
+																																			this.form.status_menu.value, 
+																																			this.form.priority_menu.value,
+																																			this.form.category_menu.value,
+																																			this.form.specification_menu.value)">
 	</form>
 	
 <?php else : ?>

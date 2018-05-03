@@ -6,10 +6,9 @@
 <body>
 		<?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
-	
         <?php
-        if (!empty($error_msg)) {
-            echo $error_msg;
+        if (!empty($message)) {
+            echo $message;
         }
         ?>
         <div class="container">

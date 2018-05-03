@@ -147,13 +147,17 @@ function showChangePassword(){
 }
 
 function createnewticket(form, betreff, beschreibung, user, status, priority, category, specification) {
-	alert(betreff.value);
-	alert(beschreibung.value);
-	alert(user.value);
-	alert(status);
-	alert(priority);
-	alert(category);
-	alert(specification);
+	if (betreff.value == ''                         || 
+          beschreibung.value == ''                  || 
+          user.value == ''                          || 
+          status == '--- Bitte wählen ---'		    ||
+          priority == ' --- Bitte wählen --- '		||
+          category == ' --- Bitte wählen --- '		||
+          specification == ' --- Bitte wählen --- ') {
+ 
+        alert('You must provide all the requested details. Please try again');
+        return false;
+    }
 	form.submit();
     return true;
 }

@@ -75,12 +75,11 @@ if (isset($_POST['username'], $_POST['vorname'], $_POST['nachname'],$_POST['teln
             $insert_stmt->bind_param('sssssssii', $username, $email, $password, $random_salt, $vorname, $nachname, $telnummer, $deptID, $roleID);
             // Führe die vorbereitete Anfrage aus.
             if (! $insert_stmt->execute()) {
-                header("Location: ../error.php?err=Registration failure: INSERT $stmt");
+                $message="<div class='alert alert-danger'>Leider ist beim Anlegen des Users ein Fehler aufgetreten. Fehlercode: $stmt</div>";
             }
 			else{
-		header('Location: ./register_success.php');
+                $message='<div class="alert alert-success">Der User wurde erfolgreich angelegt!</div>';
 			}
 		}
-        
     }
 }
