@@ -96,7 +96,8 @@
 		<textarea class="form-control" id="txt_notizen" placeholder="Notizen" aria-label="Notizen" rows="10" style="resize:none"></textarea>
 	</div>
 	<input type="submit" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Speichern">
-		
+	<input type="submit" class="ml-5 mt-3 btn btn-danger" id="submit_ticket" value="Ticket Löschen" >	
+	
 <?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
