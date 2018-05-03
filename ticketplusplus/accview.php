@@ -1,10 +1,16 @@
 <?php $title = 'Accountview - Ticketplusplus'; ?>
 <?php $currentPage = 'AccView'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
+<?php include_once 'includes/change_password.php'; ?>
 <?php include('head.php'); ?>
 <body>
 		<?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
+	<?php
+        if (!empty($message)) {
+            echo $message;
+        }
+    ?>
 		
 	<label for="user_info" class="h3 ml-5 mt-3">Informationen</label>
 	<div id="user_info">
@@ -129,7 +135,7 @@
 			<span class="fas fa-cog" aria-hidden="true"></span>
 			Passwort ändern
 		</button>
-			<form id="changePasswordForm" class="mt-3 ml-3" style="display:none" action="includes/change_password.php" method="post">
+			<form id="changePasswordForm" class="mt-3 ml-3" style="display:none" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post">
 				<div class="input-group ml-5 mt-2 ">
 					<div class="input-group-prepend">
 						<i class="input-group-text">Altes Password eingeben </i>
@@ -148,9 +154,8 @@
 					</div>
 					<input type="password" placeholder="" name="conf_new_pw" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" required>
 				</div>
-		
-				<button type="submit" class="btn btn-secondary ml-5 mt-2" value="Change" onclick="return changepwhash(this.form, this.form.old_pw, this.form.new_pw, this.form.conf_new_pw);">Ändern</button>
-				<input type="text" name="testtxt" id="testxt">
+				<button type="button" class="btn btn-secondary ml-5 mt-2" value="Change" onclick="return changepwhash(this.form, this.form.old_pw, this.form.new_pw, this.form.conf_new_pw, this.form.user);">Ändern</button>
+					<input type="text" name="user" value="<?php echo htmlentities($_SESSION['username']); ?>" style="visibility: hidden;">
 			</form>
 	</div>
 

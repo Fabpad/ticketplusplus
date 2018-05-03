@@ -15,11 +15,12 @@ function formhash(form, password) {
     form.submit();
 }
 
-function changepwhash(form, old_pw, new_pw, new_pw_conf) {
+function changepwhash(form, old_pw, new_pw, new_pw_conf, username) {
 	//Erstelle Elemente für die gehashten Passwörter.
 	var op = document.createElement("input");
 	var np = document.createElement("input");
 	var npc = document.createElement("input");
+	var user = document.createElement("input");
 
 	if (old_pw.value == ''         || 
           new_pw.value == ''     || 
@@ -29,16 +30,11 @@ function changepwhash(form, old_pw, new_pw, new_pw_conf) {
         return false;
     }
 	
-	if(!(new_pw.value == new_pw_conf.value)) {
-		alert('Das neue Passwort muss übereinstimmen');
-		return false;
-	}
-
-	
 	//Formular hinzufügen
 	form.appendChild(op);
 	form.appendChild(np);
 	form.appendChild(npc);
+	form.appendChild(user);
 	
 	op.name = "op";
 	op.type = "hidden";
@@ -51,9 +47,10 @@ function changepwhash(form, old_pw, new_pw, new_pw_conf) {
 	npc.name = "npc";
 	npc.type = "hidden";
 	npc.value = hex_sha512(new_pw_conf.value);
-	var x = op.value;
-	var y = np.value;
-	var z = npc.value;
+	
+	user.name = "user";
+	user.type = "hidden";
+	user.value = username.value;
 	
 	old_pw.value = "";
 	new_pw.value = "";

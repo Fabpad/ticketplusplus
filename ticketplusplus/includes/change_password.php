@@ -1,16 +1,15 @@
 <?php
 include_once 'db_connect.php';
 include_once 'functions.php';
- 
-sec_session_start(); // Unsere selbstgemachte sichere Funktion um eine PHP-Sitzung zu starten.
- 
+
+
 if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
     $old_pw = $_POST['op']; // Das gehashte Passwort.
 	$new_pw = $_POST['np'];
 	$new_pw_conf = $_POST['npc'];
-	$username = htmlentities($_SESSION['username']);
-	return 'fick dich';
-	if($stmt = $mysqli->prepare("SELECasdT id, username, password, salt FROM users WHERE username = ?")){
+	$username = $_POST['user'];
+	
+	if($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM users WHERE username = ?")){
 		$stmt->bind_param('s', $username);
 		$stmt->execute();
 		$stmt->store_result();
@@ -29,29 +28,25 @@ if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
 					if($update_stmt = $mysqli->prepare("UPDATE ticketplusplus.users SET password = ?, salt = ? WHERE id = ?")) {
 						$update_stmt -> bind_param('sss', $new_pw, $random_salt, $user_id);
 						if(! $update_stmt->execute()) {
-							header('Location: ../home.php');
+							$message="<div class='alert alert-danger'>Leider ist beim Ändern des Password ein Fehler aufgetreten. Fehlercode: $stmt</div>";
 						}
 						else{
-							header('Location: ../login.php?error=1');
+							$message='<div class="alert alert-success">Das Passwort wurde geändert!</div>';
+							return true;
 						}
 					}
 				}
 				else{
-					header('Location: ../login.php?error=12');
+					$message='<div class="alert alert-danger">Das neue Passwort muss übereinstimmen!</div>';
 				}
 			}
 			else {
-				header('Location: ../login.php?error=2');
+				$message='<div class="alert alert-danger">Das alte Passwort ist falsch!</div>';
 			}
 		}
 		else{
-			header('Location: ../login.php?error=2');
-			return false;
+			$message='<div class="alert alert-	">Kein Datensatz vorhanden!</div>';
 		}
 	}
-}
-else {
-    // Die korrekten POST-Variablen wurden nicht zu dieser Seite geschickt. 
-    echo 'Invalid Request';
 }
 ?>
