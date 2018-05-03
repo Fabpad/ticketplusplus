@@ -17,10 +17,10 @@
 							Meine Tickets
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">alle Tickets</a>
-							<a class="dropdown-item" href="#">offene Tickets</a>
-							<a class="dropdown-item" href="#">geschlossene Tickets</a>
-							<a class="dropdown-item" href="#">wartende Tickets</a>
+							<a class="dropdown-item" href="viewticket.php">alle Tickets</a>
+							<a class="dropdown-item" href="viewticket.php">offene Tickets</a>
+							<a class="dropdown-item" href="viewticket.php">geschlossene Tickets</a>
+							<a class="dropdown-item" href="viewticket.php">wartende Tickets</a>
 						</div>
 					</li>
 					<li class="nav-item <?php if ($currentPage === 'Register') {echo 'active';} ?>">

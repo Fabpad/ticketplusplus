@@ -43,10 +43,10 @@ if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['stat
         $insert_stmt->bind_param('sssiiii', $betreff, $beschreibung, $user, $statusID, $priorityID, $categoryID, $specificationID);
         // Führe die vorbereitete Anfrage aus.
         if (! $insert_stmt->execute()) {
-            header("Location: ../error.php?err=Registration failure: INSERT $stmt");
+			$message="<div class='alert alert-danger'>Leider ist beim Anlegen des Tickets ein Fehler aufgetreten. Fehlercode: $stmt</div>";
         }
 		else{
-	header('Location: ./register_success.php');
+			$message='<div class="alert alert-success">Das Ticket wurde erfolgreich angelegt!</div>';
 		}
 	}
 }
