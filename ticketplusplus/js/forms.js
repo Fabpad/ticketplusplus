@@ -20,26 +20,28 @@ function changepwhash(form, old_pw, new_pw, new_pw_conf) {
 	var op = document.createElement("oldPW");
 	var np = document.createElement("newPW");
 	var npc = document.createElement("newPWC");
+	var changepw = document.getElementById("changePasswordForm");
 	
 	//Formular hinzufügen
 	form.appendChild(op);
 	form.appendChild(np);
 	form.appendChild(npc);
 	op.name = "op";
-	op.type = "hidden";
+	//op.type = "hidden";
 	op.value = hex_sha512(old_pw.value);
 	
 	np.name = "np";
-	np.type = "hidden";
+	//np.type = "hidden";
 	np.value = hex_sha512(new_pw.value);
 	
 	npc.name = "npc";
-	npc.type = "hidden";
+	//npc.type = "hidden";
 	npc.value = hex_sha512(new_pw_conf.value);
 	
 	old_pw.value = "";
 	new_pw.value = "";
 	new_pw_conf.value = "";
+	changepw.style.visibility="none";
 	
 	form.submit();
 }
