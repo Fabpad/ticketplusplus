@@ -7,8 +7,8 @@
 		<?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
 <?php
-        if (!empty($$message)) {
-            echo $$message;
+        if (!empty($message)) {
+            echo $message;
         }
         ?>
 	<form action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post" name="createticket_form">
