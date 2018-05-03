@@ -87,7 +87,7 @@
 			</div>
 		</div>
 		
-		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Speichern" onclick="createnewticket(	this.from, 
+		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Speichern" onclick="return createnewticket(this.form, 
 																																this.form.betreff, 
 																																this.form.beschreibung, 
 																																this.form.user, 
