@@ -16,6 +16,7 @@ if (login_check($mysqli) == true) {
 		<title>Ticket++</title>
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
 		<script type="text/JavaScript" src="js/forms.js"></script>
+		<link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
 		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles/loginstyle.css" />
