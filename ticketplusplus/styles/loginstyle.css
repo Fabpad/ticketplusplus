@@ -13,3 +13,9 @@
 	top: 40%;
 	left: 40%;
 }
+
+body {
+	background-color:#ffb516;
+	/*background-image:url('assets/TPPlogo2.png');
+	background-repeat:no-repeat;*/
+}

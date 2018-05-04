@@ -1,7 +1,8 @@
-Register_Success Seite löschen und als Pop-Up/anders implementieren.
-
 Passwort ändern
 
 Nav-Bar Drop-Down In Home implementieren
 
 Rollenspezifische Buttons und Co
+
+tickets aus der datenbank auslesen
+
