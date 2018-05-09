@@ -33,12 +33,14 @@ CREATE TABLE `tickets` (
   `betreff` varchar(50) COLLATE latin1_german1_ci NOT NULL,
   `beschreibung` text COLLATE latin1_german1_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
+  `agent_id` int(10) UNSIGNED NOT NULL,
   `status_id` int(10) UNSIGNED NOT NULL,
   `priority_id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `specification_id` int(10) UNSIGNED NOT NULL,
   `lösung` text COLLATE latin1_german1_ci,
-  `notizen` text COLLATE latin1_german1_ci
+  `notizen` text COLLATE latin1_german1_ci,
+  `erstell_datum` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
 
 --
@@ -51,6 +53,7 @@ CREATE TABLE `tickets` (
 ALTER TABLE `tickets`
   ADD PRIMARY KEY (`ticket_id`),
   ADD KEY `user_id` (`user_id`),
+  ADD KEY `agent_id` (`agent_id`),
   ADD KEY `status_id` (`status_id`),
   ADD KEY `priority_id` (`priority_id`),
   ADD KEY `category_id` (`category_id`),
@@ -78,7 +81,8 @@ ALTER TABLE `tickets`
   ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`priority_id`) REFERENCES `priority` (`priority_id`),
   ADD CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
   ADD CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`specification_id`) REFERENCES `specification` (`specification_id`),
-  ADD CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `tickets_ibfk_6` FOREIGN KEY (`agent_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

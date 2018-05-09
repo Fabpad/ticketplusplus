@@ -7,30 +7,17 @@
 <?php include('nav-bar.php'); ?>
 
 <table>
-			<tr>
-				<th>ID</th>
-				<th>Betreff</th>
-				<th>Status</th>
-				<th>Mitarbeiter</th>
-				<th>Priorit&auml;t</th>
-				<th>Erstellt am</th>
-			</tr>
-			<tr>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-			</tr>
-			<tr>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-				<td> </td>
-			</tr>
+	<tr>
+		<th>ID</th>
+		<th>Betreff</th>
+		<th>Status</th>
+		<th>Mitarbeiter</th>
+		<th>Priorit&auml;t</th>
+		<th>Erstellt am</th>
+	</tr>
+	<?php
+		fillTicketTable(htmlentities($_SESSION['username']), $mysqli);
+	?>
 </table>
 
 <?php else : ?>
