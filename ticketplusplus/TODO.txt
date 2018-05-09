@@ -5,3 +5,5 @@ tickets aus der datenbank auslesen
 DropDown Usermenü breita anpassen
 
 login bild als hintergrund
+
+username unique machen

@@ -7,13 +7,25 @@
 <?php include('nav-bar.php'); ?>
 
 <div class="container">
-	<h5>Hallo <?php echo htmlentities($_SESSION['username']); ?>.</h5>
-
+	<h5>Hallo 
+	<?php 
+		$stmt = "SELECT vorname FROM ticketplusplus.users WHERE users.username = '$_SESSION[username]'";
+		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+		while(list($temp) = mysqli_fetch_row($result)){
+			echo "$temp ";
+		}
+		$stmt2 = "SELECT nachname FROM ticketplusplus.users WHERE users.username = '$_SESSION[username]'";
+		$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+		while(list($temp2) = mysqli_fetch_row($result2)){
+			echo $temp2;
+		}
+	?>
+	</h5>
 	<br>
 
 	Sie haben 
 	<?php 
-		$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.user_id WHERE tickets.status_id = 4 AND users.username = 'Test'";
+		$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.user_id WHERE tickets.status_id = 4 AND users.username = '$_SESSION[username]'";
 		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 		while(list($temp) = mysqli_fetch_row($result)){
 			echo $temp;
@@ -25,7 +37,7 @@
 	<br>
 
 	<?php 
-		$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.user_id WHERE tickets.status_id = 3 AND users.username = 'Test'";
+		$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.user_id WHERE tickets.status_id = 3 AND users.username = '$_SESSION[username]'";
 		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 		while(list($temp) = mysqli_fetch_row($result)){
 			echo $temp;
