@@ -22,17 +22,15 @@ if (login_check($mysqli) == true) {
 		<link rel="stylesheet" href="styles/loginstyle.css" />
 	</head>
 	<body>
-		<?php
-			if (isset($_GET['error'])) {
-				echo '<p class="error">Error Logging In!</p>';
-			}
-		?>
-		
 		<div class="input-group-addon">
 			<img class="center-fit" src="assets/TPPlogo2.png" alt="Logo" style="width:auto;">
 		</div>
 		
 		<form action="includes/process_login.php" method="post" name="login_form" class="login_form">
+
+			<?php if (isset($_GET['error'])) :?>
+				<div class='alert alert-danger'>Leider ist beim Einloggen ein Fehler aufgetreten. Versuchen Sie es bitte erneut</div>
+			<?php endif; ?>
 		
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -48,7 +46,7 @@ if (login_check($mysqli) == true) {
 				<input type="password" class="form-control" placeholder="Passwort" size="40" maxlength="250" name="password" id="password" required />
 			</div>
 			
-			<input type="button" class="btn btn-secondary" value="Login" onclick="formhash(this.form, this.form.password);" id="login" />
+			<input type="button" class="btn btn-secondary" value="Login" id="login" onclick="formhash(this.form, this.form.password);" />
 			
 			<script type="text/JavaScript" src="js/login_on_enter.js"></script> 
 

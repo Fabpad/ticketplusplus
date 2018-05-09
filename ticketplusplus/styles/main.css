@@ -13,3 +13,7 @@ tr:nth-child(even) {
 }
 
 body { padding-top: 70px; }
+
+/*.dropdown-menu{
+    width:dynamic ;
+}*/

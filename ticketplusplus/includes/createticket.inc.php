@@ -56,7 +56,7 @@ if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['stat
         $insert_stmt->bind_param('ssiiiiii', $betreff, $beschreibung, $userid, $agentid, $statusID, $priorityID, $categoryID, $specificationID);
         // Führe die vorbereitete Anfrage aus.
         if (! $insert_stmt->execute()) {
-			$message="<div class='alert alert-danger'>Leider ist beim Anlegen des Tickets ein Fehler aufgetreten. Fehlercode: $agent</div>";
+			$message="<div class='alert alert-danger'>Leider ist beim Anlegen des Tickets ein Fehler aufgetreten. Fehlercode: $error</div>";
         }
 		else{
 			$message='<div class="alert alert-success">Das Ticket wurde erfolgreich angelegt!</div>';
