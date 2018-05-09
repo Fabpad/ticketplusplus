@@ -74,6 +74,7 @@
 			<div class="col-sm-12 col-md-8 col-lg-8">
 					<ul class="list-group">
 						<li class="list-group-item">Benutzernamen dürfen nur Ziffern, Groß- und Kleinbuchstaben und Unterstriche enthalten.</li>
+						<li class="list-group-item">Benutzernamen dürfen maximal 30 Zeichen enthalten.</li>
 						<li class="list-group-item">E-Mail-Adressen müssen ein gültiges Format haben.</li>
 						<li class="list-group-item">Passwörter müssen mindestens sechs Zeichen lang sein.</li>
 						<li class="list-group-item">Passwörter müssen enthalten
