@@ -1,9 +1,9 @@
-<?php $title = 'Neues Ticket - Ticketplusplus'; ?>
+<?php $title = 'Ihre Tickets - Ticketplusplus'; ?>
 <?php $currentPage = 'New'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
 <body>
-		<?php if (login_check($mysqli) == true) : ?>
+<?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
 	
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
