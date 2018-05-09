@@ -3,6 +3,7 @@
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include_once 'includes/register.inc.php'; ?>
 <?php include('head.php'); ?>
+
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>

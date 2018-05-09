@@ -11,3 +11,5 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+body { padding-top: 70px; }
