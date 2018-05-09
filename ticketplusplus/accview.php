@@ -18,7 +18,7 @@
 			<div class="input-group-prepend">
 				<i class="input-group-text"> Benutzername </i>
 			</div>
-			<input id="username" type="text" value="<?php echo htmlentities($_SESSION['username']); ?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<input id="username" type="text" value="<?php echo htmlentities($_SESSION['username']); ?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 		<div class="ml-5 mt-2 input-group">
 			<div class="input-group-prepend">
@@ -33,7 +33,7 @@
 					while(list($vorname) = mysqli_fetch_row($result)){
 						echo $vorname;
 					}
-				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 		<div class="ml-5 mt-2 input-group">
 			<div class="input-group-prepend">
@@ -48,7 +48,7 @@
 					while(list($nachname) = mysqli_fetch_row($result)){
 						echo $nachname;
 					}
-				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 		<div class="ml-5 mt-2 input-group">
 			<div class="input-group-prepend">
@@ -71,7 +71,7 @@
 						echo $deptName;
 					}
 					
-				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 		<div class="ml-5 mt-2 input-group">
 			<div class="input-group-prepend">
@@ -94,7 +94,7 @@
 						echo $roleName;
 					}
 					
-				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 	</div>
 	<label for="kontanktdaten" class="h3 ml-5 mt-3">Kontakt</label>
@@ -112,7 +112,7 @@
 					while(list($telnummer) = mysqli_fetch_row($result)){
 						echo $telnummer;
 					}
-				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 		<div class="ml-5 mt-2 input-group">
 			<div class="input-group-prepend">
@@ -127,7 +127,7 @@
 					while(list($email) = mysqli_fetch_row($result)){
 						echo $email;
 					}
-				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
 	</div>
 	<div> 
