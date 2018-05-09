@@ -23,10 +23,14 @@
 		</div>
 		
 		<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
+		<?php if($roleperm == 1) : ?>
+			<input type="hidden" id="txt_user" name="user" value="<?php echo htmlentities($_SESSION['username']); ?>">
+		<?php  else : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<label for="txt_user">Benutzer</label>
 				<input class="form-control" type="text" id="txt_user" name="user">
 			</div>
+		<?php endif; ?>
 			<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<label for="status_menu">Status</label>
 				<select class="custom-select d-block w-100" id="status_menu" name="status_menu" required>
@@ -91,14 +95,16 @@
 				</div>
 			</div>
 		</div>
-		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Ticket anlegen" onclick="return createnewticket(	this.form, 
+		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Ticket anlegen" onclick='return createnewticket(	this.form, 
 																																			this.form.betreff, 
 																																			this.form.beschreibung, 
 																																			this.form.user, 
 																																			this.form.status_menu.value, 
 																																			this.form.priority_menu.value,
 																																			this.form.category_menu.value,
-																																			this.form.specification_menu.value)">
+																																			this.form.specification_menu.value,
+																																			this.form.agenttxt.value)'>
+		<input type="hidden" value="<?php echo htmlentities($_SESSION['username']); ?>" id="agenttxt" name="agenttxt">
 	</form>
 	
 <?php else : ?>

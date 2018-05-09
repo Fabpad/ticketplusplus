@@ -143,18 +143,20 @@ function showChangePassword(){
 	}
 }
 
-function createnewticket(form, betreff, beschreibung, user, status, priority, category, specification) {
+function createnewticket(form, betreff, beschreibung, user, status, priority, category, specification, agent) {
 	if (betreff.value == ''                         || 
           beschreibung.value == ''                  || 
           user.value == ''                          || 
           status == '--- Bitte wählen ---'		    ||
           priority == ' --- Bitte wählen --- '		||
           category == ' --- Bitte wählen --- '		||
-          specification == ' --- Bitte wählen --- ') {
+          specification == ' --- Bitte wählen --- ' ||
+		  agent.value == '') {
  
         alert('You must provide all the requested details. Please try again');
         return false;
     }
+	
 	form.submit();
     return true;
 }
