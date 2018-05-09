@@ -2,7 +2,7 @@
 
 tickets aus der datenbank auslesen
 
-DropDown Usermenü breita anpassen
+DropDown Usermenü breite anpassen
 
 login bild als hintergrund
 
