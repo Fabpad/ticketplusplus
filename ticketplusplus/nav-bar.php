@@ -1,3 +1,11 @@
+		<?php
+			$user = htmlentities($_SESSION['username']);
+			$stmt = "SELECT role_id FROM ticketplusplus.users WHERE username = '$user'";
+			$result= mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+			while(list($temprole) = mysqli_fetch_row($result)){
+				$roleperm = intval($temprole);
+			}
+		?>
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<a class="navbar-brand" href="home.php">Ticket ++</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +31,11 @@
 							<a class="dropdown-item" href="viewticket.php">wartende Tickets</a>
 						</div>
 					</li>
-					<li class="nav-item <?php if ($currentPage === 'Register') {echo 'active';} ?>">
-						<a class="nav-link" href="register.php">Register</a>
-					</li>
+					<?php if($roleperm == 3) : ?>
+						<li class="nav-item <?php if ($currentPage === 'Register') {echo 'active';} ?>">
+							<a class="nav-link" href="register.php">Register</a>
+						</li>
+					<?php endif; ?>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<div class="input-group">
