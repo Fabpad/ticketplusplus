@@ -11,6 +11,13 @@ if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['stat
 	$category = $_POST['category_menu'];
 	$specification = $_POST['specification_menu'];
 
+	$stmt = "SELECT id FROM ticketplusplus.users WHERE username = $username";
+	$result = mysqli_query($mysqli,$stmt) or die($mysqli);
+	
+	while(list($temp) = mysqli_fetch_row($result)) {
+		$userid = $temp;
+	}
+	
 	$stmt = "SELECT status_id FROM ticketplusplus.status WHERE beschreibung = '$status'";
 	$result = mysqli_query($mysqli,$stmt) or die($mysqli);
 		
@@ -39,8 +46,8 @@ if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['stat
 		$specificationID = $temp;
 	}
 		
-	if ($insert_stmt = $mysqli->prepare("INSERT INTO tickets (betreff, beschreibung, benutzer, status_id, priority_id, category_id, specification_id) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-        $insert_stmt->bind_param('sssiiii', $betreff, $beschreibung, $user, $statusID, $priorityID, $categoryID, $specificationID);
+	if ($insert_stmt = $mysqli->prepare("INSERT INTO tickets (betreff, beschreibung, user_id, status_id, priority_id, category_id, specification_id) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+        $insert_stmt->bind_param('ssiiiii', $betreff, $beschreibung, $userid, $statusID, $priorityID, $categoryID, $specificationID);
         // Führe die vorbereitete Anfrage aus.
         if (! $insert_stmt->execute()) {
 			$message="<div class='alert alert-danger'>Leider ist beim Anlegen des Tickets ein Fehler aufgetreten. Fehlercode: $stmt</div>";
