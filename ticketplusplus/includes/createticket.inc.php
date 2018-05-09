@@ -11,7 +11,7 @@ if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['stat
 	$category = $_POST['category_menu'];
 	$specification = $_POST['specification_menu'];
 
-	$stmt = "SELECT id FROM ticketplusplus.users WHERE username = $username";
+	$stmt = "SELECT id FROM ticketplusplus.users WHERE username = '$user'";
 	$result = mysqli_query($mysqli,$stmt) or die($mysqli);
 	
 	while(list($temp) = mysqli_fetch_row($result)) {

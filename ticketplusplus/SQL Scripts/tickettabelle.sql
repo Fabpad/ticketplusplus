@@ -77,7 +77,7 @@ ALTER TABLE `tickets`
   ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`),
   ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`priority_id`) REFERENCES `priority` (`priority_id`),
   ADD CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
-  ADD CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`specification_id`) REFERENCES `specification` (`specification_id`);
+  ADD CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`specification_id`) REFERENCES `specification` (`specification_id`),
   ADD CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
