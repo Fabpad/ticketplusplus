@@ -1,8 +1,4 @@
-Passwort ändern
-
-Nav-Bar Drop-Down In Home implementieren
-
-Rollenspezifische Buttons und Co
+﻿Nav-Bar Drop-Down In Home implementieren
 
 tickets aus der datenbank auslesen
 
