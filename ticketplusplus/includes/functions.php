@@ -187,3 +187,16 @@ function esc_url($url) {
         return $url;
     }
 }
+
+function fillTicketTable($username, $mysqli) {
+	
+	$stmt = "SELECT id FROM ticketplusplus.users WHERE username = '$username'";
+	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+	while(list($userid) = mysqli_fetch_row($result)){}
+	
+	$stmt = "SELECT * FROM ticketplusplus.tickets WHERE user_id = '$userid'";
+	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+	while(list($ticket) = mysqli_fetch_row($result)) {
+		
+	}
+}
