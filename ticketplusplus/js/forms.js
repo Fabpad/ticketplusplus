@@ -26,7 +26,7 @@ function changepwhash(form, old_pw, new_pw, new_pw_conf, username) {
           new_pw.value == ''     || 
           new_pw_conf.value == '') {
  
-        alert('You must provide all the requested details. Please try again');
+        alert('Bitte füllen Sie alle Felder aus.');
         return false;
     }
 	
@@ -69,14 +69,20 @@ function regformhash(form, uid, email, password, conf, role) {
           conf.value == ''		||
 		  role == 'Berechtigung des Nutzers...') {
  
-        alert('You must provide all the requested details. Please try again');
+        alert('Bitte füllen Sie alle Felder aus.');
         return false;
     }
  
 	// Überprüfe den Benutzernamen
     re = /^\w+$/; 
     if(!re.test(form.username.value)) { 
-        alert("Username must contain only letters, numbers and underscores. Please try again"); 
+        alert("Der Benutzername darf nur Buchstaben, Zahlen und Unterstriche enthalten."); 
+        form.username.focus();
+        return false; 
+    }
+
+    if(form.username.value.length > 30) {
+        alert("Der Benutzername darf nur maximal 30 Zeichen enthalten. Bitte versuche es erneut."); 
         form.username.focus();
         return false; 
     }
@@ -85,7 +91,7 @@ function regformhash(form, uid, email, password, conf, role) {
     // Die Überprüfung wird unten noch einmal wiederholt, aber so kann man dem 
     // Benutzer mehr Anleitung geben
     if (password.value.length < 6) {
-        alert('Passwords must be at least 6 characters long.  Please try again');
+        alert('Das Passwort muss mindestens 6 Zeichen lang sein.');
         form.password.focus();
         return false;
     }
@@ -95,13 +101,13 @@ function regformhash(form, uid, email, password, conf, role) {
  
     var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
     if (!re.test(password.value)) {
-        alert('Passwords must contain at least one number, one lowercase and one uppercase letter.  Please try again');
+        alert('Das Passwort muss mindestens eine Zahl, einen Kleinbuchstaben und einen Großbuchstaben enthalten.');
         return false;
     }
  
     // Überprüfe die Passwörter und bestätige, dass sie gleich sind
     if (password.value != conf.value) {
-        alert('Your password and confirmation do not match. Please try again');
+        alert('Die beiden Passwörter stimmen nicht überein.');
         form.password.focus();
         return false;
     }
@@ -153,7 +159,7 @@ function createnewticket(form, betreff, beschreibung, user, status, priority, ca
           specification == ' --- Bitte wählen --- ' ||
 		  agent.value == '') {
  
-        alert('You must provide all the requested details. Please try again');
+        alert('Bitte füllen Sie alle Felder aus.');
         return false;
     }
 	
