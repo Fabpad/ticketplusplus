@@ -14,6 +14,7 @@ tr:nth-child(even) {
 
 body { padding-top: 70px; }
 
-/*.dropdown-menu{
-    width:dynamic ;
-}*/
+.dropdown-menu{
+    width: 100%;
+    min-width: 60px !important;
+} 

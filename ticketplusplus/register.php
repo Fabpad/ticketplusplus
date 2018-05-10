@@ -6,6 +6,7 @@
 
 <body>
 <?php if (login_check($mysqli) == true) : ?>
+<?php if ($roleperm == 3): ?>
 <?php include('nav-bar.php'); ?>
 	<?php
         if (!empty($message)) {
@@ -74,7 +75,7 @@
 			<div class="col-sm-12 col-md-8 col-lg-8">
 					<ul class="list-group">
 						<li class="list-group-item">Benutzernamen dürfen nur Ziffern, Groß- und Kleinbuchstaben und Unterstriche enthalten.</li>
-						<li class="list-group-item">Benutzernamen dürfen maximal 30 Zeichen enthalten.</li>
+						<li class="list-group-item">Benutzernamen müssen mindestens 4 und maximal 30 Zeichen enthalten.</li>
 						<li class="list-group-item">E-Mail-Adressen müssen ein gültiges Format haben.</li>
 						<li class="list-group-item">Passwörter müssen mindestens sechs Zeichen lang sein.</li>
 						<li class="list-group-item">Passwörter müssen enthalten
@@ -89,6 +90,11 @@
 				</div>
 			</div>
 		</div>
+<?php else : ?>
+	<p>
+		<span class="error">Sie haben nicht die Berechtigung diese Seite aufzurufen. <a href="home.php">Zurück zur Startseite</a>.
+	</p>
+<?php endif; ?>
 <?php else : ?>
 	<p>
 		<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.

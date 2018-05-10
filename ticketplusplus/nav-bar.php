@@ -1,11 +1,3 @@
-		<?php
-			$user = htmlentities($_SESSION['username']);
-			$stmt = "SELECT role_id FROM ticketplusplus.users WHERE username = '$user'";
-			$result= mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-			while(list($temprole) = mysqli_fetch_row($result)){
-				$roleperm = intval($temprole);
-			}
-		?>
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #FFFFFF;">
 			<a class="navbar-brand" href="home.php">Ticket ++</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

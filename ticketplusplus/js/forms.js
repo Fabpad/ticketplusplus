@@ -81,6 +81,12 @@ function regformhash(form, uid, email, password, conf, role) {
         return false; 
     }
 
+    if(form.username.value.length < 4) {
+        alert("Der Benutzername muss mindestens 4 Zeichen enthalten. Bitte versuche es erneut."); 
+        form.username.focus();
+        return false; 
+    }
+
     if(form.username.value.length > 30) {
         alert("Der Benutzername darf nur maximal 30 Zeichen enthalten. Bitte versuche es erneut."); 
         form.username.focus();
