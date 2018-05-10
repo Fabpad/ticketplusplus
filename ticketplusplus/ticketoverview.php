@@ -21,14 +21,14 @@
 	<br>
 
 	<div class="container">
-		<table>
+		<table name="ticketOverview" id="ticketOverview">
 			<tr>
-				<th>ID</th>
-				<th>Betreff</th>
-				<th>Status</th>
-				<th>Mitarbeiter</th>
-				<th>Priorit&auml;t</th>
-				<th>Erstellt am</th>
+				<th scope="col"><button class="btn btn-link" style="background:none;border:none;" onclick="sortTktOv(0)"><b>ID</b><i class="fa fa-fw fa-sort"></i></button></th>
+				<th scope="col"><button class="btn btn-link" style="background:none;border:none;" onclick="sortTktOv(1)"><b>Betreff</b><i class="fa fa-fw fa-sort"></i></button></th>
+				<th scope="col"><button class="btn btn-link" style="background:none;border:none;" onclick="sortTktOv(2)"><b>Status</b><i class="fa fa-fw fa-sort"></i></button></th>
+				<th scope="col"><button class="btn btn-link" style="background:none;border:none;" onclick="sortTktOv(3)"><b>Mitarbeiter</b><i class="fa fa-fw fa-sort"></i></button></th>
+				<th scope="col"><button class="btn btn-link" style="background:none;border:none;" onclick="sortTktOv(4)"><b>Priorit&auml;t</b><i class="fa fa-fw fa-sort"></i></button></th>
+				<th scope="col"><button class="btn btn-link" style="background:none;border:none;" onclick="sortTktOv(5)"><b>Erstellt am</b><i class="fa fa-fw fa-sort"></i></button></th>
 			</tr>
 			<?php
 				fillTicketTable(htmlentities($_SESSION['username']), $mysqli);
