@@ -11,14 +11,14 @@ if (isset($_POST['username'], $_POST['vorname'], $_POST['nachname'],$_POST['teln
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // keine gültige E-Mail
-        $error_msg .= '<p class="error">The email address you entered is not valid</p>';
+        $message="<div class='alert alert-danger'>Die einegebene Email ist nicht gültig</div>";
     }
  
     $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
     if (strlen($password) != 128) {
         // Das gehashte Passwort sollte 128 Zeichen lang sein.
         // Wenn nicht, dann ist etwas sehr seltsames passiert
-        $error_msg .= '<p class="error">Invalid password configuration.</p>';
+        $message="<div class='alert alert-danger'>Ungültige Passwort Konfiguration</div>";
     }
  
 	$role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
@@ -41,13 +41,29 @@ if (isset($_POST['username'], $_POST['vorname'], $_POST['nachname'],$_POST['teln
  
         if ($stmt->num_rows == 1) {
             // Ein Benutzer mit dieser E-Mail-Adresse existiert schon
-            $error_msg .= '<p class="error">A user with this email address already exists.</p>';
+            $message="<div class='alert alert-danger'>Ein Nutzer mit dieser Email Adresse existiert bereits.</div>";
         }
     } else {
-        $error_msg .= '<p class="error">Database error</p>';
+        $message="<div class='alert alert-danger'>Datenbank Fehler</div>";
+    }
+
+    $prep_stmt = "SELECT id FROM users WHERE username = ? LIMIT 1";
+    $stmt = $mysqli->prepare($prep_stmt);
+
+    if ($stmt) {
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $stmt->store_result();
+ 
+        if ($stmt->num_rows == 1) {
+            // Ein Benutzer mit diesem Username existiert schon
+            $message="<div class='alert alert-danger'>Ein Nutzer mit diesem Namen existiert bereits.</div>";
+        }
+    } else {
+        $message="<div class='alert alert-danger'>Datenbank Fehler</div>";
     }
  
-    if (empty($error_msg)) {
+    if (empty($message)) {
         // Erstelle ein zufälliges Salt
         $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
  

@@ -2,8 +2,4 @@
 
 tickets aus der datenbank auslesen
 
-DropDown Usermenü breite anpassen
-
 login bild als hintergrund
-
-username unique machen
