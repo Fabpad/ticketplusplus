@@ -1,3 +1,15 @@
+:root{
+    --main-bg : #FFFFFF;
+    --main-nav : #FFFFFF;
+    --text : rgba(0, 0, 0, 1);
+    --nav : rgba(0, 0, 0, 0.5);
+    --nav-hover : rgba(0, 0, 0, 0.7);
+    --nav-active : rgba(0, 0, 0, 0.9);
+    --border: 1px solid rgba(0, 0, 0, .125);
+    --input: #FFFFFF;
+    --table: #dddddd;
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -9,12 +21,55 @@ td, th {
     padding: 8px;
 }
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: var(--table);
 }
 
-body { padding-top: 70px; }
+body { 
+    background-color: var(--main-bg);
+    color: var(--text);
+    padding-top: 70px; 
+}
 
 .dropdown-menu{
     width: 100%;
     min-width: 60px !important;
 } 
+
+.navbar {
+    background-color: var(--main-nav);
+}
+
+.navbar-light .navbar-brand {
+    color: var(--nav-active);
+}
+
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+    color: var(--nav-active);
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: var(--nav);
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: var(--nav-hover);
+  }
+
+  .navbar-light .navbar-nav .active > .nav-link {
+    color: var(--nav-active);
+}
+
+.list-group-item {
+    background-color: var(--main-bg);
+    color: var(--text);
+    border: var(--border);
+}
+
+.form-control, .form-control:focus, .form-control[readonly], .input-group-text {
+    background-color: var(--input);
+    color: var(--text);
+}
+
+.custom-select {
+    background-color: var(--input);
+    color: var(--text);
+}

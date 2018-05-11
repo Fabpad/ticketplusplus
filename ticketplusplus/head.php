@@ -17,6 +17,7 @@ sec_session_start();
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles/main.css" />
 		<title><?php echo($title); ?></title>
+		<script language="javascript">night_mode()</script>
 	</head>
 
 	<?php
@@ -26,4 +27,4 @@ sec_session_start();
 			while(list($temprole) = mysqli_fetch_row($result)){
 				$roleperm = intval($temprole);
 			}
-		?>
+	?>

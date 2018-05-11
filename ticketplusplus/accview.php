@@ -129,6 +129,14 @@
 					}
 				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
+		<!-- NIGHT MODE TESTING -->
+		<div>
+			<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="toggle_night_mode()">
+ 				Night Mode
+			</button>
+			<lable id="nightmodelabel"></lable>
+		</div>
+		<!-- NIGHT MODE TESTING END-->
 	</div>
 	<div> 
 		<button id="btnpw" class="btn btn-default ml-5 mt-3" style="background-color:#ffb516" onclick="showChangePassword()">
