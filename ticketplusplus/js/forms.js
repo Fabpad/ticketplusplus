@@ -245,3 +245,9 @@ function night_mode(){
       document.getElementById('nightmodelabel').innerHTML = 'ON';
    }
 }
+
+$(document).ready(function() 
+    { 
+        $("#ticketOverview").tablesorter({theme : 'blue'}); 
+    } 
+); 
