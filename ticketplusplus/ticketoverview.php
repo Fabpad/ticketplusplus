@@ -3,6 +3,7 @@
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
 <link rel="stylesheet" href="styles/ticketoverview.css" />
+<link rel="stylesheet" href="js/tablesorter/themes/blue/style.css" />
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
@@ -22,7 +23,7 @@
 	<br>
 
 	<div class="container">
-		<table name="ticketOverview" id="ticketOverview">
+		<table name="ticketOverview" id="ticketOverview" class="tablesorter">
 		<thead>
 			<tr>
 				<th>ID</th>
