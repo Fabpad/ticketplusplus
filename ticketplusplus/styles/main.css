@@ -73,3 +73,7 @@ body {
     background-color: var(--input);
     color: var(--text);
 }
+
+a { 
+    color: inherit; 
+}

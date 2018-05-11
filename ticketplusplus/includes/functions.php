@@ -208,6 +208,6 @@ function fillTicketTable($username, $mysqli) {
 			$ticketprio = $ticket[4];
 			$ticketdate = $ticket[5];
 			
-			echo "<tr><td>".$ticketid."</td><td>".$ticketbetreff."</td><td>".$ticketstat."</td><td>".$ticketma."</td><td>".$ticketprio."</td><td>".$ticketdate."</td></tr>";
+			echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketma."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 	}	
 }

@@ -3,3 +3,5 @@
 tickets aus der datenbank auslesen
 
 login bild als hintergrund
+
+abfangen, dass user über url nicht auf fremde tickets zugrifen können

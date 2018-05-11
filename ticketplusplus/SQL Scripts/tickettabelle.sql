@@ -38,7 +38,7 @@ CREATE TABLE `tickets` (
   `priority_id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `specification_id` int(10) UNSIGNED NOT NULL,
-  `lösung` text COLLATE latin1_german1_ci,
+  `loesung` text COLLATE latin1_german1_ci,
   `notizen` text COLLATE latin1_german1_ci,
   `erstell_datum` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
