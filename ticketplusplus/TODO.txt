@@ -1,7 +1,7 @@
-﻿Nav-Bar Drop-Down In Home implementieren
+﻿Tickets filtern
 
-tickets aus der datenbank auslesen
+Ticketoverview zeigt statt Mitarbeiter noch den User an
 
-login bild als hintergrund
+Login Bild als Hintergrund
 
-abfangen, dass user über url nicht auf fremde tickets zugrifen können
+Abfangen, dass User über die URL nicht auf fremde Tickets zugrifen können
