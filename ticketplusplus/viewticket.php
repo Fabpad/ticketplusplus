@@ -10,17 +10,17 @@
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<label for="txt_betreff">Betreff</label>
 		<input class="form-control" id="txt_betreff" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
-			<?php
+			"<?php
 				$id = $_GET['ticketid'];
 				$stmt = "SELECT betreff FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
 					echo $temp;
 				}
-			?>
+			?>"
 		/>
 	</div>
-	
+
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<label for="txt_beschreibung">Beschreibung</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
@@ -38,7 +38,7 @@
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="txt_user">Benutzer</label>
 			<input class="form-control" type="text" id="txt_user" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
-			<?php
+			"<?php
 				$id = $_GET['ticketid'];
 				$stmt = "SELECT user_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
@@ -50,7 +50,7 @@
 				while(list($temp) = mysqli_fetch_row($result)){
 					echo $temp;
 				}
-			?>
+			?>"
 		/>
 		</div>
 		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
