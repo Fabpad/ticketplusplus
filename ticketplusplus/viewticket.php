@@ -2,6 +2,7 @@
 <?php $currentPage = 'View'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
+<?php //include_once('includes/query_specifications.php'); ?> 
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
@@ -155,6 +156,29 @@
 			<label for="specification_menu">Unterkategorie</label>
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="specification_menu" required >
 				<option value=""> --- Eine Kategorie wählen --- </option>
+				<?php
+					$id = $_GET['ticketid'];
+					$stmt = "SELECT specification_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($temp) = mysqli_fetch_row($result)){
+						$specificationid = $temp;
+					}
+					$stmt = "SELECT beschreibung FROM ticketplusplus.specification WHERE specification_id = '$specificationid'";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($temp) = mysqli_fetch_row($result)){
+						$specificationname = $temp;
+					}	
+					$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.specification";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($category) = mysqli_fetch_row($result)){
+						if ($specificationname === $category){
+							echo '<option value="'.$category.'" selected>'.$category.'</option>';
+						}
+						else {
+							echo '<option value="'.$category.'">'.$category.'</option>';
+						}
+					}
+				?> 
 			</select>
 			<div class="invalid-feedback">
 				Bitte eine Unterkategorie auswählen.

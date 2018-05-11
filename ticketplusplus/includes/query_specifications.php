@@ -1,12 +1,12 @@
 <?php
 	include_once 'db_connect.php';
 	include_once 'functions.php';
- 
-	sec_session_start();
+
+	// sec_session_start();
 	
-	$selectedCategrody = $_POST['kategorie'];
+	$selectedCategory = $_POST['kategorie'];
 	
-	$stmt = "SELECT category_id FROM ticketplusplus.category WHERE beschreibung = '$selectedCategrody'";
+	$stmt = "SELECT category_id FROM ticketplusplus.category WHERE beschreibung = '$selectedCategory'";
 	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 	while(list($temp) = mysqli_fetch_row($result)){
 		$id = $temp;
