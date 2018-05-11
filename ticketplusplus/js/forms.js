@@ -248,6 +248,6 @@ function night_mode(){
 
 $(document).ready(function() 
     { 
-        $("#ticketOverview").tablesorter({sortList:[[0,0],[2,1]], widgets: ['zebra']}); 
+        $("#ticketOverview").tablesorter(); 
     } 
 ); 
