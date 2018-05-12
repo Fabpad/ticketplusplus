@@ -1,10 +1,10 @@
 ﻿Tickets filtern
 
-Ticketoverview zeigt statt Mitarbeiter noch den User an
+Ticketoverview zeigt statt Mitarbeiter noch den User an [eigene abfrage, extra variable,skip array]
 
 Login Bild als Hintergrund
 
-Abfangen, dass User über die URL nicht auf fremde Tickets zugreifen können
+Abfangen, dass User über die URL nicht auf fremde Tickets zugreifen können [if (roleperm == 1 && session-user == ticket-user) || (roleperm == 2 && session-user == ticket-agent) || roleperm == 3 ]
 
 Im DarkMode die Schriftfarbe der Tabelle anpassen
 
