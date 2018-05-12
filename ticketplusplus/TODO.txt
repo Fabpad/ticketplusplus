@@ -4,6 +4,14 @@ Ticketoverview zeigt statt Mitarbeiter noch den User an
 
 Login Bild als Hintergrund
 
-Abfangen, dass User über die URL nicht auf fremde Tickets zugrifen können
+Abfangen, dass User über die URL nicht auf fremde Tickets zugreifen können
 
 Im DarkMode die Schriftfarbe der Tabelle anpassen
+
+Night Mode einrücken
+
+Unterkategorie beim Ticketanschauen als Admin debuggen
+
+Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
+
+Ticketoverview mit Benutzer und Techniker
