@@ -2,8 +2,6 @@
 
 Ticketoverview zeigt statt Mitarbeiter noch den User an [eigene abfrage, extra variable,skip array]
 
-Abfangen, dass User über die URL nicht auf fremde Tickets zugreifen können [if (roleperm == 1 && session-user == ticket-user) || (roleperm == 2 && session-user == ticket-agent) || roleperm == 3 ]
-
 Unterkategorie beim Ticketanschauen als Admin debuggen
 
 Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview

@@ -6,12 +6,32 @@
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
+
+<?php
+	$id = $_GET['ticketid'];
+	$stmt = "SELECT users.username 
+	FROM ticketplusplus.users, ticketplusplus.tickets
+	WHERE tickets.ticket_id = $id AND tickets.user_id = users.id";
+	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+	while(list($temp) = mysqli_fetch_row($result)){
+		$username = $temp;
+	}
+
+	$stmt = "SELECT users.username 
+	FROM ticketplusplus.users, ticketplusplus.tickets
+	WHERE tickets.ticket_id = $id AND tickets.agent_id = users.id";
+	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+	while(list($temp) = mysqli_fetch_row($result)){
+		$agentname = $temp;
+	}
+?>
+
+<?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' ) : ?>
 	
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<label for="txt_betreff">Betreff</label>
 		<input class="form-control" id="txt_betreff" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
 			"<?php
-				$id = $_GET['ticketid'];
 				$stmt = "SELECT betreff FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -25,7 +45,6 @@
 		<label for="txt_beschreibung">Beschreibung</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
 		<textarea class="form-control" id="txt_beschreibung" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none" <?php if($roleperm != 3){echo'readonly="readonly"';}?>><?php
-				$id = $_GET['ticketid'];
 				$stmt = "SELECT beschreibung FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -39,7 +58,6 @@
 			<label for="txt_user">Benutzer</label>
 			<input class="form-control" type="text" id="txt_user" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
 			"<?php
-				$id = $_GET['ticketid'];
 				$stmt = "SELECT user_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -58,7 +76,6 @@
 			<select class="custom-select d-block w-100" id="status_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
 				<?php
-					$id = $_GET['ticketid'];
 					$stmt = "SELECT status_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 					while(list($temp) = mysqli_fetch_row($result)){
@@ -90,7 +107,6 @@
 			<select class="custom-select d-block w-100" id="priority_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
 				<?php
-					$id = $_GET['ticketid'];
 					$stmt = "SELECT priority_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 					while(list($temp) = mysqli_fetch_row($result)){
@@ -125,7 +141,6 @@
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="category_menu" required>
 				<option < value=""> --- Bitte wählen --- </option>
 				<?php
-					$id = $_GET['ticketid'];
 					$stmt = "SELECT category_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 					while(list($temp) = mysqli_fetch_row($result)){
@@ -157,7 +172,6 @@
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="specification_menu" required >
 				<option value=""> --- Eine Kategorie wählen --- </option>
 				<?php
-					$id = $_GET['ticketid'];
 					$stmt = "SELECT specification_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 					while(list($temp) = mysqli_fetch_row($result)){
@@ -190,7 +204,6 @@
 		<label for="txt_loesung">Lösung</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
 		<textarea class="form-control" id="txt_loesung" placeholder="Lösung" aria-label="Lösung" rows="20" style="resize:none"><?php
-				$id = $_GET['ticketid'];
 				$stmt = "SELECT loesung FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -205,7 +218,6 @@
 		<label for="txt_notizen">Notizen</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
 		<textarea class="form-control" id="txt_notizen" placeholder="Notizen" aria-label="Notizen" rows="10" style="resize:none"><?php
-				$id = $_GET['ticketid'];
 				$stmt = "SELECT notizen FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -221,6 +233,11 @@
 			echo '<input type="button" class="ml-5 mt-3 btn btn-danger" id="btnDelete" value="Ticket Löschen" >';
 		}
 	?>
+<?php else : ?>
+				<p>
+					<span class="error">Sie sind nicht berechtigt dieses Ticket anzusehen.</span> Zurück zu <a href="ticketoverview.php">meinen Tickets</a>.
+				</p>	
+<?php endif; ?>
 <?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
