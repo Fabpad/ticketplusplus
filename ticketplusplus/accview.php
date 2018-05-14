@@ -131,7 +131,8 @@
 		</div>
 
 	</div>
-	<div id="night-mode">
+	<label for="config" class="h3 ml-5 mt-3">Einstellungen</label>
+	<div id="config">
 		<!-- NIGHT MODE TESTING -->
 		<div class="ml-5 mt-2 input-group">
 			<div class="input-group-prepend">
@@ -142,8 +143,7 @@
 			<input id="nightmodeinput" type="text" class="form-control col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" readonly="readonly">
 		</div>
 		<!-- NIGHT MODE TESTING END-->
-	</div>
-	<div> 
+	
 		<button id="btnpw" class="btn btn-default ml-5 mt-3" style="background-color:#ffb516" onclick="showChangePassword()">
 			<span class="fas fa-cog" aria-hidden="true"></span>
 			Passwort ändern
