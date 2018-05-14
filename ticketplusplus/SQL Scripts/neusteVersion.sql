@@ -200,7 +200,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `salt`, `vorname`, `nachname`, `telefonnummer`, `dept_id`, `role_id`) VALUES
-(1, 'superadmin', 'superadmin@tpp.de', '2017e1fa551e6caa41434eab4a5662c5ac42c2341a32ada9cf1afb16b859e920bdd39e0cc0b32228eb50ab3796e2d3d8ace6086015bb47cdbe74c74ac029fede', '1072c7f2670ec72c6c8d0ebff4490e52c0b38bf8a1ab0da73d65b7942ab728ca234ba67025e42280c812801042c357fa93aefa6475bde515bf0dcd0beef222b1', 'Super', 'Admin', '01234567890', 2, 3);
+(1, 'superadmin', 'superadmin@tpp.de', '2017e1fa551e6caa41434eab4a5662c5ac42c2341a32ada9cf1afb16b859e920bdd39e0cc0b32228eb50ab3796e2d3d8ace6086015bb47cdbe74c74ac029fede', '1072c7f2670ec72c6c8d0ebff4490e52c0b38bf8a1ab0da73d65b7942ab728ca234ba67025e42280c812801042c357fa93aefa6475bde515bf0dcd0beef222b1', 'Super', 'Admin', '01234567890', 3, 3);
 
 --
 -- Indizes der exportierten Tabellen
