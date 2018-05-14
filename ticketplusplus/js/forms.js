@@ -230,7 +230,7 @@ function night_mode(){
      document.documentElement.style.setProperty('--border',"1px solid rgba(0, 0, 0, .125)");
      document.documentElement.style.setProperty('--input',"#FFFFFF");
      document.documentElement.style.setProperty('--table',"#dddddd");
-     document.getElementById('nightmodelabel').innerHTML = 'OFF';
+     document.getElementById('nightmodeinput').value = 'OFF';
    }
    else{
       document.documentElement.style.setProperty('--main-bg',"#252526");
@@ -242,7 +242,7 @@ function night_mode(){
       document.documentElement.style.setProperty('--border',"1px solid rgba(255, 255, 255, .125)");
       document.documentElement.style.setProperty('--input',"#333333");
       document.documentElement.style.setProperty('--table',"#606060");
-      document.getElementById('nightmodelabel').innerHTML = 'ON';
+      document.getElementById('nightmodeinput').value = 'ON';
    }
 }
 

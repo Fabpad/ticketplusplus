@@ -2,8 +2,9 @@
 <?php $currentPage = 'Overview'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
-<link rel="stylesheet" href="styles/ticketoverview.css" />
 <link rel="stylesheet" href="js/tablesorter/themes/blue/style.css" />
+<link rel="stylesheet" href="styles/table.css" />
+
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>

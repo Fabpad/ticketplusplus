@@ -16,8 +16,8 @@
 						<a class="nav-link" href="ticketoverview.php">Meine Tickets</a>
 					</li>
 					<?php if($roleperm == 3) : ?>
-						<li class="nav-item <?php if ($currentPage === 'Register') {echo 'active';} ?>">
-							<a class="nav-link" href="register.php">Register</a>
+						<li class="nav-item <?php if ($currentPage === 'administration') {echo 'active';} ?>">
+							<a class="nav-link" href="administration.php">Administration</a>
 						</li>
 					<?php endif; ?>
 				</ul>

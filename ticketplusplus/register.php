@@ -8,13 +8,16 @@
 <?php if (login_check($mysqli) == true) : ?>
 <?php if ($roleperm == 3): ?>
 <?php include('nav-bar.php'); ?>
-	<?php
-        if (!empty($message)) {
-            echo $message;
-        }
-    ?>
-        <div class="container">
+<?php include('nav-bar-admin.php'); ?>
+	
+	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+        <div class="container-fluid">
 			<div class="row">
+				<?php
+        			if (!empty($message)) {
+            		echo $message;
+        			}
+				?>
 				<div class="col-sm-12 col-md-12 col-lg-12">
 					<h1>Nutzer anlegen</h1>
 				</div>
@@ -90,6 +93,7 @@
 				</div>
 			</div>
 		</div>
+	</main>
 <?php else : ?>
 	<p>
 		<span class="error">Sie haben nicht die Berechtigung diese Seite aufzurufen. <a href="home.php">Zurück zur Startseite</a>.

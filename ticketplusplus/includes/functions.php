@@ -251,3 +251,23 @@ function fillTicketTable($username, $mysqli) {
 	    }	
     }
 }
+
+function fillUSerTable($mysqli) {
+	
+        $stmt = "SELECT users.id, users.username, users.email, users.vorname, users.nachname, users.telefonnummer, department.beschreibung, roles.role_name
+				FROM ticketplusplus.users, ticketplusplus.roles, ticketplusplus.department
+				WHERE roles.role_id = users.role_id AND department.dept_id = users.dept_id";
+	    $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+	    while($users = mysqli_fetch_row($result)) {
+			$userid = $users[0];
+			$username = $users[1];
+			$useremail = $users[2];
+			$uservorname = $users[3];
+			$usernachname = $users[4];
+            $usertel = $users[5];
+            $userdept = $users[6];
+            $userrole = $users[7];
+			
+			echo "<tr><td>".$userid."</td><td>".$username."</td><td>".$useremail."</td><td>".$uservorname."</td><td>".$usernachname."</td><td>".$usertel."</td><td>".$userdept."</td><td>".$userrole."</td></tr>";
+	    }
+}

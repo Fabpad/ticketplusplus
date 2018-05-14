@@ -129,12 +129,17 @@
 					}
 				?>" class="form-control col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" readonly="readonly">
 		</div>
+
+	</div>
+	<div id="night-mode">
 		<!-- NIGHT MODE TESTING -->
-		<div>
-			<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="toggle_night_mode()">
- 				Night Mode
-			</button>
-			<lable id="nightmodelabel"></lable>
+		<div class="ml-5 mt-2 input-group">
+			<div class="input-group-prepend">
+				<button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="toggle_night_mode()">
+ 					Night Mode
+				</button>
+			</div>
+			<input id="nightmodeinput" type="text" class="form-control col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" readonly="readonly">
 		</div>
 		<!-- NIGHT MODE TESTING END-->
 	</div>
