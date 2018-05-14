@@ -22,8 +22,8 @@ if (login_check($mysqli) == true) {
 		<link rel="stylesheet" href="styles/loginstyle.css" />
 	</head>
 	<body>
-		<div class="input-group-addon">
-			<img class="center-fit" src="assets/TPPlogo2.png" alt="Logo" style="width:auto;">
+		<div>
+			<img class="center-fit" src="assets/TPPlogo2.png" draggable="false" style="width:auto;">
 		</div>
 		
 		<form action="includes/process_login.php" method="post" name="login_form" class="login_form">
