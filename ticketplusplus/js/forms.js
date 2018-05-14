@@ -251,3 +251,16 @@ $(document).ready(function()
         $("#ticketOverview").tablesorter(); 
     } 
 ); 
+
+$(document).ready(function() 
+    {
+        $("#nightmodeinput").ready(function () {
+            if (sessionStorage.nightMode == '0') {
+                document.getElementById('nightmodeinput').value = 'OFF';
+            }
+            else if (sessionStorage.nightMode == '1'){
+                document.getElementById('nightmodeinput').value = 'ON';
+            }
+        }) 
+    } 
+); 
