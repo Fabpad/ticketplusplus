@@ -261,6 +261,9 @@ $(document).ready(function()
             else if (sessionStorage.nightMode == '1'){
                 document.getElementById('nightmodeinput').value = 'ON';
             }
+            else {
+                document.getElementById('nightmodeinput').value = 'OFF';  // Default
+            }
         }) 
     } 
 ); 
