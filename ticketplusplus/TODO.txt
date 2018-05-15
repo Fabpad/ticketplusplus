@@ -7,3 +7,5 @@ Unterkategorie beim Ticketanschauen als Admin debuggen
 Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
 
 Ticketoverview mit Benutzer und Techniker
+
+Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten

@@ -267,3 +267,18 @@ $(document).ready(function()
         }) 
     } 
 ); 
+
+function changeuser(form, userid, username, uservorname, usernachname, dept, role, telnr, email) {
+    if (    username == ''      || 
+            uservorname == ''   || 
+            usernachname == ''  || 
+            telnr == ''		    ||
+            email == '') {
+ 
+        alert('Bitte füllen Sie alle Felder aus.');
+        return false;
+    }
+
+	form.submit();
+    return true;
+}

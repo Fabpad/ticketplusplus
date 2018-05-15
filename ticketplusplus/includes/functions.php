@@ -268,6 +268,6 @@ function fillUSerTable($mysqli) {
             $userdept = $users[6];
             $userrole = $users[7];
 			
-			echo "<tr><td>".$userid."</td><td>".$username."</td><td>".$useremail."</td><td>".$uservorname."</td><td>".$usernachname."</td><td>".$usertel."</td><td>".$userdept."</td><td>".$userrole."</td></tr>";
+			echo "<tr><td><a href='viewuser.php?userid=$userid'>".$userid."</a></td><td><a href='viewuser.php?userid=$userid'>".$username."</a></td><td><a href='viewuser.php?userid=$userid'>".$useremail."</a></td><td><a href='viewuser.php?userid=$userid'>".$uservorname."</a></td><td><a href='viewuser.php?userid=$userid'>".$usernachname."</a></td><td><a href='viewuser.php?userid=$userid'>".$usertel."</a></td><td><a href='viewuser.php?userid=$userid'>".$userdept."</a></td><td><a href='viewuser.php?userid=$userid'>".$userrole."</a></td></tr>";
 	    }
 }
