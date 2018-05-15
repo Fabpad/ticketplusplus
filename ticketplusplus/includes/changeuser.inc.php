@@ -14,6 +14,9 @@ if (isset($_POST['userid'], $_POST['username'], $_POST['uservorname'], $_POST['u
     while(list($temp) = mysqli_fetch_row($result)) {
 		$deptID = $temp;
     }
+
+    $rolename = $_POST['role_menu'];
+    $stmt = "SELECT role_id FROM ticketplusplus.roles WHERE role_name = '$rolename'";
 	$result = mysqli_query($mysqli,$stmt) or die($mysqli);
 	while(list($temp) = mysqli_fetch_row($result)) {
 	    $roleID = $temp;
