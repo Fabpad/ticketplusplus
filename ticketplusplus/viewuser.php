@@ -1,6 +1,7 @@
 <?php $title = 'Administration - Ticketplusplus'; ?>
 <?php $currentPage = 'administration'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
+<?php include_once 'includes/changeuser.inc.php'; ?>
 <?php include('head.php'); ?>
 
 <body>
@@ -9,7 +10,7 @@
 <?php include('nav-bar.php'); ?>
 <?php include('nav-bar-admin.php'); ?>
 
-<?php $id = $_GET['userid']; ?> 
+<?php $uid = isset($_GET['userid']) ? $_GET['userid'] : '' ?> 
 
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 	<div class="container-fluid">
@@ -26,8 +27,8 @@
                         <div class="input-group-prepend">
                             <i class="input-group-text"> Benutzer ID </i>
                         </div>
-                        <input id="id" type="text" name="userid" value="<?php
-                            $stmt = "SELECT DISTINCT id FROM ticketplusplus.users WHERE id =  $id";
+                        <input id="userid" type="text" name="userid" value="<?php
+                            $stmt = "SELECT DISTINCT id FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
                                 echo $temp;
@@ -38,7 +39,7 @@
                             <i class="input-group-text"> Benutzername </i>
                         </div>
                         <input id="username" type="text" name="username" value="<?php
-                            $stmt = "SELECT DISTINCT username FROM ticketplusplus.users WHERE id =  $id";
+                            $stmt = "SELECT DISTINCT username FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
                                 echo $temp;
@@ -48,8 +49,8 @@
                         <div class="input-group-prepend">
                             <i class="input-group-text">Vorname</i>
                         </div>
-                        <input id="vorname" type="text" name="uservorname" value="<?php
-                            $stmt = "SELECT DISTINCT vorname FROM ticketplusplus.users WHERE id =  $id";
+                        <input id="uservorname" type="text" name="uservorname" value="<?php
+                            $stmt = "SELECT DISTINCT vorname FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
                                 echo $temp;
@@ -59,8 +60,8 @@
                         <div class="input-group-prepend">
                             <i class="input-group-text"> Nachname </i>
                         </div>
-                        <input id="nachname" type="text" name="usernachname" value="<?php
-                            $stmt = "SELECT DISTINCT nachname FROM ticketplusplus.users WHERE id =  $id";
+                        <input id="usernachname" type="text" name="usernachname" value="<?php
+                            $stmt = "SELECT DISTINCT nachname FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
                                 echo $temp;
@@ -72,7 +73,7 @@
                         </div>
                         <select class="form-control col-6 custom-select d-block w-100" id="dept_menu" name="dept_menu" required >
                             <?php
-                                $stmt = "SELECT DISTINCT dept_id FROM ticketplusplus.users WHERE id =  $id";
+                                $stmt = "SELECT DISTINCT dept_id FROM ticketplusplus.users WHERE id =  $uid";
                                 $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                                 while(list($temp) = mysqli_fetch_row($result)){
                                     $deptID = $temp;
@@ -100,9 +101,9 @@
                         <div class="input-group-prepend">
                             <i class="input-group-text"> Rolle </i>
                         </div>
-                        <select class="form-control col-6 custom-select d-block w-100" id="role_menu" name="role_name" required >
+                        <select class="form-control col-6 custom-select d-block w-100" id="role_menu" name="role_menu" required >
                             <?php
-                                $stmt = "SELECT DISTINCT role_id FROM ticketplusplus.users WHERE id =  $id";
+                                $stmt = "SELECT DISTINCT role_id FROM ticketplusplus.users WHERE id =  $uid";
                                 $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                                 while(list($temp) = mysqli_fetch_row($result)){
                                     $roleID = $temp;
@@ -133,8 +134,8 @@
                         <div class="input-group-prepend">
                             <i class="input-group-text"> Telefonnummer </i>
                         </div>
-                        <input id="telnummer" type="text" name="telnr" value="<?php
-                            $stmt = "SELECT DISTINCT telefonnummer FROM ticketplusplus.users WHERE id =  $id";
+                        <input id="telnr" type="text" name="telnr" value="<?php
+                            $stmt = "SELECT DISTINCT telefonnummer FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
                                 echo $temp;
@@ -145,7 +146,7 @@
                             <i class="input-group-text"> E-Mail </i>
                         </div>
                         <input id="email" type="text" name="email" value="<?php
-                            $stmt = "SELECT DISTINCT email FROM ticketplusplus.users WHERE id =  $id";
+                            $stmt = "SELECT DISTINCT email FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
                                 echo $temp;
