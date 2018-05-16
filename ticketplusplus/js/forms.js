@@ -148,9 +148,25 @@ $(document).ready(function () {
 	//Not working
 	$("#ticketfilter").change(function () {
 		var val =$(this).val();
-		
-		$.post('../includes/fillTicketTable.php', {filter: `${val}`}).done(function (resp) {
-            document.getElementById('tktOvBody').innerHTML = resp;
+		if(val == "Geschlossene Tickets"){
+			val = "Abgeschlossen"
+		}
+		else if(val == "Offene Tickets"){
+			val = "Offen";
+		}
+		else if(val == "Tickets in Bearbeitung"){
+			val = "In Bearbeitung"
+		}
+		else if(val == "Wartende Tickets"){
+			val = "Warten";
+		}
+		else{
+			val = "*";
+		}
+
+		$.post('../includes/filltickettable.inc.php', {filter: `${val}`}).done(function (resp) {
+            alert(resp)
+			document.getElementById('tktOvBody').innerHTML = `${resp}`;
 		});
     });
     

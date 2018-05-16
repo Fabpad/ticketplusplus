@@ -11,7 +11,7 @@
 
 	<div class="container">
 		<div class="ml-8 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-			<select class="custom-select">
+			<select class="custom-select" name="ticketfilter" id="ticketfilter">
 				<option selected>Alle Tickets</option>
 				<option>Offene Tickets</option>
 				<option>Tickets in Bearbeitung</option>
@@ -20,9 +20,7 @@
 			</select>
 		</div>
 	</div>
-
 	<br>
-
 	<div class="container">
 		<table name="ticketOverview" id="ticketOverview" class="tablesorter">
 		<thead>
@@ -36,13 +34,10 @@
 				<th>Erstellt am</th>
 			</tr>
 		</thead>
-		<tbody>
-			<?php
-				fillTicketTable(htmlentities($_SESSION['username']), $mysqli);
-			?>
+		<tbody name="tktOvBody" id="tktOvBody">
 		</tbody>
 		</table>
-	</div>
+	</div>-
 
 <?php else : ?>
 				<p>
