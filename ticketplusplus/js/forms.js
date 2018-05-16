@@ -165,8 +165,7 @@ $(document).ready(function () {
 		}
 
 		$.post('../includes/filltickettable.inc.php', {filter: `${val}`}).done(function (resp) {
-            alert(resp)
-			document.getElementById('tktOvBody').innerHTML = `${resp}`;
+			document.getElementById('tktOvBody').innerHTML = resp;
 		});
     });
     

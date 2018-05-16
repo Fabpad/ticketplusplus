@@ -35,6 +35,9 @@
 			</tr>
 		</thead>
 		<tbody name="tktOvBody" id="tktOvBody">
+			<?php
+				fillTicketTable($user, $mysqli);
+			?>
 		</tbody>
 		</table>
 	</div>-
