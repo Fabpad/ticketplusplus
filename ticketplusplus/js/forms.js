@@ -138,12 +138,32 @@ function regformhash(form, uid, email, password, conf, role) {
 
 $(document).ready(function () {
 	$("#category_menu").change(function () {
-	var val = $(this).val();
+		var val = $(this).val();
 		
 		$.post('../includes/query_specifications.php', {kategorie: `${val}`}).done(function (resp) {
 			 $("#specification_menu").html(`${resp}`);
 		});
 	});
+	//Not working
+	$("#ticketfilter").change(function () {
+		var val =$(this).val();
+		
+		$.post('../includes/fillTicketTable.php', {filter: `${val}`}).done(function (resp) {
+			 $("#tktOvBody").html(`${resp}`);
+		});
+	});
+	$("#ticketOverview").tablesorter();
+	$("#nightmodeinput").ready(function () {
+        if (sessionStorage.nightMode == '0') {
+            document.getElementById('nightmodeinput').value = 'OFF';
+        }
+        else if (sessionStorage.nightMode == '1'){
+            document.getElementById('nightmodeinput').value = 'ON';
+        }
+        else {
+            document.getElementById('nightmodeinput').value = 'OFF';  // Default
+        }
+    })
 });
 
 function showChangePassword(){
@@ -221,31 +241,37 @@ function toggle_night_mode(){
 
 function night_mode(){
     if(Number(sessionStorage.nightMode)=='0'){
-     document.documentElement.style.setProperty('--main-bg',"#FFFFFF");
-     document.documentElement.style.setProperty('--main-nav',"#FFFFFF");
-     document.documentElement.style.setProperty('--text',"rgba(0, 0, 0, 1");
-     document.documentElement.style.setProperty('--nav',"rgba(0, 0, 0, 0.5)");
-     document.documentElement.style.setProperty('--nav-hover',"rgba(0, 0, 0, 0.7)");
-     document.documentElement.style.setProperty('--nav-active',"rgba(0, 0, 0, 0.9)");
-     document.documentElement.style.setProperty('--border',"1px solid rgba(0, 0, 0, .125)");
-     document.documentElement.style.setProperty('--input',"#FFFFFF");
-     document.documentElement.style.setProperty('--table',"#dddddd");
-     document.getElementById('nightmodeinput').value = 'OFF';
+        document.documentElement.style.setProperty('--main-bg',"#FFFFFF");
+        document.documentElement.style.setProperty('--main-nav',"#FFFFFF");
+        document.documentElement.style.setProperty('--text',"rgba(0, 0, 0, 1");
+        document.documentElement.style.setProperty('--nav',"rgba(0, 0, 0, 0.5)");
+        document.documentElement.style.setProperty('--nav-hover',"rgba(0, 0, 0, 0.7)");
+        document.documentElement.style.setProperty('--nav-active',"rgba(0, 0, 0, 0.9)");
+        document.documentElement.style.setProperty('--border',"1px solid rgba(0, 0, 0, .125)");
+        document.documentElement.style.setProperty('--input',"#FFFFFF");
+        document.documentElement.style.setProperty('--table',"#dddddd");
+        if (document.getElementById('nightmodeinput')){
+            document.getElementById('nightmodeinput').value = 'OFF';
+        }
    }
    else{
-      document.documentElement.style.setProperty('--main-bg',"#252526");
-      document.documentElement.style.setProperty('--main-nav',"#1E1E1E");
-      document.documentElement.style.setProperty('--text',"rgba(255, 255, 255, 1)");
-      document.documentElement.style.setProperty('--nav',"rgba(255, 255, 255, 0.5)");
-      document.documentElement.style.setProperty('--nav-hover',"rgba(255, 255, 255, 0.7)");
-      document.documentElement.style.setProperty('--nav-active',"rgba(255, 255, 255, 0.9)");
-      document.documentElement.style.setProperty('--border',"1px solid rgba(255, 255, 255, .125)");
-      document.documentElement.style.setProperty('--input',"#333333");
-      document.documentElement.style.setProperty('--table',"#606060");
-      document.getElementById('nightmodeinput').value = 'ON';
+        document.documentElement.style.setProperty('--main-bg',"#252526");
+        document.documentElement.style.setProperty('--main-nav',"#1E1E1E");
+        document.documentElement.style.setProperty('--text',"rgba(255, 255, 255, 1)");
+        document.documentElement.style.setProperty('--nav',"rgba(255, 255, 255, 0.5)");
+        document.documentElement.style.setProperty('--nav-hover',"rgba(255, 255, 255, 0.7)");
+        document.documentElement.style.setProperty('--nav-active',"rgba(255, 255, 255, 0.9)");
+        document.documentElement.style.setProperty('--border',"1px solid rgba(255, 255, 255, .125)");
+        document.documentElement.style.setProperty('--input',"#333333");
+        document.documentElement.style.setProperty('--table',"#606060");
+        if (document.getElementById('nightmodeinput')){
+            document.getElementById('nightmodeinput').value = 'ON';
+        }
    }
 }
 
+<<<<<<< HEAD
+=======
 $(document).ready(function() 
     { 
         $("#ticketOverview").tablesorter(); 
@@ -256,18 +282,25 @@ $(document).ready(function()
     {
         $("#nightmodeinput").ready(function () {
             if (sessionStorage.nightMode == '0') {
-                document.getElementById('nightmodeinput').value = 'OFF';
+                if (document.getElementById('nightmodeinput')){
+                    document.getElementById('nightmodeinput').value = 'OFF';
+                } 
             }
             else if (sessionStorage.nightMode == '1'){
-                document.getElementById('nightmodeinput').value = 'ON';
+                if (document.getElementById('nightmodeinput')){
+                    document.getElementById('nightmodeinput').value = 'ON';
+                } 
             }
             else {
-                document.getElementById('nightmodeinput').value = 'OFF';  // Default
+                if (document.getElementById('nightmodeinput')){
+                    document.getElementById('nightmodeinput').value = 'OFF';    // Default
+                } 
             }
         }) 
     } 
 ); 
 
+>>>>>>> fbccd1c992835ca4df403d2cb6324437bc397675
 function changeuser(form, userid, username, uservorname, usernachname, dept, role, telnr, email) {
     if (    username == ''      || 
             uservorname == ''   || 

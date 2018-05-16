@@ -26,21 +26,18 @@ if (isset($_POST['userid'], $_POST['username'], $_POST['uservorname'], $_POST['u
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message="<div class='alert alert-danger'>Die einegebene Email ist nicht gültig</div>";
-        header("Location: ./viewuser.php?userid=$userid");
+        header("Location: ./viewuser.php?userid=$userid&msgid=3");
     }
 
-    if (empty($message)) {
+    else {
 
         $sql = "UPDATE ticketplusplus.users SET username = '$username', email = '$email', vorname = '$vorname', nachname = '$nachname', telefonnummer = '$telnummer', dept_id = '$deptID', role_id = '$roleID' WHERE id = $userid";
         
         if ($mysqli->query($sql) === TRUE) {
-            $message='<div class="alert alert-success">Der User wurde erfolgreich geändert!</div>';
-            header("Location: ./viewuser.php?userid='$userid'");
+            header("Location: ./viewuser.php?userid=$userid&msgid=1");
         }
         else {
-            $message="<div class='alert alert-danger'>Leider ist beim Ändern des Users ein Fehler aufgetreten. Fehlercode: $sql</div>";
-            header("Location: ./viewuser.php?userid=$userid");
+            header("Location: ./viewuser.php?userid=$userid&msgid=2");
         }
     }
 }

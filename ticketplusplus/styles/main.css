@@ -108,3 +108,7 @@ body {
 .sidebar .nav-link {
     border-radius: 0;
 }
+
+.modal {
+    color : #000000;
+}

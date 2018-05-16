@@ -10,16 +10,54 @@
 <?php include('nav-bar.php'); ?>
 <?php include('nav-bar-admin.php'); ?>
 
-<?php $uid = isset($_GET['userid']) ? $_GET['userid'] : '' ?> 
+<?php $uid = isset($_GET['userid']) ? $_GET['userid'] : '' ?>
+
+<?php if (isset($_GET['msgid'])) {
+        if ($_GET['msgid'] == 1) {
+            $modalTitel = 'Erfolgreich!';
+            $modalMessage = 'Der User wurde erfolgreich geändert!';
+        }
+        else if ($_GET['msgid'] == 2) {
+            $modalTitel = 'Upsi!';
+            $modalMessage = "Leider ist beim Ändern des Users ein Fehler aufgetreten. Fehlercode: $sql";
+        }
+        else if ($_GET['msgid'] == 3) {
+            $modalTitel = 'Upsi!';
+            $modalMessage = "Die eingebene Email ist nicht gültig";
+        }
+    }
+?>
 
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 	<div class="container-fluid">
         <div class="row">
-            <?php
-                if (!empty($message)) {
-                    echo $message;
-                }
-            ?>
+            <?php if (!empty($modalMessage)) : ?>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#messageModal").modal('show');
+                    });
+                </script>
+            <?php endif; ?>
+            
+            <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle"><?php if (!empty($modalTitel)){echo $modalTitel; }?></h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?php if (!empty($modalMessage)){echo $modalMessage;} ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <form id="changeUserForm" class="mt-3 ml-3" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post">
                 <label for="user_info" class="h3 ml-5 mt-3">Informationen</label>
                 <div id="user_info">
