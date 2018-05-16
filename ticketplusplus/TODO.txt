@@ -12,4 +12,5 @@ QoL Changes:
     - Select Carets deutlicher färben
     - Readonly Inputs und Textares einfärben
 
-
+Others: 
+- Filltickettable.inc.php ohne sec session?
