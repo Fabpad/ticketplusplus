@@ -18,11 +18,15 @@ if (isset($_POST['filter'])){
 	while(list($temp) = mysqli_fetch_row($result)){
 		$role = $temp;
     }
-	
-	$stmt = "SELECT status_id FROM ticketplusplus.status WHERE beschreibung = '$filterkey'";
-	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-	while(list($temp) = mysqli_fetch_row($result)){
-		$keyword = $temp;
+	if($filterkey == "Alle"){
+		$keyword = "*";
+	}
+	else {
+		$stmt = "SELECT status_id FROM ticketplusplus.status WHERE beschreibung = '$filterkey'";
+		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+		while(list($temp) = mysqli_fetch_row($result)){
+			$keyword = $temp;
+		}
 	}
 
         if ($role == 1) {

@@ -160,10 +160,10 @@ $(document).ready(function () {
 		else if(val == "Wartende Tickets"){
 			val = "Warten";
 		}
-		else{
-			val = "*";
+		else if(val == "Alle Tickets"){
+			val = "Alle";
 		}
-
+		alert(val);
 		$.post('../includes/filltickettable.inc.php', {filter: `${val}`}).done(function (resp) {
 			document.getElementById('tktOvBody').innerHTML = resp;
 		});
