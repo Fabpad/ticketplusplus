@@ -30,7 +30,8 @@
 				<th>ID</th>
 				<th>Betreff</th>
 				<th>Status</th>
-				<th>Mitarbeiter</th>
+				<th>Ersteller</th>
+				<th>Techniker</th>
 				<th>Priorit&auml;t</th>
 				<th>Erstellt am</th>
 			</tr>
