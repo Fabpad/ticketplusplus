@@ -1,9 +1,15 @@
-﻿Unterkategorie beim Ticketanschauen als Admin debuggen
+﻿Features:
+- Ticket ändern und löschen Buttons
+- User löschen Button
+- Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
 
-Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
+Bugfixes:
+- Unterkategorie beim Ticketanschauen als Admin debuggen
 
-Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
+QoL Changes:
+- Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
+- CSS:
+    - Select Carets deutlicher färben
+    - Readonly Inputs und Textares einfärben
 
-CSS:
-- Select Carets deutlicher färben
-- Readonly Inputs und Textares einfärben
+
