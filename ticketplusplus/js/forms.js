@@ -143,25 +143,34 @@ $(document).ready(function () {
 		$.post('../includes/query_specifications.php', {kategorie: `${val}`}).done(function (resp) {
 			 $("#specification_menu").html(`${resp}`);
 		});
-	});
+    });
+    
 	//Not working
 	$("#ticketfilter").change(function () {
 		var val =$(this).val();
 		
 		$.post('../includes/fillTicketTable.php', {filter: `${val}`}).done(function (resp) {
-			document.getElementById('tktOvBody').innerHTML = resp;
+            document.getElementById('tktOvBody').innerHTML = resp;
 		});
-	});
-	$("#ticketOverview").tablesorter();
+    });
+    
+    $("#ticketOverview").tablesorter();
+    
 	$("#nightmodeinput").ready(function () {
         if (sessionStorage.nightMode == '0') {
-            document.getElementById('nightmodeinput').value = 'OFF';
+            if (document.getElementById('nightmodeinput')){
+                document.getElementById('nightmodeinput').value = 'OFF';
+            }
         }
         else if (sessionStorage.nightMode == '1'){
-            document.getElementById('nightmodeinput').value = 'ON';
+            if (document.getElementById('nightmodeinput')){
+                document.getElementById('nightmodeinput').value = 'ON';
+            }
         }
         else {
-            document.getElementById('nightmodeinput').value = 'OFF';  // Default
+            if (document.getElementById('nightmodeinput')){
+                document.getElementById('nightmodeinput').value = 'OFF';   // Default
+            }
         }
     })
 });
@@ -229,12 +238,12 @@ function sortTktOv(orderby) {
 }
 
 function toggle_night_mode(){
-    if(Number(sessionStorage.nightMode)=='1'){
-        sessionStorage.nightMode='0';
+    if(Number(sessionStorage.nightMode)=='0'){
+        sessionStorage.nightMode='1';
         night_mode();
     }
     else{
-        sessionStorage.nightMode='1';
+        sessionStorage.nightMode='0';
         night_mode();
     }
 }
@@ -270,37 +279,6 @@ function night_mode(){
    }
 }
 
-<<<<<<< HEAD
-=======
-$(document).ready(function() 
-    { 
-        $("#ticketOverview").tablesorter(); 
-    } 
-); 
-
-$(document).ready(function() 
-    {
-        $("#nightmodeinput").ready(function () {
-            if (sessionStorage.nightMode == '0') {
-                if (document.getElementById('nightmodeinput')){
-                    document.getElementById('nightmodeinput').value = 'OFF';
-                } 
-            }
-            else if (sessionStorage.nightMode == '1'){
-                if (document.getElementById('nightmodeinput')){
-                    document.getElementById('nightmodeinput').value = 'ON';
-                } 
-            }
-            else {
-                if (document.getElementById('nightmodeinput')){
-                    document.getElementById('nightmodeinput').value = 'OFF';    // Default
-                } 
-            }
-        }) 
-    } 
-); 
-
->>>>>>> fbccd1c992835ca4df403d2cb6324437bc397675
 function changeuser(form, userid, username, uservorname, usernachname, dept, role, telnr, email) {
     if (    username == ''      || 
             uservorname == ''   || 
