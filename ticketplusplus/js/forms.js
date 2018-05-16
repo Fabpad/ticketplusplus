@@ -149,7 +149,7 @@ $(document).ready(function () {
 		var val =$(this).val();
 		
 		$.post('../includes/fillTicketTable.php', {filter: `${val}`}).done(function (resp) {
-			 $("#tktOvBody").html(`${resp}`);
+			document.getElementById('tktOvBody').innerHTML = resp;
 		});
 	});
 	$("#ticketOverview").tablesorter();
