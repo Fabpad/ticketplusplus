@@ -31,7 +31,7 @@ if (isset($_POST['filter'])){
 	}
 
         if ($role == 1) {
-        $stmt = "SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, users.username, priority.beschreibung AS Prio, tickets.erstell_datum 
+        $stmt = "SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum 
             FROM ticketplusplus.tickets 
             INNER JOIN ticketplusplus.status
             INNER JOIN ticketplusplus.users
@@ -88,7 +88,7 @@ if (isset($_POST['filter'])){
         }
     }
     else if ($role == 3) {
-        $stmt = "SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, users.username, priority.beschreibung AS Prio, tickets.erstell_datum 
+        $stmt = "SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum 
 				FROM ticketplusplus.tickets 
                 INNER JOIN ticketplusplus.status
                 INNER JOIN ticketplusplus.users
