@@ -221,28 +221,32 @@ function toggle_night_mode(){
 
 function night_mode(){
     if(Number(sessionStorage.nightMode)=='0'){
-     document.documentElement.style.setProperty('--main-bg',"#FFFFFF");
-     document.documentElement.style.setProperty('--main-nav',"#FFFFFF");
-     document.documentElement.style.setProperty('--text',"rgba(0, 0, 0, 1");
-     document.documentElement.style.setProperty('--nav',"rgba(0, 0, 0, 0.5)");
-     document.documentElement.style.setProperty('--nav-hover',"rgba(0, 0, 0, 0.7)");
-     document.documentElement.style.setProperty('--nav-active',"rgba(0, 0, 0, 0.9)");
-     document.documentElement.style.setProperty('--border',"1px solid rgba(0, 0, 0, .125)");
-     document.documentElement.style.setProperty('--input',"#FFFFFF");
-     document.documentElement.style.setProperty('--table',"#dddddd");
-     document.getElementById('nightmodeinput').value = 'OFF';
+        document.documentElement.style.setProperty('--main-bg',"#FFFFFF");
+        document.documentElement.style.setProperty('--main-nav',"#FFFFFF");
+        document.documentElement.style.setProperty('--text',"rgba(0, 0, 0, 1");
+        document.documentElement.style.setProperty('--nav',"rgba(0, 0, 0, 0.5)");
+        document.documentElement.style.setProperty('--nav-hover',"rgba(0, 0, 0, 0.7)");
+        document.documentElement.style.setProperty('--nav-active',"rgba(0, 0, 0, 0.9)");
+        document.documentElement.style.setProperty('--border',"1px solid rgba(0, 0, 0, .125)");
+        document.documentElement.style.setProperty('--input',"#FFFFFF");
+        document.documentElement.style.setProperty('--table',"#dddddd");
+        if (document.getElementById('nightmodeinput')){
+            document.getElementById('nightmodeinput').value = 'OFF';
+        }
    }
    else{
-      document.documentElement.style.setProperty('--main-bg',"#252526");
-      document.documentElement.style.setProperty('--main-nav',"#1E1E1E");
-      document.documentElement.style.setProperty('--text',"rgba(255, 255, 255, 1)");
-      document.documentElement.style.setProperty('--nav',"rgba(255, 255, 255, 0.5)");
-      document.documentElement.style.setProperty('--nav-hover',"rgba(255, 255, 255, 0.7)");
-      document.documentElement.style.setProperty('--nav-active',"rgba(255, 255, 255, 0.9)");
-      document.documentElement.style.setProperty('--border',"1px solid rgba(255, 255, 255, .125)");
-      document.documentElement.style.setProperty('--input',"#333333");
-      document.documentElement.style.setProperty('--table',"#606060");
-      document.getElementById('nightmodeinput').value = 'ON';
+        document.documentElement.style.setProperty('--main-bg',"#252526");
+        document.documentElement.style.setProperty('--main-nav',"#1E1E1E");
+        document.documentElement.style.setProperty('--text',"rgba(255, 255, 255, 1)");
+        document.documentElement.style.setProperty('--nav',"rgba(255, 255, 255, 0.5)");
+        document.documentElement.style.setProperty('--nav-hover',"rgba(255, 255, 255, 0.7)");
+        document.documentElement.style.setProperty('--nav-active',"rgba(255, 255, 255, 0.9)");
+        document.documentElement.style.setProperty('--border',"1px solid rgba(255, 255, 255, .125)");
+        document.documentElement.style.setProperty('--input',"#333333");
+        document.documentElement.style.setProperty('--table',"#606060");
+        if (document.getElementById('nightmodeinput')){
+            document.getElementById('nightmodeinput').value = 'ON';
+        }
    }
 }
 
@@ -256,13 +260,19 @@ $(document).ready(function()
     {
         $("#nightmodeinput").ready(function () {
             if (sessionStorage.nightMode == '0') {
-                document.getElementById('nightmodeinput').value = 'OFF';
+                if (document.getElementById('nightmodeinput')){
+                    document.getElementById('nightmodeinput').value = 'OFF';
+                } 
             }
             else if (sessionStorage.nightMode == '1'){
-                document.getElementById('nightmodeinput').value = 'ON';
+                if (document.getElementById('nightmodeinput')){
+                    document.getElementById('nightmodeinput').value = 'ON';
+                } 
             }
             else {
-                document.getElementById('nightmodeinput').value = 'OFF';  // Default
+                if (document.getElementById('nightmodeinput')){
+                    document.getElementById('nightmodeinput').value = 'OFF';    // Default
+                } 
             }
         }) 
     } 

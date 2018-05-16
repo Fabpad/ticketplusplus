@@ -9,3 +9,7 @@ Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
 Ticketoverview mit Benutzer und Techniker
 
 Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
+
+CSS:
+- Select Carets deutlicher färben
+- Readonly Inputs und Textares einfärben

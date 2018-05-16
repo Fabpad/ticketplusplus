@@ -203,7 +203,7 @@
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<label for="txt_loesung">Lösung</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
-		<textarea class="form-control" id="txt_loesung" placeholder="Lösung" aria-label="Lösung" rows="20" style="resize:none"><?php
+		<textarea class="form-control" id="txt_loesung" placeholder="Lösung" aria-label="Lösung" rows="20" style="resize:none" <?php if($roleperm ==1){echo'readonly="readonly"';}?>><?php
 				$stmt = "SELECT loesung FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
