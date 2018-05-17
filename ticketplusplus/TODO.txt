@@ -4,7 +4,6 @@
 
 Bugfixes:
 - Unterkategorie beim Ticketanschauen als Admin debuggen
-- Sortiern nach Ticketfiltern funktioniert nicht
 
 QoL Changes:
 - Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
