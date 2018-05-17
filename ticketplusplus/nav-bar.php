@@ -21,14 +21,7 @@
 						</li>
 					<?php endif; ?>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<div class="input-group">
-						<input class="form-control" type="search" placeholder="" aria-label="Search">
-						<div class="input-group-append">
-							<button class="btn btn-secondary " type="submit">Suchen</button>
-						</div>
-					</div>
-				</form>
+				
 				<div class="dropdown ml-5">
 					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:#ffb516">
 						<span class="fas fa-user" aria-hidden="true"> </span>
