@@ -13,7 +13,7 @@
 						<a class="nav-link" href="createticket.php">Neues Ticket</a>
 					</li>
 					<li class="nav-item <?php if ($currentPage === 'Overview') {echo 'active';} ?>">
-						<a class="nav-link" href="ticketoverview.php">Meine Tickets</a>
+						<a class="nav-link" href="ticketoverview.php?filter=Alle">Meine Tickets</a>
 					</li>
 					<?php if($roleperm == 3) : ?>
 						<li class="nav-item <?php if ($currentPage === 'administration') {echo 'active';} ?>">

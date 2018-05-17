@@ -145,30 +145,6 @@ $(document).ready(function () {
 		});
     });
     
-	//Not working
-	$("#ticketfilter").change(function () {
-		var val =$(this).val();
-		if(val == "Geschlossene Tickets"){
-			val = "Abgeschlossen"
-		}
-		else if(val == "Offene Tickets"){
-			val = "Offen";
-		}
-		else if(val == "Tickets in Bearbeitung"){
-			val = "In Bearbeitung"
-		}
-		else if(val == "Wartende Tickets"){
-			val = "Warten";
-		}
-		else if(val == "Alle Tickets"){
-			val = "Alle";
-		}
-
-		$.post('../includes/filltickettable.inc.php', {filter: `${val}`}).done(function (resp) {
-			document.getElementById('tktOvBody').innerHTML = resp;
-		});
-    });
-    
     $("#ticketOverview").tablesorter();
     
 	$("#nightmodeinput").ready(function () {
@@ -216,6 +192,13 @@ function createnewticket(form, betreff, beschreibung, user, status, priority, ca
 	form.submit();
     return true;
 }
+
+function tktTable(){
+	var tktFilt = document.getElementById('ticketfilter');
+	var val = tktFilt.options[tktFilt.selectedIndex].id;
+
+	location.replace("http://localhost/ticketoverview.php?filter=" + val);
+}	
 
 function sortTktOv(orderby) {
 	var table, rows, switching, i, x, y, shouldSwitch, forward;
