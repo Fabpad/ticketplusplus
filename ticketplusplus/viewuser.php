@@ -195,9 +195,10 @@
                 </div>
                 <div id="Buttons">
                         <button type="button" class="btn btn-secondary ml-5 mt-2" value="Change" onclick="return changeuser(this.form, this.form.userid.value, this.form.username.value, this.form.uservorname.value, this.form.usernachname.value, this.form.dept_menu.value, this.form.role_menu.value, this.form.telnr.value, this.form.email.value);">Ändern</button>
-                        <button type="button" class="btn btn-danger mt-2" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+                        <button type="button" class="btn btn-danger ml-5 mt-2" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>
                 </div>
 
+                <!-- DELETE MODAL START -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -217,9 +218,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- DELETE MODAL END -->
             </form>
-        </div>
-    </div>
+        </div> <!-- CLOSE ROW -->
+    </div> <!-- CLOSE CONTAINER FLUID -->
 </main>
 
 	<?php else : ?>

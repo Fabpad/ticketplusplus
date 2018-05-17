@@ -305,11 +305,25 @@ function changeuser(form, userid, username, uservorname, usernachname, dept, rol
         return false;
     }
 
+    var chadel = document.createElement("input");
+    form.appendChild(chadel);
+    chadel.name = "change";
+    chadel.type = "hidden";
+    chadel.value = "TEST";
+
 	form.submit();
     return true;
 }
 
 function deleteuser(form, userid) {
+
+    var chadel = document.createElement("input");
+    
+    form.appendChild(chadel);
+    chadel.name = "delete";
+    chadel.type = "hidden";
+    chadel.value = "TEST";
+
     form.submit();
-    return true;
+    return true; 
 }
