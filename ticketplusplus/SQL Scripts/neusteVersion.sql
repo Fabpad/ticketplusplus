@@ -28,6 +28,9 @@ SET time_zone = "+00:00";
 -- Tabellenstruktur für Tabelle `category`
 --
 
+CREATE DATABASE ticketplusplus;
+
+
 CREATE TABLE `category` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `beschreibung` varchar(30) NOT NULL
