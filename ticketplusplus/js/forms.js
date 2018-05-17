@@ -195,9 +195,11 @@ function createnewticket(form, betreff, beschreibung, user, status, priority, ca
 
 function tktTable(){
 	var tktFilt = document.getElementById('ticketfilter');
-	var val = tktFilt.options[tktFilt.selectedIndex].id;
+	var val1 = tktFilt.options[tktFilt.selectedIndex].id;
+	var tktSear = document.getElementById('searchtxt');
+	var val2 = tktSear.value;
 
-	location.replace("http://localhost/ticketoverview.php?filter=" + val);
+	location.replace("http://localhost/ticketoverview.php?filter=" + val1 + "&ftsearch=" + val2);
 }	
 
 function sortTktOv(orderby) {

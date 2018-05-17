@@ -19,14 +19,12 @@
 					<option id="Abgeschlossen"<?php if($_GET['filter'] == "Abgeschlossen"): ?> selected <?php endif; ?>>Geschlossene Tickets</option>
 				</select>
 			</div>
-			<form class="form-inline my-2 my-lg-0">
-						<div class="input-group">
-							<input class="form-control" type="search" placeholder="" aria-label="Search">
-							<div class="input-group-append">
-								<button class="btn btn-secondary " type="submit">Suchen</button>
-							</div>
-						</div>
-					</form>
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 input-group">
+				<input id="searchtxt" name="searchtxt" class="form-control" type="search" value="<?php echo $_GET['ftsearch'] ?>" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-secondary " onclick="tktTable()">Suchen</button>
+				</div>
+			</div>
 		</div>
 		</br>
 		<div class="container">
@@ -44,7 +42,7 @@
 			</thead>	
 			<tbody name="tktOvBody" id="tktOvBody">
 				<?php
-					fillTicketTable($user,$mysqli,$_GET['filter']);
+					fillTicketTable($user,$mysqli,$_GET['filter'],$_GET['ftsearch']);
 				?>
 			</tbody>
 			</table>
