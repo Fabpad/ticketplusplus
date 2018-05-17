@@ -1,6 +1,7 @@
 ﻿Features:
 - Ticket ändern und löschen Buttons
-- Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
+- Tickets filtern (alle außer abgecshlossen)
+- Abschlussdatum und bearbeitungszeit
 
 Bugfixes:
 - Unterkategorie beim Ticketanschauen als Admin debuggen
@@ -12,4 +13,3 @@ QoL Changes:
     - Readonly Inputs und Textares einfärben
 
 Others: 
-- Filltickettable.inc.php ohne sec session?

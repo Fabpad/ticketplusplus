@@ -50,7 +50,7 @@ if (login_check($mysqli) == true) {
 			
 			<script type="text/JavaScript" src="js/login_on_enter.js"></script> 
 
-			If you are done, please <a href="includes/logout.php">log out</a>.
+			<a href="includes/logout.php">log out</a>.
 			You are currently logged <?php echo $logged ?>.
 		</form>	
 	</body>
