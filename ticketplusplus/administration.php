@@ -14,12 +14,25 @@
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 	<div class="container-fluid">
         <div class="row">
+
+            <?php if (isset($_GET['msgid'])) {
+                if (isset($_GET['err'])) {
+                    $err = $_GET['err'];
+                }
+                if ($_GET['msgid'] == 1) {
+                    $message = '<div class="alert alert-success">Der User wurde erfolgreich gelöscht!</div>';
+                }
+                else if ($_GET['msgid'] == 2) {
+                    $message = "<div class='alert alert-danger'>Leider ist beim Ändern des Users ein Fehler aufgetreten. Fehlercode: $err</div>";
+                }
+            }
+            ?>
             <?php
                 if (!empty($message)) {
                     echo $message;
                 }
             ?>
-
+            
             <table name="ticketOverview" id="ticketOverview" class="tablesorter">
                 <thead class="blacktext">
                     <tr>

@@ -41,3 +41,16 @@ if (isset($_POST['userid'], $_POST['username'], $_POST['uservorname'], $_POST['u
         }
     }
 }
+
+if (isset($_POST['userid'])) {
+    $userid = $_POST['userid'];
+
+    $sql = "DELETE FROM ticketplusplus.users WHERE id = '$userid'";
+
+    if ($mysqli->query($sql) === TRUE) {
+        header("Location: ./administration.php?msgid=1");
+    }
+    else {
+        header("Location: ./administration.php?msgid=2&err=$sql");
+    }
+}
