@@ -91,6 +91,7 @@
                             $stmt = "SELECT DISTINCT vorname FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
+                                $vorname = $temp;
                                 echo $temp;
                             }?>" class="form-control col-6">
                     </div>
@@ -102,6 +103,7 @@
                             $stmt = "SELECT DISTINCT nachname FROM ticketplusplus.users WHERE id =  $uid";
                             $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
                             while(list($temp) = mysqli_fetch_row($result)){
+                                $nachname = $temp;
                                 echo $temp;
                             }?>" class="form-control col-6">
                     </div>
@@ -193,6 +195,27 @@
                 </div>
                 <div id="Buttons">
                         <button type="button" class="btn btn-secondary ml-5 mt-2" value="Change" onclick="return changeuser(this.form, this.form.userid.value, this.form.username.value, this.form.uservorname.value, this.form.usernachname.value, this.form.dept_menu.value, this.form.role_menu.value, this.form.telnr.value, this.form.email.value);">Ändern</button>
+                        <button type="button" class="btn btn-danger mt-2" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+                </div>
+
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle2">Löschen bestätigen</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Wollen Sie den User <?php echo "$vorname $nachname" ?> wirklich Löschen?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" value="Delete" onclick="return deleteuser(this.form, this.form.userid.value);">Löschen</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

@@ -291,3 +291,8 @@ function changeuser(form, userid, username, uservorname, usernachname, dept, rol
 	form.submit();
     return true;
 }
+
+function deleteuser(form, userid) {
+    form.submit();
+    return true;
+}

@@ -1,6 +1,5 @@
 ﻿Features:
 - Ticket ändern und löschen Buttons
-- User löschen Button
 - Suche aus der Navbar raus und als Ticketsuche in die Ticketoverview
 
 Bugfixes:
