@@ -13,6 +13,7 @@ sec_session_start();
 		<script src="js/forms.js"></script>
 		<script src="js/sha512.js"></script>
 		<script src="js/tablesorter/jquery.tablesorter.min.js"></script>
+		<script src="js/Chart.bundle.min.js"></script>
 		<link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
 		<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/fontawesome/css/fontawesome-all.min.css">
