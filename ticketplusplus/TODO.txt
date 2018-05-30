@@ -1,7 +1,7 @@
 ﻿Features:
 - Ticket ändern und löschen Buttons
-- Tickets filtern (alle außer abgecshlossen)
-- Abschlussdatum und bearbeitungszeit
+- Tickets filtern (alle außer Abgeschlossene)
+- Abschlussdatum und Bearbeitungszeit
 
 Bugfixes:
 - Unterkategorie beim Ticketanschauen als Admin debuggen
@@ -10,6 +10,6 @@ QoL Changes:
 - Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
 - CSS:
     - Select Carets deutlicher färben
-    - Readonly Inputs und Textares einfärben
+    - Readonly Inputs und Textareas einfärben
 
 Others: 

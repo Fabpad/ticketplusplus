@@ -29,9 +29,18 @@ if (login_check($mysqli) == true) {
 		
 		<form action="includes/process_login.php" method="post" name="login_form" class="login_form">
 
-			<?php if (isset($_GET['error'])) :?>
-				<div class='alert alert-danger'>Leider ist beim Einloggen ein Fehler aufgetreten. Versuchen Sie es bitte erneut</div>
-			<?php endif; ?>
+			<?php if (isset($_GET['error'])) {
+				if ($_GET['error'] == 1) {
+					echo "<div class='alert alert-danger'>Leider ist beim Einloggen ein Fehler aufgetreten. Versuchen Sie es bitte erneut.</div>";
+				}
+				else if ($_GET['error'] == 2) {
+					echo "<div class='alert alert-danger'>Der Account ist gesperrt! Bitte wenden Sie sich an den Systemadministrator.</div>";
+				}
+				else if ($_GET['error'] == 3) {
+					echo "<div class='alert alert-danger'>Es wurde kein Benutzer mit diesem Namen gefunden.</div>";
+				}
+			}
+			?>
 		
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">

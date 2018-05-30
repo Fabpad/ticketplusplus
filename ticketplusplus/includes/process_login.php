@@ -11,10 +11,11 @@ if (isset($_POST['email'], $_POST['p'])) {
     if (login($email, $password, $mysqli) == true) {
         // Login erfolgreich 
         header('Location: ../home.php');
-    } else {
-        // Login fehlgeschlagen 
-        header('Location: ../login.php?error=1');
-    }
+    } 
+    // else {
+    //     // Login fehlgeschlagen 
+    //     header('Location: ../login.php?error=1');
+    // }
 } else {
     // Die korrekten POST-Variablen wurden nicht zu dieser Seite geschickt. 
     echo 'Invalid Request';

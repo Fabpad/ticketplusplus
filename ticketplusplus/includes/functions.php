@@ -3,35 +3,37 @@ include_once 'psl-config.php';
  
 function sec_session_start() {
     $session_name = 'sec_session_id';   // vergib einen Sessionnamen
-    $secure = SECURE;
-    // Damit wird verhindert, dass JavaScript auf die session id zugreifen kann.
-    $httponly = true;
-    // Zwingt die Sessions nur Cookies zu benutzen.
+    $secure = SECURE;					// Damit wird verhindert, dass JavaScript auf die session id zugreifen kann.
+	$httponly = true;					
+	
+	// Zwingt die Sessions nur Cookies zu benutzen.
     if (ini_set('session.use_only_cookies', 1) === FALSE) {
         header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
         exit();
-    }
-    // Holt Cookie-Parameter.
+	}
+	
+	// Holt Cookie-Parameter.
     $cookieParams = session_get_cookie_params();
     session_set_cookie_params($cookieParams["lifetime"],
         $cookieParams["path"], 
         $cookieParams["domain"], 
         $secure,
-        $httponly);
-    // Setzt den Session-Name zu oben angegebenem.
-    session_name($session_name);
-    session_start();            // Startet die PHP-Sitzung 
-    session_regenerate_id();    // Erneuert die Session, löscht die alte. 
+		$httponly);
+		
+    session_name($session_name);	// Setzt den Session-Name zu oben angegebenem.
+    session_start();            	// Startet die PHP-Sitzung 
+    session_regenerate_id();    	// Erneuert die Session, löscht die alte. 
 }
 
 function login($email, $password, $mysqli) {
+
     // Das Benutzen vorbereiteter Statements verhindert SQL-Injektion.
     if ($stmt = $mysqli->prepare("SELECT id, username, password, salt 
         FROM users
        WHERE email = ?
         LIMIT 1")) {
-        $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
-        $stmt->execute();    // Führe die vorbereitete Anfrage aus.
+        $stmt->bind_param('s', $email);  	// Bind "$email" to parameter.
+        $stmt->execute();    				// Führe die vorbereitete Anfrage aus.
         $stmt->store_result();
  
         // hole Variablen von result.
@@ -41,12 +43,12 @@ function login($email, $password, $mysqli) {
         // hash das Passwort mit dem eindeutigen salt.
         $password = hash('sha512', $password . $salt);
         if ($stmt->num_rows == 1) {
+
             // Wenn es den Benutzer gibt, dann wird überprüft ob das Konto
             // blockiert ist durch zu viele Login-Versuche 
- 
             if (checkbrute($user_id, $mysqli) == true) {
-                // Konto ist blockiert 
-                // Schicke E-Mail an Benutzer, dass Konto blockiert ist
+                // Konto ist blockiert
+				header('Location: ../login.php?error=2');
                 return false;
             } else {
                 // Überprüfe, ob das Passwort in der Datenbank mit dem vom
@@ -59,9 +61,7 @@ function login($email, $password, $mysqli) {
                     $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                     $_SESSION['user_id'] = $user_id;
                     // XSS-Schutz, denn eventuell wir der Wert gedruckt
-                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/", 
-                                                                "", 
-                                                                $username);
+                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username);
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', 
                               $password . $user_browser);
@@ -72,18 +72,21 @@ function login($email, $password, $mysqli) {
                     // Der Versuch wird in der Datenbank gespeichert
                     $now = time();
                     $mysqli->query("INSERT INTO login_attempts(user_id, time)
-                                    VALUES ('$user_id', '$now')");
+									VALUES ('$user_id', '$now')");
+					header('Location: ../login.php?error=1');
                     return false;
                 }
             }
         } else {
-            //Es gibt keinen Benutzer.
+			//Es gibt keinen Benutzer.
+			header('Location: ../login.php?error=3');
             return false;
         }
     }
 }
 
 function checkbrute($user_id, $mysqli) {
+
     // Hole den aktuellen Zeitstempel 
     $now = time();
  
@@ -91,9 +94,9 @@ function checkbrute($user_id, $mysqli) {
     $valid_attempts = $now - (2 * 60 * 60);
  
     if ($stmt = $mysqli->prepare("SELECT time 
-                             FROM login_attempts <code><pre>
-                             WHERE user_id = ? 
-                            AND time > '$valid_attempts'")) {
+                             		FROM ticketplusplus.login_attempts
+                             		WHERE user_id = ? 
+                            		AND time > '$valid_attempts'")) {
         $stmt->bind_param('i', $user_id);
  
         // Führe die vorbereitet Abfrage aus. 
