@@ -91,7 +91,7 @@ function checkbrute($user_id, $mysqli) {
     $now = time();
  
     // Alle Login-Versuche der letzten zwei Stunden werden gezählt.
-    $valid_attempts = $now - (2 * 60 * 60);
+    $valid_attempts = $now - (0.25 * (60 * 60));
  
     if ($stmt = $mysqli->prepare("SELECT time 
                              		FROM ticketplusplus.login_attempts
