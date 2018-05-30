@@ -24,7 +24,10 @@
 		
 		<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 		<?php if($roleperm == 1) : ?>
-			<input type="hidden" id="txt_user" name="user" value="<?php echo htmlentities($_SESSION['username']); ?>">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				<label for="txt_user">Benutzer</label>
+				<input class="form-control" type="text" id="txt_user" name="user" value="<?php echo htmlentities($_SESSION['username']); ?>" disabled>
+			</div>
 		<?php  else : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<label for="txt_user">Benutzer</label>
