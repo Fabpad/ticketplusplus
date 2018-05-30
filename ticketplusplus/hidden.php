@@ -9,7 +9,9 @@
 
 <img src="assets/gif.gif" alt="Gif" style="width:480px;height:480px;">
 
-<embed src="assets/music.mp3" width="180" height="90" loop="true" autostart="true" hidden="true" />
+<audio autoplay loop>
+<source src="assets/music.mp3" type="audio/ogg">
+</audio>
 	
 <?php else : ?>
 				<p>
