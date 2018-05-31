@@ -12,11 +12,12 @@
 		<div class="ml-2 row">
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<select class="custom-select" name="ticketfilter" id="ticketfilter" onchange="tktTable()">
-					<option id="Alle" <?php if($_GET['filter'] == "Alle"): ?> selected <?php endif; ?>>Alle Tickets</option>
+					<option id="AlleoA" <?php if($_GET['filter'] == "AlleoA"): ?> selected <?php endif; ?>>Alle Tickets (ohne Abgeschlossene)</option>
 					<option id="Offen" <?php if($_GET['filter'] == "Offen"): ?> selected <?php endif; ?>>Offene Tickets</option>
 					<option id="In Bearbeitung"<?php if($_GET['filter'] == "In Bearbeitung"): ?> selected <?php endif; ?>>Tickets in Bearbeitung</option>
 					<option id="Warten"<?php if($_GET['filter'] == "Warten"): ?> selected <?php endif; ?>>Wartende Tickets</option>
 					<option id="Abgeschlossen"<?php if($_GET['filter'] == "Abgeschlossen"): ?> selected <?php endif; ?>>Geschlossene Tickets</option>
+					<option id="Alle" <?php if($_GET['filter'] == "Alle"): ?> selected <?php endif; ?>>Alle Tickets</option>
 				</select>
 			</div>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 input-group">

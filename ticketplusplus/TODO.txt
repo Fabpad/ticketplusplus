@@ -1,6 +1,5 @@
 ﻿Features:
 - Ticket ändern und löschen Buttons
-- Tickets filtern (alle außer Abgeschlossene)
 - Abschlussdatum und Bearbeitungszeit
 
 Bugfixes:
