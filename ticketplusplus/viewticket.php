@@ -25,7 +25,7 @@
 		$agentname = $temp;
 	}
 ?>
-
+<form action="" method="post" name="viewticket_form">
 <?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' ) : ?>
 	
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -233,6 +233,7 @@
 			echo '<input type="button" class="ml-5 mt-3 btn btn-danger" id="btnDelete" value="Ticket Löschen" >';
 		}
 	?>
+	</form>
 <?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht berechtigt dieses Ticket anzusehen.</span> Zurück zu <a href="ticketoverview.php">meinen Tickets</a>.
