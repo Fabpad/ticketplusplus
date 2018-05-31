@@ -23,10 +23,12 @@ sec_session_start();
 	</head>
 
 	<?php
-			$user = htmlentities($_SESSION['username']);
-			$stmt = "SELECT role_id FROM ticketplusplus.users WHERE username = '$user'";
-			$result= mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-			while(list($temprole) = mysqli_fetch_row($result)){
-				$roleperm = intval($temprole);
-			}
+			if(ISSET($_SESSION['username'])) :
+				$user = htmlentities($_SESSION['username']);
+				$stmt = "SELECT role_id FROM ticketplusplus.users WHERE username = '$user'";
+				$result= mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+				while(list($temprole) = mysqli_fetch_row($result)){
+					$roleperm = intval($temprole);
+				}
+			endif;
 	?>
