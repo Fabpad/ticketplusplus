@@ -4,6 +4,7 @@
 
 Bugfixes:
 - Unterkategorie beim Ticketanschauen als Admin debuggen
+- [IMPORTANT] Ticketoverview as User shows a PHP error
 
 QoL Changes:
 - Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
