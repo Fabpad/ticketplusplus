@@ -30,8 +30,18 @@
 			</div>
 		<?php  else : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-				<label for="txt_user">Benutzer</label>
-				<input class="form-control" type="text" id="txt_user" name="user">
+			<label for="choose_user_id">Anforderer</label>
+			<input id="choose_user_id" list="choose_user" name="user" class="form-control" type="text">
+ 				<datalist id="choose_user">
+				 <?php
+						//Run Query
+						$stmt = "SELECT DISTINCT username FROM ticketplusplus.users";
+						$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+						while(list($category) = mysqli_fetch_row($result)){
+							echo '<option value="'.$category.'">'.$category.'</option>';
+						}
+					?>
+ 				</datalist>
 			</div>
 		<?php endif; ?>
 			<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -59,8 +69,8 @@
 						//Run Query
 						$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.priority";
 						$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-						while(list($category) = mysqli_fetch_row($result)){
-							echo '<option value="'.$category.'">'.$category.'</option>';
+						while(list($userlist) = mysqli_fetch_row($result)){
+							echo '<option value="'.$userlist.'">'.$userlist.'</option>';
 						}
 					?>
 				</select>
@@ -71,48 +81,64 @@
 		</div>
 		
 		<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
-			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-				<label for="category_menu">Kategorie</label>
-				<select class="custom-select d-block w-100" id="category_menu" name="category_menu" required>
-					<option value=""> --- Bitte wählen --- </option>
-					<?php
-						//Run Query
-						$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.category";
-						$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-						while(list($category) = mysqli_fetch_row($result)){
-							echo '<option value="'.$category.'">'.$category.'</option>';
-						}
-					?>
-				</select>
-				<div class="invalid-feedback">
-					Bitte eine Kategorie auswählen.
+			<?php if($roleperm == 1) : ?>
+			<?php  else : ?>
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				<label for="choose_agent_id">Techniker</label>
+				<input id="choose_agent_id" list="choose_agent" name="agent" class="form-control" type="text">
+ 					<datalist id="choose_agent">
+				 		<?php
+							//Run Query
+							$stmt = "SELECT DISTINCT username FROM ticketplusplus.users WHERE role_id = 2";
+							$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+							while(list($agent) = mysqli_fetch_row($result)){
+								echo '<option value="'.$agent.'">'.$agent.'</option>';
+							}
+						?>
+ 					</datalist>
+				</div>
+			<?php endif; ?>
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+					<label for="category_menu">Kategorie</label>
+					<select class="custom-select d-block w-100" id="category_menu" name="category_menu" required>
+						<option value=""> --- Bitte wählen --- </option>
+						<?php
+							//Run Query
+							$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.category";
+							$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+							while(list($category) = mysqli_fetch_row($result)){
+								echo '<option value="'.$category.'">'.$category.'</option>';
+							}
+						?>
+					</select>
+					<div class="invalid-feedback">
+						Bitte eine Kategorie auswählen.
+					</div>
+				</div>
+				<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+					<label for="specification_menu">Unterkategorie</label>
+					<select class="custom-select d-block w-100" id="specification_menu" name="specification_menu" required>
+						<option value=""> --- Eine Kategorie wählen --- </option>
+					</select>
+					<div class="invalid-feedback">
+						Bitte eine Unterkategorie auswählen.
+					</div>
 				</div>
 			</div>
-			<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-				<label for="specification_menu">Unterkategorie</label>
-				<select class="custom-select d-block w-100" id="specification_menu" name="specification_menu" required>
-					<option value=""> --- Eine Kategorie wählen --- </option>
-				</select>
-				<div class="invalid-feedback">
-					Bitte eine Unterkategorie auswählen.
-				</div>
-			</div>
-		</div>
-		<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Ticket anlegen" onclick='return createnewticket(	this.form, 
-																																			this.form.betreff, 
-																																			this.form.beschreibung, 
-																																			this.form.user, 
-																																			this.form.status_menu.value, 
-																																			this.form.priority_menu.value,
-																																			this.form.category_menu.value,
-																																			this.form.specification_menu.value,
-																																			this.form.agenttxt.value)'>
-		<input type="hidden" value="<?php echo htmlentities($_SESSION['username']); ?>" id="agenttxt" name="agenttxt">
-	</form>
+			<input type="button" class="ml-5 mt-3 btn btn-secondary" id="submit_ticket" value="Ticket anlegen" onclick='return createnewticket(	this.form, 
+																																				this.form.betreff, 
+																																				this.form.beschreibung, 
+																																				this.form.user, 
+																																				this.form.agent,
+																																				this.form.status_menu.value, 
+																																				this.form.priority_menu.value,
+																																				this.form.category_menu.value,
+																																				this.form.specification_menu.value)'>
+		</form>
 	
-<?php else : ?>
-				<p>
-					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
-				</p>
-<?php endif; ?>
-<?php include('footer.php'); ?>
+		<?php else : ?>
+			<p>
+				<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
+			</p>
+		<?php endif; ?>
+		<?php include('footer.php'); ?>

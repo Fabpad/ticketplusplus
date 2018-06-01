@@ -175,10 +175,11 @@ function showChangePassword(){
 	}
 }
 
-function createnewticket(form, betreff, beschreibung, user, status, priority, category, specification, agent) {
+function createnewticket(form, betreff, beschreibung, user, agent, status, priority, category, specification) {
 	if (betreff.value == ''                         || 
           beschreibung.value == ''                  || 
           user.value == ''                          || 
+          agent.value == ''                         ||
           status == '--- Bitte wählen ---'		    ||
           priority == ' --- Bitte wählen --- '		||
           category == ' --- Bitte wählen --- '		||
@@ -188,7 +189,6 @@ function createnewticket(form, betreff, beschreibung, user, status, priority, ca
         alert('Bitte füllen Sie alle Felder aus.');
         return false;
     }
-	
 	form.submit();
     return true;
 }

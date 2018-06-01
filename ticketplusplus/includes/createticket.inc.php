@@ -2,11 +2,11 @@
 include_once 'db_connect.php';
 include_once 'psl-config.php';
  
-if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['status_menu'], $_POST['priority_menu'], $_POST['category_menu'], $_POST['specification_menu'], $_POST['agenttxt'])) {
+if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['status_menu'], $_POST['priority_menu'], $_POST['category_menu'], $_POST['specification_menu'], $_POST['agent'])) {
 	$betreff = filter_input(INPUT_POST, 'betreff', FILTER_SANITIZE_STRING);
 	$beschreibung = $_POST['beschreibung'];
 	$user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
-	$agent = filter_input(INPUT_POST, 'agenttxt', FILTER_SANITIZE_STRING);
+	$agent = filter_input(INPUT_POST, 'agent', FILTER_SANITIZE_STRING);
 	$status = $_POST['status_menu'];
 	$priority = $_POST['priority_menu'];
 	$category = $_POST['category_menu'];

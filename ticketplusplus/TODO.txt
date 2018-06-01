@@ -1,6 +1,7 @@
 ﻿Features:
 - Ticket ändern und löschen Buttons
 - Abschlussdatum und Bearbeitungszeit
+- viewticket techniker hinzufügen / user & techniker als datalist
 
 Bugfixes:
 - Unterkategorie beim Ticketanschauen als Admin debuggen
