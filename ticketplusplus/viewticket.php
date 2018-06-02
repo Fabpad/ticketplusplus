@@ -147,7 +147,7 @@
 	
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-			<label for="txt_agent">Anforderer</label>
+			<label for="txt_agent">Techniker</label>
 			<input class="form-control" list="choose_agent" type="text" id="txt_agent" <?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
 			"<?php
 				$stmt = "SELECT agent_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
