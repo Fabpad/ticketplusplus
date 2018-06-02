@@ -35,10 +35,10 @@
  				<datalist id="choose_user">
 				 <?php
 						//Run Query
-						$stmt = "SELECT DISTINCT username FROM ticketplusplus.users";
+						$stmt = "SELECT DISTINCT username, vorname, nachname FROM ticketplusplus.users";
 						$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-						while(list($category) = mysqli_fetch_row($result)){
-							echo '<option value="'.$category.'">'.$category.'</option>';
+						while($userlist = mysqli_fetch_row($result)){
+							echo '<option value="'.$userlist[0].'">'.$userlist[2].', '.$userlist[1].'</option>';
 						}
 					?>
  				</datalist>
@@ -69,8 +69,8 @@
 						//Run Query
 						$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.priority";
 						$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-						while(list($userlist) = mysqli_fetch_row($result)){
-							echo '<option value="'.$userlist.'">'.$userlist.'</option>';
+						while(list($priority) = mysqli_fetch_row($result)){
+							echo '<option value="'.$priority.'">'.$priority.'</option>';
 						}
 					?>
 				</select>
@@ -89,10 +89,10 @@
  					<datalist id="choose_agent">
 				 		<?php
 							//Run Query
-							$stmt = "SELECT DISTINCT username FROM ticketplusplus.users WHERE role_id = 2";
+							$stmt = "SELECT DISTINCT username, vorname, nachname FROM ticketplusplus.users WHERE role_id = 2";
 							$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-							while(list($agent) = mysqli_fetch_row($result)){
-								echo '<option value="'.$agent.'">'.$agent.'</option>';
+							while($agentlist = mysqli_fetch_row($result)){
+								echo '<option value="'.$agentlist[0].'">'.$agentlist[2].', '.$agentlist[1].'</option>';
 							}
 						?>
  					</datalist>

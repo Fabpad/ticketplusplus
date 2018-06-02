@@ -55,8 +55,8 @@
 	
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-			<label for="txt_user">Benutzer</label>
-			<input class="form-control" type="text" id="txt_user" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
+			<label for="txt_user">Anforderer</label>
+			<input class="form-control" list="choose_user" type="text" id="txt_user" <?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
 			"<?php
 				$stmt = "SELECT user_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
@@ -69,7 +69,17 @@
 					echo $temp;
 				}
 			?>"
-		/>
+			/>
+			<datalist id="choose_user">
+				<?php
+					//Run Query
+					$stmt = "SELECT DISTINCT username, vorname, nachname FROM ticketplusplus.users";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while($agentlist = mysqli_fetch_row($result)){
+						echo '<option value="'.$agentlist[0].'">'.$agentlist[2].', '.$agentlist[1].'</option>';
+					}
+				?>
+ 			</datalist>
 		</div>
 		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="status_menu">Status</label>
@@ -137,6 +147,33 @@
 	
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<label for="txt_agent">Anforderer</label>
+			<input class="form-control" list="choose_agent" type="text" id="txt_agent" <?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
+			"<?php
+				$stmt = "SELECT agent_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
+				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+				while(list($temp) = mysqli_fetch_row($result)){
+					$agentid = $temp;
+				}
+				$stmt = "SELECT username FROM ticketplusplus.users WHERE id = '$agentid'";
+				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+				while(list($temp) = mysqli_fetch_row($result)){
+					echo $temp;
+				}
+			?>"
+			/>
+			<datalist id="choose_agent">
+				<?php
+					//Run Query
+					$stmt = "SELECT DISTINCT username, vorname, nachname FROM ticketplusplus.users WHERE role_id = 2";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while($agentlist = mysqli_fetch_row($result)){
+						echo '<option value="'.$agentlist[0].'">'.$agentlist[2].', '.$agentlist[1].'</option>';
+					}
+				?>
+ 			</datalist>
+		</div>
+		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="category_menu">Kategorie</label>
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="category_menu" required>
 				<option < value=""> --- Bitte wählen --- </option>
@@ -167,7 +204,7 @@
 				Bitte eine Kategorie auswählen.
 			</div>
 		</div>
-		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 			<label for="specification_menu">Unterkategorie</label>
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="specification_menu" required >
 				<option value=""> --- Eine Kategorie wählen --- </option>

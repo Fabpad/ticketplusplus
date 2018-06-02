@@ -178,13 +178,11 @@ function showChangePassword(){
 function createnewticket(form, betreff, beschreibung, user, agent, status, priority, category, specification) {
 	if (betreff.value == ''                         || 
           beschreibung.value == ''                  || 
-          user.value == ''                          || 
-          agent.value == ''                         ||
+          user.value == ''                          ||
           status == '--- Bitte wählen ---'		    ||
           priority == ' --- Bitte wählen --- '		||
           category == ' --- Bitte wählen --- '		||
-          specification == ' --- Bitte wählen --- ' ||
-		  agent.value == '') {
+          specification == ' --- Bitte wählen --- ') {
  
         alert('Bitte füllen Sie alle Felder aus.');
         return false;
