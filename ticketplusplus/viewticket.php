@@ -2,7 +2,7 @@
 <?php $currentPage = 'View'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
-<?php //include_once('includes/query_specifications.php'); ?> 
+<?php include_once('includes/viewticket.inc.php'); ?> 
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
@@ -28,6 +28,8 @@
 <form action="" method="post" name="viewticket_form">
 <?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' ) : ?>
 	
+	<input id="ticketid" name="ticketid" type="hidden" value="<?php echo $id ?>" />
+
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<label for="txt_betreff">Betreff</label>
 		<input class="form-control" id="txt_betreff" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
@@ -267,7 +269,7 @@
 	<input type="button" class="ml-5 mt-3 btn btn-secondary" id="btnSave" value="Speichern">
 	<?php
 		if ($roleperm == '3') {
-			echo '<input type="button" class="ml-5 mt-3 btn btn-danger" id="btnDelete" value="Ticket Löschen" >';
+			echo '<input type="button" class="ml-5 mt-3 btn btn-danger" id="btnDelete" value="Ticket Löschen" onclick="return deleteticket(this.form, this.form.ticketid.value);">';
 		}
 	?>
 	</form>

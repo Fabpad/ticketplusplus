@@ -8,6 +8,25 @@
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
+<div>
+	<?php if (isset($_GET['msgid'])) {
+		if (isset($_GET['err'])) {
+			$err = $_GET['err'];
+		}
+		if ($_GET['msgid'] == 1) {
+			$message = '<div class="alert alert-success">Das Ticket wurde erfolgreich gelöscht!</div>';
+		}
+		else if ($_GET['msgid'] == 2) {
+			$message = "<div class='alert alert-danger'>Leider ist beim Löschen des Tickets ein Fehler aufgetreten. Fehlercode: $err</div>";
+		}
+	}
+	?>
+	<?php
+		if (!empty($message)) {
+			echo $message;
+		}
+	?>
+</div>
 	<div class="container">
 		<div class="ml-2 row">
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">

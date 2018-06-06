@@ -292,7 +292,6 @@ function changeuser(form, userid, username, uservorname, usernachname, dept, rol
     form.appendChild(chadel);
     chadel.name = "change";
     chadel.type = "hidden";
-    chadel.value = "TEST";
 
 	form.submit();
     return true;
@@ -305,8 +304,22 @@ function deleteuser(form, userid) {
     form.appendChild(chadel);
     chadel.name = "delete";
     chadel.type = "hidden";
-    chadel.value = "TEST";
 
+    form.submit();
+    return true; 
+}
+
+function changeticket() {
+
+}
+
+function deleteticket(form, ticketid) {
+    var chadel = document.createElement("input");
+    
+    form.appendChild(chadel);
+    chadel.name = "delete";
+    chadel.type = "hidden";
+    
     form.submit();
     return true; 
 }
