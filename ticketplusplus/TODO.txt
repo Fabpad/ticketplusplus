@@ -1,10 +1,10 @@
 ﻿Features:
-- Ticket ändern und löschen Buttons
 - Abschlussdatum und Bearbeitungszeit
 
 Bugfixes:
 - Unterkategorie beim Ticketanschauen als Admin debuggen
 - [IMPORTANT] Ticketoverview as User shows a PHP error
+- ViewTicket Header Error (Beim Drücken des Ändern oder Löschen Buttons)
 
 QoL Changes:
 - Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten

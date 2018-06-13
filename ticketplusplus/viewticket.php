@@ -121,7 +121,7 @@
 				?>
  			</datalist>
 		</div>
-		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+		<div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="status_menu">Status</label>
 			<select class="custom-select d-block w-100" id="status_menu" name="status_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
@@ -152,7 +152,7 @@
 				Bitte einen Status auswählen.
 			</div>
 		</div>
-		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+		<div class=" col-43 col-sm-4 col-md-4 col-lg-4 col-xl-3">
 			<label for="priority_menu">Priorität</label>
 			<select class="custom-select d-block w-100" id="priority_menu" name="priority_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
@@ -213,7 +213,7 @@
 				?>
  			</datalist>
 		</div>
-		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+		<div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="category_menu">Kategorie</label>
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="category_menu" name="category_menu" required>
 				<option < value=""> --- Bitte wählen --- </option>
@@ -244,7 +244,7 @@
 				Bitte eine Kategorie auswählen.
 			</div>
 		</div>
-		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="specification_menu">Unterkategorie</label>
 			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="specification_menu" name="specification_menu" required >
 				<option value=""> --- Eine Kategorie wählen --- </option>
@@ -304,26 +304,28 @@
 				}
 			?></textarea>
 	</div>
-	
-	<button type="button" class="ml-5 mt-3 btn btn-secondary" id="btnSave" value="Change" onclick="return changeticket(	this.form, 
-																															this.form.ticketid.value, 
-																															this.form.txt_betreff.value, 
-																															this.form.txt_beschreibung.value, 
-																															this.form.txt_user.value, 
-																															this.form.txt_agent.value, 
-																															this.form.status_menu.value, 
-																															this.form.priority_menu.value, 
-																															this.form.category_menu.value, 
-																															this.form.specification_menu.value,
-																															this.form.txt_loesung.value,
-																															this.form.txt_notizen.value);">
-		Änderungen speichern
-	</button>
-	<?php
-		if ($roleperm == '3') {
-			echo '<button type="button" class="btn btn-danger ml-5 mt-3" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>';
-		}
-	?> 
+
+	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+		<button type="button" class="btn btn-secondary" id="btnSave" value="Change" onclick="return changeticket(	this.form, 
+																																this.form.ticketid.value, 
+																																this.form.txt_betreff.value, 
+																																this.form.txt_beschreibung.value, 
+																																this.form.txt_user.value, 
+																																this.form.txt_agent.value, 
+																																this.form.status_menu.value, 
+																																this.form.priority_menu.value, 
+																																this.form.category_menu.value, 
+																																this.form.specification_menu.value,
+																																this.form.txt_loesung.value,
+																																this.form.txt_notizen.value);">
+			Änderungen speichern
+		</button>
+		<?php
+			if ($roleperm == '3') {
+				echo '<button type="button" class="btn btn-danger ml-3" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>';
+			}
+		?> 
+	</div>
 
 	<!-- DELETE MODAL START -->
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
