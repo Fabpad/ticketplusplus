@@ -25,6 +25,44 @@
 		$agentname = $temp;
 	}
 ?>
+
+<?php if (isset($_GET['msgid'])) {
+        if ($_GET['msgid'] == 1) {
+            $modalTitel = 'Erfolgreich!';
+            $modalMessage = 'Das Ticket wurde erfolgreich geändert!';
+        }
+        else if ($_GET['msgid'] == 2) {
+            $modalTitel = 'Upsi!';
+            $modalMessage = "Leider ist beim Ändern des Tickets ein Fehler aufgetreten.";
+        }
+    }
+?>
+<?php if (!empty($modalMessage)) : ?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#messageModal").modal('show');
+		});
+	</script>
+<?php endif; ?>
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle"><?php if (!empty($modalTitel)){echo $modalTitel; }?></h5>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<?php if (!empty($modalMessage)){echo $modalMessage;} ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <form action="" method="post" name="viewticket_form">
 <?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' ) : ?>
 	
