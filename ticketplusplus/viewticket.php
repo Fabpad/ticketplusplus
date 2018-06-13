@@ -32,7 +32,7 @@
 
 	<div class="ml-5 mt-5 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<label for="txt_betreff">Betreff</label>
-		<input class="form-control" id="txt_betreff" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
+		<input class="form-control" id="txt_betreff" name="txt_betreff" type="text" placeholder="Benutzer entsperren, Speicherplatz erweitern, PC installieren ..." aria-label="Betreff" <?php if($roleperm != 3){echo'readonly="readonly"';}?> value=
 			"<?php
 				$stmt = "SELECT betreff FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
@@ -46,7 +46,7 @@
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<label for="txt_beschreibung">Beschreibung</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
-		<textarea class="form-control" id="txt_beschreibung" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none" <?php if($roleperm != 3){echo'readonly="readonly"';}?>><?php
+		<textarea class="form-control" id="txt_beschreibung" name="txt_beschreibung" placeholder="Beschreibung" aria-label="Beschreibung" rows="20" style="resize:none" <?php if($roleperm != 3){echo'readonly="readonly"';}?>><?php
 				$stmt = "SELECT beschreibung FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -58,7 +58,7 @@
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="txt_user">Anforderer</label>
-			<input class="form-control" list="choose_user" type="text" id="txt_user" <?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
+			<input class="form-control" list="choose_user" type="text" id="txt_user" name="txt_user"<?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
 			"<?php
 				$stmt = "SELECT user_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
@@ -85,7 +85,7 @@
 		</div>
 		<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="status_menu">Status</label>
-			<select class="custom-select d-block w-100" id="status_menu" required>
+			<select class="custom-select d-block w-100" id="status_menu" name="status_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
 				<?php
 					$stmt = "SELECT status_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
@@ -116,7 +116,7 @@
 		</div>
 		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 			<label for="priority_menu">Priorität</label>
-			<select class="custom-select d-block w-100" id="priority_menu" required>
+			<select class="custom-select d-block w-100" id="priority_menu" name="priority_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
 				<?php
 					$stmt = "SELECT priority_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
@@ -150,7 +150,7 @@
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="txt_agent">Techniker</label>
-			<input class="form-control" list="choose_agent" type="text" id="txt_agent" <?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
+			<input class="form-control" list="choose_agent" type="text" id="txt_agent" name="txt_agent" <?php if($roleperm == 1){echo'readonly="readonly"';}?> value=
 			"<?php
 				$stmt = "SELECT agent_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
@@ -177,7 +177,7 @@
 		</div>
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="category_menu">Kategorie</label>
-			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="category_menu" required>
+			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="category_menu" name="category_menu" required>
 				<option < value=""> --- Bitte wählen --- </option>
 				<?php
 					$stmt = "SELECT category_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
@@ -208,7 +208,7 @@
 		</div>
 		<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 			<label for="specification_menu">Unterkategorie</label>
-			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="specification_menu" required >
+			<select <?php if($roleperm != 3){echo'disabled';}?> class="custom-select d-block w-100" id="specification_menu" name="specification_menu" required >
 				<option value=""> --- Eine Kategorie wählen --- </option>
 				<?php
 					$stmt = "SELECT specification_id FROM ticketplusplus.tickets WHERE ticket_id = $id";
@@ -242,7 +242,7 @@
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<label for="txt_loesung">Lösung</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
-		<textarea class="form-control" id="txt_loesung" placeholder="Lösung" aria-label="Lösung" rows="20" style="resize:none" <?php if($roleperm ==1){echo'readonly="readonly"';}?>><?php
+		<textarea class="form-control" id="txt_loesung" name="txt_loesung" placeholder="Lösung" aria-label="Lösung" rows="20" style="resize:none" <?php if($roleperm ==1){echo'readonly="readonly"';}?>><?php
 				$stmt = "SELECT loesung FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -256,7 +256,7 @@
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<label for="txt_notizen">Notizen</label>
 		<!-- DO NOT FORMAT TEXTAREAS OR YOU GET TABS AND WHITESPACES -->
-		<textarea class="form-control" id="txt_notizen" placeholder="Notizen" aria-label="Notizen" rows="10" style="resize:none"><?php
+		<textarea class="form-control" id="txt_notizen" name="txt_notizen" placeholder="Notizen" aria-label="Notizen" rows="10" style="resize:none"><?php
 				$stmt = "SELECT notizen FROM ticketplusplus.tickets WHERE ticket_id = $id";
 				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 				while(list($temp) = mysqli_fetch_row($result)){
@@ -266,13 +266,50 @@
 				}
 			?></textarea>
 	</div>
-	<input type="button" class="ml-5 mt-3 btn btn-secondary" id="btnSave" value="Speichern">
+	
+	<button type="button" class="ml-5 mt-3 btn btn-secondary" id="btnSave" value="Change" onclick="return changeticket(	this.form, 
+																															this.form.ticketid.value, 
+																															this.form.txt_betreff.value, 
+																															this.form.txt_beschreibung.value, 
+																															this.form.txt_user.value, 
+																															this.form.txt_agent.value, 
+																															this.form.status_menu.value, 
+																															this.form.priority_menu.value, 
+																															this.form.category_menu.value, 
+																															this.form.specification_menu.value,
+																															this.form.txt_loesung.value,
+																															this.form.txt_notizen.value);">
+		Änderungen speichern
+	</button>
 	<?php
 		if ($roleperm == '3') {
-			echo '<input type="button" class="ml-5 mt-3 btn btn-danger" id="btnDelete" value="Ticket Löschen" onclick="return deleteticket(this.form, this.form.ticketid.value);">';
+			echo '<button type="button" class="btn btn-danger ml-5 mt-3" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>';
 		}
-	?>
-	</form>
+	?> 
+
+	<!-- DELETE MODAL START -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle2">Löschen bestätigen</h5>
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Wollen Sie das Ticket wirklich Löschen?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" value="Delete" onclick="return deleteticket(this.form, this.form.ticketid.value);">Löschen</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- DELETE MODAL END -->
+</form>
+
 <?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht berechtigt dieses Ticket anzusehen.</span> Zurück zu <a href="ticketoverview.php">meinen Tickets</a>.

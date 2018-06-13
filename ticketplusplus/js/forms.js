@@ -309,8 +309,28 @@ function deleteuser(form, userid) {
     return true; 
 }
 
-function changeticket() {
+function changeticket(form, ticketid, betreff, beschreibung, anforderer, techniker, status, prio, kategorie, unterkategorie, loesung, notizen) {
+    if (    betreff == ''       || 
+            beschreibung == ''  || 
+            anforderer == ''    || 
+            techniker == ''     ||
+            status == ''        ||
+            prio == ''          ||
+            kategorie == ''     ||
+            unterkategorie == '') {
+ 
+        alert('Bitte füllen Sie alle Felder aus.');
+        return false;
+    }
 
+    var chadel = document.createElement("input");
+    
+    form.appendChild(chadel);
+    chadel.name = "change";
+    chadel.type = "hidden";
+    
+    form.submit();
+    return true; 
 }
 
 function deleteticket(form, ticketid) {

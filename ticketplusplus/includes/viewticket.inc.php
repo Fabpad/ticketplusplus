@@ -4,7 +4,7 @@ include_once 'psl-config.php';
 
 if (isset($_POST['change'])){
     if (isset($_POST['ticketid'])) {
-
+        
     }
 }
 else if (isset($_POST['delete'])){
