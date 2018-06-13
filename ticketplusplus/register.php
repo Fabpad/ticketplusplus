@@ -1,5 +1,5 @@
 <?php $title = 'Register - Ticketplusplus'; ?>
-<?php $currentPage = 'Register'; ?>
+<?php $currentPage = 'administration'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include_once 'includes/register.inc.php'; ?>
 <?php include('head.php'); ?>
