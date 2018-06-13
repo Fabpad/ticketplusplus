@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 26. Apr 2018 um 13:51
--- Server-Version: 10.1.28-MariaDB
--- PHP-Version: 7.1.11
+-- Erstellungszeit: 13. Jun 2018 um 09:33
+-- Server-Version: 10.1.31-MariaDB
+-- PHP-Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -22,14 +22,14 @@ SET time_zone = "+00:00";
 -- Datenbank: `ticketplusplus`
 --
 
+
+CREATE DATABASE ticketplusplus;
+
 -- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `category`
 --
-
-CREATE DATABASE ticketplusplus;
-
 
 CREATE TABLE `category` (
   `category_id` int(10) UNSIGNED NOT NULL,
@@ -77,14 +77,6 @@ CREATE TABLE `login_attempts` (
   `user_id` int(11) NOT NULL,
   `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `login_attempts`
---
-
-INSERT INTO `login_attempts` (`user_id`, `time`) VALUES
-(2, '1524722235'),
-(2, '1524726978');
 
 -- --------------------------------------------------------
 
@@ -182,6 +174,27 @@ INSERT INTO `status` (`status_id`, `beschreibung`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `tickets`
+--
+
+CREATE TABLE `tickets` (
+  `ticket_id` int(10) UNSIGNED NOT NULL,
+  `betreff` varchar(50) COLLATE latin1_german1_ci NOT NULL,
+  `beschreibung` text COLLATE latin1_german1_ci NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `agent_id` int(10) UNSIGNED NOT NULL,
+  `status_id` int(10) UNSIGNED NOT NULL,
+  `priority_id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `specification_id` int(10) UNSIGNED NOT NULL,
+  `loesung` text COLLATE latin1_german1_ci,
+  `notizen` text COLLATE latin1_german1_ci,
+  `erstell_datum` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `users`
 --
 
@@ -247,6 +260,18 @@ ALTER TABLE `status`
   ADD PRIMARY KEY (`status_id`);
 
 --
+-- Indizes für die Tabelle `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`ticket_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `agent_id` (`agent_id`),
+  ADD KEY `status_id` (`status_id`),
+  ADD KEY `priority_id` (`priority_id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `specification_id` (`specification_id`);
+
+--
 -- Indizes für die Tabelle `users`
 --
 ALTER TABLE `users`
@@ -295,10 +320,16 @@ ALTER TABLE `status`
   MODIFY `status_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT für Tabelle `tickets`
+--
+ALTER TABLE `tickets`
+  MODIFY `ticket_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints der exportierten Tabellen
@@ -309,6 +340,17 @@ ALTER TABLE `users`
 --
 ALTER TABLE `specification`
   ADD CONSTRAINT `specification_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
+
+--
+-- Constraints der Tabelle `tickets`
+--
+ALTER TABLE `tickets`
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`),
+  ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`priority_id`) REFERENCES `priority` (`priority_id`),
+  ADD CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+  ADD CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`specification_id`) REFERENCES `specification` (`specification_id`),
+  ADD CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `tickets_ibfk_6` FOREIGN KEY (`agent_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints der Tabelle `users`
