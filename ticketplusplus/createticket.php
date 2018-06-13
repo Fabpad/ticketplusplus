@@ -44,7 +44,7 @@
  				</datalist>
 			</div>
 		<?php endif; ?>
-			<div class="ml-2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<label for="status_menu">Status</label>
 				<select class="custom-select d-block w-100" id="status_menu" name="status_menu" required>
 					<option value=""> --- Bitte wählen --- </option>
@@ -61,7 +61,7 @@
 					Bitte einen Status auswählen.
 				</div>
 			</div>
-			<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<label for="priority_menu">Priorität</label>
 				<select class="custom-select d-block w-100" id="priority_menu" name="priority_menu" required>
 					<option value=""> --- Bitte wählen --- </option>
@@ -115,7 +115,7 @@
 						Bitte eine Kategorie auswählen.
 					</div>
 				</div>
-				<div class="ml-2 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 					<label for="specification_menu">Unterkategorie</label>
 					<select class="custom-select d-block w-100" id="specification_menu" name="specification_menu" required>
 						<option value=""> --- Eine Kategorie wählen --- </option>
