@@ -259,7 +259,9 @@
 					while(list($temp) = mysqli_fetch_row($result)){
 						$specificationname = $temp;
 					}	
-					$stmt = "SELECT DISTINCT beschreibung FROM ticketplusplus.specification";
+					$stmt = "SELECT specification.beschreibung 
+							FROM ticketplusplus.specification
+							WHERE specification.category_id = $categoryid";
 					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 					while(list($category) = mysqli_fetch_row($result)){
 						if ($specificationname === $category){

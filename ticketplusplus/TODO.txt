@@ -2,7 +2,6 @@
 - Abschlussdatum und Bearbeitungszeit
 
 Bugfixes:
-- Unterkategorie beim Ticketanschauen als Admin debuggen
 - [IMPORTANT] Ticketoverview as User shows a PHP error
 - ViewTicket Header Error (Beim Drücken des Ändern oder Löschen Buttons)
 

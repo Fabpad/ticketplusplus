@@ -7,9 +7,6 @@
 					<li class="nav-item <?php if ($currentPage === 'Register') {echo 'active';} ?>">
 						<a class="nav-link" href="register.php">Neuen User anlegen</a>
 					</li>
-					<li class="nav-item <?php if ($currentPage === '?????') {echo 'active';} ?>">
-						<a class="nav-link" href="#">????</a>
-					</li>
 				</ul>
 			</div>
 		</nav>
