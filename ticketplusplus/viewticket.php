@@ -1,5 +1,5 @@
 <?php $title = 'Ihre Tickets - Ticketplusplus'; ?>
-<?php $currentPage = 'View'; ?>
+<?php $currentPage = 'Overview'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
 <?php include_once('includes/viewticket.inc.php'); ?> 
