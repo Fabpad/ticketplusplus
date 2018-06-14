@@ -1,11 +1,13 @@
 ﻿Features:
 - Abschlussdatum und Bearbeitungszeit
+- Kuchendiagramme aller Tickets bei Techniker und User ausblenden
 
 Bugfixes:
 - [IMPORTANT] Ticketoverview as User shows a PHP error
-- ViewTicket Header Error (Beim Drücken des Ändern oder Löschen Buttons)
+- Change Ticket funktioniert nicht als Agent und User
 
 QoL Changes:
+- Home Screen schöner gestalten
 - Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
 - CSS:
     - Select Carets deutlicher färben
