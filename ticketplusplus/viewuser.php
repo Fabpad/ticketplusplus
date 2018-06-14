@@ -3,7 +3,6 @@
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include_once 'includes/changeuser.inc.php'; ?>
 <?php include('head.php'); ?>
-
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php if ($roleperm == 3): ?>

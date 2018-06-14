@@ -319,7 +319,7 @@ function changeticket(form, ticketid, betreff, beschreibung, anforderer, technik
             kategorie == ''     ||
             unterkategorie == '') {
  
-        alert('Bitte füllen Sie alle Felder aus.');
+        alert('Bitte füllen Sie alle nötigen Felder aus.');
         return false;
     }
 
@@ -337,7 +337,7 @@ function deleteticket(form, ticketid) {
     var chadel = document.createElement("input");
     
     form.appendChild(chadel);
-    chadel.name = "delete";
+    chadel.name = "deleteinput";
     chadel.type = "hidden";
     
     form.submit();

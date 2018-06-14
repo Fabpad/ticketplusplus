@@ -59,24 +59,28 @@ if (isset($_POST['change'])){
                 WHERE ticket_id = $ticketid";
             
         if ($mysqli->query($sql) === TRUE) {
-            header("Location: ./viewticket.php?ticketid=$ticketid&msgid=1");
+            $msgid= 1 ;
         }
         else {
-            header("Location: ./viewticket.php?ticketid=$ticketid&msgid=2");
+            $msgid= 2 ;
         }
     }
 }
-else if (isset($_POST['delete'])){
+else if (isset($_POST['deleteinput'])){
     if (isset($_POST['ticketid'])){
         $ticketid = $_POST['ticketid'];
     
         $sql = "DELETE FROM ticketplusplus.tickets WHERE ticket_id = '$ticketid'";
     
         if ($mysqli->query($sql) === TRUE) {
-            header("Location: ./ticketoverview.php?filter=Alle&ftsearch=&msgid=1");
+            echo "<script>
+            window.location.href = './ticketoverview.php?filter=Alle&ftsearch=&msgid=1';
+            </script>";
         }
         else {
-            header("Location: ./ticketoverview.php?filter=Alle&ftsearch=&msgid=2&err=$sql");
+            echo "<script>
+            window.location.href = './ticketoverview.php?filter=Alle&ftsearch=&msgid=2&err=$sql';
+            </script>";
         }
     }
 }

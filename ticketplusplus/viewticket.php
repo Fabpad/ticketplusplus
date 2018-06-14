@@ -2,7 +2,7 @@
 <?php $currentPage = 'Overview'; ?>
 <?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
-<?php include_once('includes/viewticket.inc.php'); ?> 
+<?php include_once 'includes/viewticket.inc.php'; ?> 
 <body>
 <?php if (login_check($mysqli) == true) : ?>
 <?php include('nav-bar.php'); ?>
@@ -26,16 +26,16 @@
 	}
 ?>
 
-<?php if (isset($_GET['msgid'])) {
-        if ($_GET['msgid'] == 1) {
+<?php if(!empty($msgid)){
+        if ($msgid == 1) {
             $modalTitel = 'Erfolgreich!';
             $modalMessage = 'Das Ticket wurde erfolgreich geändert!';
         }
-        else if ($_GET['msgid'] == 2) {
+        else if ($msgid == 2) {
             $modalTitel = 'Upsi!';
             $modalMessage = "Leider ist beim Ändern des Tickets ein Fehler aufgetreten.";
         }
-    }
+}
 ?>
 <?php if (!empty($modalMessage)) : ?>
 	<script type="text/javascript">
