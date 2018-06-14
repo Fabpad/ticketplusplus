@@ -7,6 +7,7 @@ Bugfixes:
 - Change Ticket funktioniert nicht als Agent und User
 
 QoL Changes:
+- Ticket Tabelle automatisch nach ID sortieren
 - Home Screen schöner gestalten
 - Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
 - CSS:

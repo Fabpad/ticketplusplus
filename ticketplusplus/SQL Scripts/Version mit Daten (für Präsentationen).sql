@@ -352,6 +352,22 @@ ALTER TABLE `users`
 --
 ALTER TABLE `specification`
   ADD CONSTRAINT `specification_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
+  
+--
+-- Daten für Tabelle `tickets`
+--
+
+INSERT INTO `tickets` (`ticket_id`, `betreff`, `beschreibung`, `user_id`, `agent_id`, `status_id`, `priority_id`, `category_id`, `specification_id`, `loesung`, `notizen`, `erstell_datum`) VALUES
+(1, 'Programm defekt', 'Dieses Programm ist defekt. Bitte reparieren.', 15, 10, 2, 2, 2, 8, 'Programm wurde repariert. Test', '---', '2018-05-09 09:25:14'),
+(2, 'Drucker funktioniert nicht', 'Hi,\r\n\r\nich kann seit heute morgen nicht mehr drucken.\r\n\r\nKÃ¶nnen Sie sich das Problem mal ansehen?', 18, 11, 4, 2, 1, 2, NULL, NULL, '2018-06-14 08:58:01'),
+(3, 'AuflÃ¶sung niedrig', 'Die AuflÃ¶sung meines Bildschirms ist sehr niedrig.', 15, 14, 1, 2, 2, 6, 'AuflÃ¶sung wurde wieder auf 1080p zurÃ¼ckgestellt.', '', '2018-06-14 10:30:04'),
+(4, 'Bluescreen beim Starten des PCs', 'User Eins hat berichtet, dass sein PC seite heute (25.1.) nicht mehr startet und einen Bluescreen anzeigt.', 15, 13, 2, 1, 2, 6, '', 'Grafikkarte, Ram und Festplatten wurden Ã¼berprÃ¼ft und funktionieren fehlerfrei', '2018-06-14 09:01:09'),
+(5, 'Maus funktioniert nicht', 'siehe Titel', 15, 10, 1, 2, 1, 3, 'USB-Kabel war nicht richtig eingesteckt.', '', '2018-06-14 10:32:24'),
+(6, 'Upgrade auf neues Betriebssytem', 'Bei mir ist bald ein Upgrade auf ein neues Betriebssystem fÃ¤llig.\r\n\r\nWann kÃ¶nnen Sie dieses durchfÃ¼hren?', 19, 13, 1, 3, 2, 6, 'Upgrade wurde erfolgreich durchgefÃ¼hrt.', '11.2.: Termin wurde vereinbart\r\n\r\n13.2.: Upgrade wurde durchgefÃ¼hrt.', '2018-06-14 10:33:58'),
+(7, 'Passwort vergessen', 'Habe mein Passwort vergessen bitte zurÃ¼cksetzen.', 16, 13, 3, 2, 3, 12, '', 'Passwort wurde zurÃ¼ckgesetzt. Warte auf Antwort', '2018-06-14 11:20:39'),
+(8, 'Festplatte voll', 'Hallo,\r\n\r\naufgrund meiner TÃ¤tigkeiten als Marketing Grafikdesigner reicht mein Festplattenspeicher nicht mehr aus.\r\n\r\nKÃ¶nnen Sie diesen erweitern? Ausgabe ist genehmigt.\r\n\r\nDanke!', 19, 13, 4, 2, 1, 1, NULL, NULL, '2018-06-14 08:59:38'),
+(9, 'Kennwort vergessen', 'User Drei hat sein Kennwort vergessen und wÃ¼nscht ein neues Kennwort', 17, 12, 1, 1, 3, 12, 'Kennwort wurde zurÃ¼ckgesetzt.', '---', '2018-06-14 09:02:23'),
+(10, 'Programm XY startet nicht', 'Hallo,\r\n\r\nmein Programm XY startet nicht, kÃ¶nnen Sie den Fehler beheben?\r\n\r\nDanke!', 17, 11, 1, 2, 2, 8, 'Programm wurde neu installiert.', 'Diverse Versuche in den Windows Einstellungen haben nicht geholfen.', '2018-06-14 10:35:01');
 
 --
 -- Constraints der Tabelle `tickets`
