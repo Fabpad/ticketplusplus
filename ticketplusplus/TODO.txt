@@ -3,7 +3,6 @@
 - Kuchendiagramme aller Tickets bei Techniker und User ausblenden
 
 Bugfixes:
-- [IMPORTANT] Ticketoverview as User shows a PHP error
 - Change Ticket funktioniert nicht als Agent und User
 
 QoL Changes:
