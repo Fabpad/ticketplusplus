@@ -524,7 +524,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 }
 
 
-function fillUSerTable($mysqli) {
+function fillUserTable($mysqli) {
 	
         $stmt = "SELECT users.id, users.username, users.email, users.vorname, users.nachname, users.telefonnummer, department.beschreibung, roles.role_name
 				FROM ticketplusplus.users, ticketplusplus.roles, ticketplusplus.department
