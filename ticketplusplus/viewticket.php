@@ -152,7 +152,7 @@
 				Bitte einen Status auswählen.
 			</div>
 		</div>
-		<div class=" col-43 col-sm-4 col-md-4 col-lg-4 col-xl-3">
+		<div class=" col-43 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="priority_menu">Priorität</label>
 			<select class="custom-select d-block w-100" id="priority_menu" name="priority_menu" required>
 				<option value=""> --- Bitte wählen --- </option>
