@@ -1,6 +1,5 @@
 <?php $title = 'Ihre Tickets - Ticketplusplus'; ?>
 <?php $currentPage = 'Overview'; ?>
-<?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
 <?php include_once 'includes/viewticket.inc.php'; ?> 
 <body>
@@ -37,6 +36,7 @@
         }
 }
 ?>
+
 <?php if (!empty($modalMessage)) : ?>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -44,6 +44,8 @@
 		});
 	</script>
 <?php endif; ?>
+
+<!-- SUCCESS MODAL -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -62,6 +64,7 @@
 		</div>
 	</div>
 </div>
+<!-- SUCCESS MODAL END -->
 
 <form action="" method="post" name="viewticket_form">
 <?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' ) : ?>
@@ -326,7 +329,7 @@
 			if ($roleperm == '3') {
 				echo '<button type="button" class="btn btn-danger ml-3" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>';
 			}
-		?> 
+		?>
 	</div>
 
 	<!-- DELETE MODAL START -->
@@ -350,6 +353,7 @@
 		</div>
 	</div>
 	<!-- DELETE MODAL END -->
+
 </form>
 
 <?php else : ?>
@@ -357,9 +361,11 @@
 					<span class="error">Sie sind nicht berechtigt dieses Ticket anzusehen.</span> Zurück zu <a href="ticketoverview.php">meinen Tickets</a>.
 				</p>	
 <?php endif; ?>
+
 <?php else : ?>
 				<p>
 					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
 				</p>
 <?php endif; ?>
+
 <?php include('footer.php'); ?>

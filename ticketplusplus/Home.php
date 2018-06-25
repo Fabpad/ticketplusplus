@@ -1,6 +1,5 @@
 <?php $title = 'Home - Ticketplusplus'; ?>
 <?php $currentPage = 'Home'; ?>
-<?php $metaTags = 'tag1 tag2'; ?>
 <?php include('head.php'); ?>
 <body>
 <?php if (login_check($mysqli) == true) : ?>
@@ -74,6 +73,7 @@
 	<br>
 
 	<div class="row">
+	
 		<?php if($roleperm == 1) : ?>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 				<label for="tktOvPieChartYou">Ticketübersicht (Sie)</label>
@@ -161,6 +161,7 @@
 				?>
 			</div>		
 		<?php endif; ?>
+
 		<?php if($roleperm == 2 || $roleperm == 3) : ?>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 				<label for="tktOvPieChartAll">Ticketübersicht (Gesamt)</label>
@@ -205,6 +206,7 @@
 				?>
 			</div>					
 		<?php endif; ?>
+
 	</div>
 </div>
 
@@ -213,4 +215,5 @@
 					<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
 				</p>
 <?php endif; ?>
+
 <?php include('footer.php'); ?>

@@ -1,6 +1,5 @@
 <?php $title = 'Administration - Ticketplusplus'; ?>
 <?php $currentPage = 'administration'; ?>
-<?php $metaTags = 'tag1 tag2'; ?>
 <?php include_once 'includes/changeuser.inc.php'; ?>
 <?php include('head.php'); ?>
 <body>
@@ -30,6 +29,7 @@
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 	<div class="container-fluid">
         <div class="row">
+
             <?php if (!empty($modalMessage)) : ?>
                 <script type="text/javascript">
                     $(document).ready(function(){
@@ -38,6 +38,7 @@
                 </script>
             <?php endif; ?>
             
+            <!-- SUCCESS MODAL -->
             <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -56,6 +57,7 @@
                     </div>
                 </div>
             </div>
+            <!-- SUCCESS MODAL END -->
 
             <form id="changeUserForm" class="mt-3 ml-3" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post">
                 <label for="user_info" class="h3 ml-5 mt-3">Informationen</label>
@@ -192,6 +194,7 @@
                             }?>" class="form-control col-7">
                     </div>
                 </div>
+
                 <div id="Buttons">
                         <button type="button" class="btn btn-secondary ml-5 mt-2" value="Change" onclick="return changeuser(this.form, this.form.userid.value, this.form.username.value, this.form.uservorname.value, this.form.usernachname.value, this.form.dept_menu.value, this.form.role_menu.value, this.form.telnr.value, this.form.email.value);">Ändern</button>
                         <button type="button" class="btn btn-danger ml-5 mt-2" value="Löschen" data-toggle="modal" data-target="#deleteModal">Löschen</button>
@@ -218,6 +221,7 @@
                     </div>
                 </div>
                 <!-- DELETE MODAL END -->
+
             </form>
         </div> <!-- CLOSE ROW -->
     </div> <!-- CLOSE CONTAINER FLUID -->
@@ -228,9 +232,11 @@
 		<span class="error">Sie haben nicht die Berechtigung diese Seite aufzurufen. <a href="home.php">Zurück zur Startseite</a>.
 	</p>
 <?php endif; ?>
+
 <?php else : ?>
 	<p>
 		<span class="error">Sie sind nicht für diese Seite berechtigt.</span> bitte <a href="login.php">einloggen </a>.
 	</p>
 <?php endif; ?>
+
 <?php include('footer.php'); ?>
