@@ -43,7 +43,8 @@ if (isset($_POST['username'], $_POST['vorname'], $_POST['nachname'],$_POST['teln
             // Ein Benutzer mit dieser E-Mail-Adresse existiert schon
             $message="<div class='alert alert-danger'>Ein Nutzer mit dieser Email Adresse existiert bereits.</div>";
         }
-    } else {
+    } 
+    else {
         $message="<div class='alert alert-danger'>Datenbank Fehler</div>";
     }
 
@@ -59,7 +60,8 @@ if (isset($_POST['username'], $_POST['vorname'], $_POST['nachname'],$_POST['teln
             // Ein Benutzer mit diesem Username existiert schon
             $message="<div class='alert alert-danger'>Ein Nutzer mit diesem Namen existiert bereits.</div>";
         }
-    } else {
+    } 
+    else {
         $message="<div class='alert alert-danger'>Datenbank Fehler</div>";
     }
  

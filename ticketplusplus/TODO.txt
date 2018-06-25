@@ -6,4 +6,4 @@ Bugfixes:
 
 QoL Changes:
 
-Others: 
+Others:

@@ -170,7 +170,8 @@ function showChangePassword(){
 	var x = document.getElementById("changePasswordForm");
 	if(x.style.display == "none"){
 		x.style.display = "block";
-	} else {
+    } 
+    else {
 		x.style.display = "none";
 	}
 }
@@ -187,6 +188,7 @@ function createnewticket(form, betreff, beschreibung, user, agent, status, prior
         alert('Bitte füllen Sie alle Felder aus.');
         return false;
     }
+
 	form.submit();
     return true;
 }
@@ -261,8 +263,8 @@ function night_mode(){
         if (document.getElementById('nightmodeinput')){
             document.getElementById('nightmodeinput').value = 'ON';
         }
-   }
-   else{
+    }
+    else{
         document.documentElement.style.setProperty('--main-bg',"#FFFFFF");
         document.documentElement.style.setProperty('--main-nav',"#FFFFFF");
         document.documentElement.style.setProperty('--text',"rgba(0, 0, 0, 1");
@@ -276,7 +278,7 @@ function night_mode(){
         if (document.getElementById('nightmodeinput')){
             document.getElementById('nightmodeinput').value = 'OFF';
         }
-   }
+    }
 }
 
 function changeuser(form, userid, username, uservorname, usernachname, dept, role, telnr, email) {
@@ -291,6 +293,7 @@ function changeuser(form, userid, username, uservorname, usernachname, dept, rol
     }
 
     var chadel = document.createElement("input");
+
     form.appendChild(chadel);
     chadel.name = "change";
     chadel.type = "hidden";

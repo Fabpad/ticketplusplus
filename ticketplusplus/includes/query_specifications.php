@@ -18,5 +18,6 @@
 	while(list($category) = mysqli_fetch_row($result2)){
 		$selectBox .= '<option value="'.$category.'">'.$category.'</option>';
 	}
+	
 	echo $selectBox;
 ?>

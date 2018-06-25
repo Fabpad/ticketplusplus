@@ -9,7 +9,7 @@ if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
 	$new_pw_conf = $_POST['npc'];
 	$username = $_POST['user'];
 	
-	if($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM users WHERE username = ?")){
+	if ($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM users WHERE username = ?")){
 		$stmt->bind_param('s', $username);
 		$stmt->execute();
 		$stmt->store_result();
@@ -23,20 +23,20 @@ if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
 				// Erstelle ein zufälliges Salt
 				$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
  
-				if($new_pw == $new_pw_conf){
+				if ($new_pw == $new_pw_conf){
 					$new_pw = hash('sha512', $new_pw . $random_salt);
-					if($update_stmt = $mysqli->prepare("UPDATE ticketplusplus.users SET password = ?, salt = ? WHERE id = ?")) {
+					if ($update_stmt = $mysqli->prepare("UPDATE ticketplusplus.users SET password = ?, salt = ? WHERE id = ?")) {
 						$update_stmt -> bind_param('sss', $new_pw, $random_salt, $user_id);
-						if(! $update_stmt->execute()) {
+						if (! $update_stmt->execute()) {
 							$message="<div class='alert alert-danger'>Leider ist beim Ändern des Password ein Fehler aufgetreten. Fehlercode: $stmt</div>";
 						}
-						else{
+						else {
 							$message='<div class="alert alert-success">Das Passwort wurde geändert!</div>';
 							header("Location: ./login.php?msg=4");
 						}
 					}
 				}
-				else{
+				else {
 					$message='<div class="alert alert-danger">Das neue Passwort muss übereinstimmen!</div>';
 				}
 			}
@@ -44,7 +44,7 @@ if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
 				$message='<div class="alert alert-danger">Das alte Passwort ist falsch!</div>';
 			}
 		}
-		else{
+		else {
 			$message='<div class="alert alert-danger">Kein Datensatz vorhanden!</div>';
 		}
 	}
