@@ -40,7 +40,7 @@ function login($email, $password, $mysqli) {
         $stmt->bind_result($user_id, $username, $db_password, $salt);
         $stmt->fetch();
  
-        // hash das Passwort mit dem eindeutigen salt.
+        // hasht das Passwort mit dem eindeutigen salt.
         $password = hash('sha512', $password . $salt);
         if ($stmt->num_rows == 1) {
 
@@ -48,7 +48,7 @@ function login($email, $password, $mysqli) {
             // blockiert ist durch zu viele Login-Versuche 
             if (checkbrute($user_id, $mysqli) == true) {
                 // Konto ist blockiert
-				header('Location: ../login.php?error=2');
+				header('Location: ../login.php?msg=2');
                 return false;
             } else {
                 // Überprüfe, ob das Passwort in der Datenbank mit dem vom
@@ -73,13 +73,13 @@ function login($email, $password, $mysqli) {
                     $now = time();
                     $mysqli->query("INSERT INTO login_attempts(user_id, time)
 									VALUES ('$user_id', '$now')");
-					header('Location: ../login.php?error=1');
+					header('Location: ../login.php?msg=1');
                     return false;
                 }
             }
         } else {
 			//Es gibt keinen Benutzer.
-			header('Location: ../login.php?error=3');
+			header('Location: ../login.php?msg=3');
             return false;
         }
     }
@@ -130,7 +130,7 @@ function login_check($mysqli) {
                                       WHERE id = ? LIMIT 1")) {
             // Bind "$user_id" zum Parameter. 
             $stmt->bind_param('i', $user_id);
-            $stmt->execute();   // Execute the prepared query.
+            $stmt->execute();   // Führt die SQL-Query aus
             $stmt->store_result();
  
             if ($stmt->num_rows == 1) {
@@ -160,14 +160,16 @@ function login_check($mysqli) {
     }
 }
 
+// Funktion zum Escapen einer URL
 function esc_url($url) {
- 
+
     if ('' == $url) {
         return $url;
-    }
- 
+	}
+	
     $url = preg_replace('|[^a-z0-9-~+_.?#=!&;,/:%@$\|*\'()\\x80-\\xff]|i', '', $url);
  
+
     $strip = array('%0d', '%0a', '%0D', '%0A');
     $url = (string) $url;
  
@@ -184,7 +186,6 @@ function esc_url($url) {
     $url = str_replace("'", '&#039;', $url);
  
     if ($url[0] !== '/') {
-        // Wir wollen nur relative Links von $_SERVER['PHP_SELF']
         return '';
     } else {
         return $url;
@@ -194,24 +195,34 @@ function esc_url($url) {
 function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 	$ftsearch = "%".$ftsearch."%";
 	
+	// Hole die User ID aus der Datenbank
 	$stmt = "SELECT id FROM ticketplusplus.users WHERE username = '$username'";
 	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 	while(list($temp) = mysqli_fetch_row($result)){
 		$userid = $temp;
     }
 
+	// Hole die Rollen ID aus der Datenbank
     $stmt = "SELECT role_id FROM ticketplusplus.users WHERE username = '$username'";
 	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 	while(list($temp) = mysqli_fetch_row($result)){
 		$role = $temp;
-	}	
+	}
+
+	// Abfrage auf aktive Filter
 	if($filterkey == "Warten" || $filterkey == "In Bearbeitung" || $filterkey == "Offen" || $filterkey == "Abgeschlossen"){
+
+		// Hole die Status ID des gesetzten Filters aus der Datenbank
 		$stmt = "SELECT status_id FROM ticketplusplus.status WHERE beschreibung = '$filterkey'";
 		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 		while(list($temp) = mysqli_fetch_row($result)){
 			$keyword = $temp;
 		}
+
+		// Falls der User "User" ist
 		if ($role == 1) {
+
+			// Speichern der SQL Abfrage mit Berücksichtigung des Suchwortes
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung, tickets.notizen
 				FROM ticketplusplus.tickets 
@@ -221,7 +232,11 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND tickets.user_id = '$userid' AND tickets.status_id = '$keyword'
 				)AS Resulttable
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
+
+			// Ausführen der Query und Speichern des Ergebnisses in einem Array
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
+			// Auslesen des Arrays und Speichern in einzelnen Variablen
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -230,6 +245,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				$ticketprio = $ticket[4];
 				$ticketdate = $ticket[5];
 				
+				//Auslesen des Agentennamens des jeweiligen Tickets aus der Datenbank
 				$stmt2 = "SELECT users.username
 					FROM ticketplusplus.users 
 					INNER JOIN ticketplusplus.tickets
@@ -239,9 +255,11 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 						$tickettech = $temp;
 				}	
 
+				// Ausgeben der ausgefüllten Tabellenzeile
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
+		// Falls der User "Techniker" ist
 		else if ($role == 2) {
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung,tickets.notizen
@@ -254,6 +272,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
         
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -274,6 +293,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
+		// Falls der User "Admin" ist
 		else if ($role == 3) {
 			$stmt = "SELECT * FROM (
 					SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung,tickets.notizen
@@ -286,6 +306,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
  
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -307,12 +328,17 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 			}
 		}	
 	}
+	// Abfrage auf Filter "Alle ohne Abgeschlossen"
 	else if($filterkey == "AlleoA"){
+
+		// Hole die Status ID des gesetzten Filters aus der Datenbank
 		$stmt = "SELECT status_id FROM ticketplusplus.status WHERE beschreibung = 'Abgeschlossen'";
 		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
 		while(list($temp) = mysqli_fetch_row($result)){
 			$keyword = $temp;
 		}
+
+		// Falls der User "User" ist
 		if ($role == 1) {
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung, tickets.notizen
@@ -325,6 +351,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
         
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -345,6 +372,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
+		// Falls der User "Techniker" ist
 		else if ($role == 2) {
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung,tickets.notizen
@@ -357,6 +385,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
         
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -377,6 +406,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
+		// Falls der User "Admin" ist
 		else if ($role == 3) {
 			$stmt = "SELECT * FROM (
 					SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung,tickets.notizen
@@ -389,6 +419,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
  
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -410,19 +441,9 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 			}
 		}
 	}
+	// Wenn kein Filter aktiv ist (Alle Tickets)
 	else {
-		$stmt = "SELECT id FROM ticketplusplus.users WHERE username = '$username'";
-		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-		while(list($temp) = mysqli_fetch_row($result)){
-			$userid = $temp;
-		}
-
-		$stmt = "SELECT role_id FROM ticketplusplus.users WHERE username = '$username'";
-		$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-		while(list($temp) = mysqli_fetch_row($result)){
-			$role = $temp;
-		}
-
+		// Falls der User "User" ist
 		if ($role == 1) {
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung, tickets.notizen
@@ -435,6 +456,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
 		
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -455,6 +477,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
+		// Falls der User "Techniker" ist
 		else if ($role == 2) {
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung,tickets.notizen
@@ -467,6 +490,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
  
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -487,6 +511,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
+		// Falls der User "Admin" ist
 		else if ($role == 3) {
 			$stmt = "SELECT * FROM (
 				SELECT tickets.ticket_id, tickets.betreff, status.beschreibung AS Stat, users.username, priority.beschreibung AS Prio, tickets.erstell_datum, tickets.beschreibung, tickets.loesung,tickets.notizen 
@@ -499,6 +524,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
  
 			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+
 			while($ticket = mysqli_fetch_row($result)) {
 				$ticketid = $ticket[0];
 				$ticketbetreff = $ticket[1];
@@ -525,20 +551,26 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 
 function fillUserTable($mysqli) {
 	
-        $stmt = "SELECT users.id, users.username, users.email, users.vorname, users.nachname, users.telefonnummer, department.beschreibung, roles.role_name
-				FROM ticketplusplus.users, ticketplusplus.roles, ticketplusplus.department
-				WHERE roles.role_id = users.role_id AND department.dept_id = users.dept_id";
-	    $result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-	    while($users = mysqli_fetch_row($result)) {
-			$userid = $users[0];
-			$username = $users[1];
-			$useremail = $users[2];
-			$uservorname = $users[3];
-			$usernachname = $users[4];
-            $usertel = $users[5];
-            $userdept = $users[6];
-            $userrole = $users[7];
-			
-			echo "<tr><td><a href='viewuser.php?userid=$userid'>".$userid."</a></td><td><a href='viewuser.php?userid=$userid'>".$username."</a></td><td><a href='viewuser.php?userid=$userid'>".$useremail."</a></td><td><a href='viewuser.php?userid=$userid'>".$uservorname."</a></td><td><a href='viewuser.php?userid=$userid'>".$usernachname."</a></td><td><a href='viewuser.php?userid=$userid'>".$usertel."</a></td><td><a href='viewuser.php?userid=$userid'>".$userdept."</a></td><td><a href='viewuser.php?userid=$userid'>".$userrole."</a></td></tr>";
-	    }
+	// Speichern der SQL Abfrage
+	$stmt = "SELECT users.id, users.username, users.email, users.vorname, users.nachname, users.telefonnummer, department.beschreibung, roles.role_name
+			FROM ticketplusplus.users, ticketplusplus.roles, ticketplusplus.department
+			WHERE roles.role_id = users.role_id AND department.dept_id = users.dept_id";
+
+	// Ausführen der SQL Abfrage und speichern in einem Array
+	$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+	
+	// Auslesen des Arrays und speichern in einzelnen Variablen
+	while($users = mysqli_fetch_row($result)) {
+		$userid = $users[0];
+		$username = $users[1];
+		$useremail = $users[2];
+		$uservorname = $users[3];
+		$usernachname = $users[4];
+		$usertel = $users[5];
+		$userdept = $users[6];
+		$userrole = $users[7];
+		
+		// Ausgeben der gefüllten Tabellenzeile
+		echo "<tr><td><a href='viewuser.php?userid=$userid'>".$userid."</a></td><td><a href='viewuser.php?userid=$userid'>".$username."</a></td><td><a href='viewuser.php?userid=$userid'>".$useremail."</a></td><td><a href='viewuser.php?userid=$userid'>".$uservorname."</a></td><td><a href='viewuser.php?userid=$userid'>".$usernachname."</a></td><td><a href='viewuser.php?userid=$userid'>".$usertel."</a></td><td><a href='viewuser.php?userid=$userid'>".$userdept."</a></td><td><a href='viewuser.php?userid=$userid'>".$userrole."</a></td></tr>";
+	}
 }

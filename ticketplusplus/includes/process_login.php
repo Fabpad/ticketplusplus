@@ -2,7 +2,7 @@
 include_once 'db_connect.php';
 include_once 'functions.php';
  
-sec_session_start(); // Unsere selbstgemachte sichere Funktion um eine PHP-Sitzung zu starten.
+sec_session_start(); // sichere Funktion um eine PHP-Sitzung zu starten.
  
 if (isset($_POST['email'], $_POST['p'])) {
     $email = $_POST['email'];

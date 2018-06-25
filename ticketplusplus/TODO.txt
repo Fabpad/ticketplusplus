@@ -1,16 +1,12 @@
 ﻿Features:
-- Abschlussdatum und Bearbeitungszeit
-- Kuchendiagramme aller Tickets bei Techniker und User ausblenden
+- Abschlussdatum und Bearbeitungszeit (Nicht v1.0)
 
 Bugfixes:
 - Change Ticket funktioniert nicht als Agent und User
 
 QoL Changes:
-- Ticket Tabelle automatisch nach ID sortieren
-- Home Screen schöner gestalten
-- Nach dem Passwort ändern eine seite anzeigen dass man sich neu einloggen soll. Oder Session updaten
+- Ticket Tabelle automatisch nach ID sortieren (Nicht v1.0)
 - CSS:
-    - Select Carets deutlicher färben
-    - Readonly Inputs und Textareas einfärben
+    - Select Carets deutlicher färben im Nightmode
 
 Others: 

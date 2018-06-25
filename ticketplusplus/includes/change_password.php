@@ -32,7 +32,7 @@ if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
 						}
 						else{
 							$message='<div class="alert alert-success">Das Passwort wurde geändert!</div>';
-							return true;
+							header("Location: ./login.php?msg=4");
 						}
 					}
 				}
@@ -45,7 +45,7 @@ if (isset($_POST['op'], $_POST['np'], $_POST['npc'])) {
 			}
 		}
 		else{
-			$message='<div class="alert alert-	">Kein Datensatz vorhanden!</div>';
+			$message='<div class="alert alert-danger">Kein Datensatz vorhanden!</div>';
 		}
 	}
 }

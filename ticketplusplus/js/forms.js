@@ -257,6 +257,7 @@ function night_mode(){
         document.documentElement.style.setProperty('--border',"1px solid rgba(255, 255, 255, .125)");
         document.documentElement.style.setProperty('--input',"#333333");
         document.documentElement.style.setProperty('--table',"#606060");
+        document.documentElement.style.setProperty('--readonly',"#1E1E1E");
         if (document.getElementById('nightmodeinput')){
             document.getElementById('nightmodeinput').value = 'ON';
         }
@@ -271,6 +272,7 @@ function night_mode(){
         document.documentElement.style.setProperty('--border',"1px solid rgba(0, 0, 0, .125)");
         document.documentElement.style.setProperty('--input',"#FFFFFF");
         document.documentElement.style.setProperty('--table',"#dddddd");
+        document.documentElement.style.setProperty('--readonly',"#e9ecef");
         if (document.getElementById('nightmodeinput')){
             document.getElementById('nightmodeinput').value = 'OFF';
         }

@@ -22,21 +22,31 @@ if (login_check($mysqli) == true) {
 		<link rel="stylesheet" href="styles/loginstyle.css" />
 	</head>
 	<body>
+		<?php
+			if ( $logged == "in")
+			{
+				header("Location: home.php");
+			}
+		?>
+
 		<div>
 			<img class="center-fit" src="assets/TPPlogo2.png" draggable="false" style="width:auto;">
 		</div>
 		
 		<form action="includes/process_login.php" method="post" name="login_form" class="login_form">
 
-			<?php if (isset($_GET['error'])) {
-				if ($_GET['error'] == 1) {
+			<?php if (isset($_GET['msg'])) {
+				if ($_GET['msg'] == 1) {
 					echo "<div class='alert alert-danger'>Leider ist beim Einloggen ein Fehler aufgetreten. Versuchen Sie es bitte erneut.</div>";
 				}
-				else if ($_GET['error'] == 2) {
+				else if ($_GET['msg'] == 2) {
 					echo "<div class='alert alert-danger'>Der Account ist gesperrt! Bitte wenden Sie sich an den Systemadministrator.</div>";
 				}
-				else if ($_GET['error'] == 3) {
+				else if ($_GET['msg'] == 3) {
 					echo "<div class='alert alert-danger'>Es wurde kein Benutzer mit diesem Namen gefunden.</div>";
+				}
+				else if ($_GET['msg'] == 4) {
+					echo "<div class='alert alert-success'>Das Passwort wurde erfolgreich geändert! Bitte melden Sie sich neu an.</div>";
 				}
 			}
 			?>
@@ -57,10 +67,7 @@ if (login_check($mysqli) == true) {
 			
 			<input type="button" class="btn btn-secondary" value="Login" id="login" onclick="formhash(this.form, this.form.password);" />
 			
-			<script type="text/JavaScript" src="js/login_on_enter.js"></script> 
-
-			<a href="includes/logout.php">log out</a>.
-			You are currently logged <?php echo $logged ?>.
+			<script type="text/JavaScript" src="js/login_on_enter.js"></script>
 		</form>	
 	</body>
 </html>
