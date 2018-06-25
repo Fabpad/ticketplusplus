@@ -6,7 +6,5 @@ Bugfixes:
 
 QoL Changes:
 - Ticket Tabelle automatisch nach ID sortieren (Nicht v1.0)
-- CSS:
-    - Select Carets deutlicher färben im Nightmode
 
 Others: 
