@@ -12,6 +12,7 @@ sec_session_start();
 		<script src="styles/bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/sha512.js"></script>
 		<script src="js/tablesorter/jquery.tablesorter.min.js"></script>
+		<script src="js/jquery.metadata.js"></script>
 		<script src="js/Chart.bundle.min.js"></script>
 		<script src="js/forms.js"></script>
 		<link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">

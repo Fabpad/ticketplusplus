@@ -33,7 +33,7 @@
                 }
             ?>
             
-            <table name="ticketOverview" id="ticketOverview" class="tablesorter">
+            <table name="ticketOverview" id="ticketOverview" class="tablesorter {sortlist: [[0,0],[4,0]]}">
                 <thead class="blacktext">
                     <tr>
                         <th>ID</th>

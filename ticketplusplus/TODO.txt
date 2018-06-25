@@ -5,6 +5,5 @@ Bugfixes:
 - Change Ticket funktioniert nicht als Agent und User
 
 QoL Changes:
-- Ticket Tabelle automatisch nach ID sortieren (Nicht v1.0)
 
 Others: 
