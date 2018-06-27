@@ -28,8 +28,8 @@
 
 		<?php if($roleperm == 1) : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-				<label for="txt_user">Anforderer</label>
-				<input class="form-control" type="text" id="txt_user" name="user" value="<?php echo htmlentities($_SESSION['username']); ?>" disabled>
+				<label for="choose_user_id">Anforderer</label>
+				<input class="form-control" type="text" id="choose_user_id" name="user" value="<?php echo htmlentities($_SESSION['username']); ?>" disabled>
 			</div>
 		<?php  else : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -91,13 +91,7 @@
 		<?php if($roleperm == 1) : ?>
 		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="txt_user">Techniker</label>
-			<input id="choose_agent_id" list="choose_agent" name="agent" class="form-control" type="text" value="<?php
-					$stmt = "SELECT DISTINCT username FROM ticketplusplus.users WHERE username = 'ohne'";
-					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-					while($agentlist = mysqli_fetch_row($result)){
-						echo $agentlist[0];
-					}
-				?>" disabled>
+			<input id="choose_agent_id" list="choose_agent" name="agent" class="form-control" type="text" value="" disabled>
 		</div>
 		<?php  else : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">

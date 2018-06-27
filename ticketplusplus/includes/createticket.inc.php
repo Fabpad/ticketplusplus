@@ -2,7 +2,7 @@
 include_once 'db_connect.php';
 include_once 'psl-config.php';
  
-if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['status_menu'], $_POST['priority_menu'], $_POST['category_menu'], $_POST['specification_menu'], $_POST['agent'])) {
+if (isset($_POST['betreff'], $_POST['beschreibung'], $_POST['user'],$_POST['status_menu'], $_POST['priority_menu'], $_POST['category_menu'], $_POST['specification_menu'])) {
 	$betreff = filter_input(INPUT_POST, 'betreff', FILTER_SANITIZE_STRING);
 	$beschreibung = $_POST['beschreibung'];
 	$user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);

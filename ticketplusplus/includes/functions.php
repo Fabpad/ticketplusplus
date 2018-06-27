@@ -250,9 +250,10 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					FROM ticketplusplus.users 
 					INNER JOIN ticketplusplus.tickets
 					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
-					$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
-					while(list($temp) = mysqli_fetch_row($result2)) {
-						$tickettech = $temp;
+				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
+				while(list($temp) = mysqli_fetch_row($result2)) {
+					$tickettech = $temp;
 				}	
 
 				// Ausgeben der ausgefüllten Tabellenzeile
@@ -267,7 +268,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				INNER JOIN ticketplusplus.status
 				INNER JOIN ticketplusplus.users
 				INNER JOIN ticketplusplus.priority
-				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND (tickets.agent_id = '$userid' OR tickets.agent_id = 11)  AND tickets.status_id = '$keyword'
+				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND (tickets.agent_id = '$userid' OR tickets.agent_id IS NULL) AND tickets.status_id = '$keyword'
 				)AS Resulttable
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
         
@@ -284,8 +285,9 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				$stmt2 = "SELECT users.username
 					FROM ticketplusplus.users 
 					INNER JOIN ticketplusplus.tickets
-					WHERE (tickets.agent_id = users.id OR tickets.agent_id = 11) AND tickets.ticket_id = '$ticketid'";
+					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
@@ -320,6 +322,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					INNER JOIN ticketplusplus.tickets
 					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
@@ -364,8 +367,9 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					FROM ticketplusplus.users 
 					INNER JOIN ticketplusplus.tickets
 					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
-					$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
-					while(list($temp) = mysqli_fetch_row($result2)) {
+				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
+				while(list($temp) = mysqli_fetch_row($result2)) {
 						$tickettech = $temp;
 				}	
 
@@ -380,7 +384,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				INNER JOIN ticketplusplus.status
 				INNER JOIN ticketplusplus.users
 				INNER JOIN ticketplusplus.priority
-				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND (tickets.agent_id = '$userid' OR tickets.agent_id = 11)  AND tickets.status_id != '$keyword'
+				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND (tickets.agent_id = '$userid' OR tickets.agent_id IS NULL) AND tickets.status_id != '$keyword'
 				)AS Resulttable
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
         
@@ -397,8 +401,9 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				$stmt2 = "SELECT users.username
 					FROM ticketplusplus.users 
 					INNER JOIN ticketplusplus.tickets
-					WHERE (tickets.agent_id = users.id OR tickets.agent_id = 11) AND tickets.ticket_id = '$ticketid'";
+					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
@@ -433,6 +438,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					INNER JOIN ticketplusplus.tickets
 					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
@@ -470,6 +476,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				INNER JOIN ticketplusplus.tickets
 				WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
@@ -485,7 +492,7 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				INNER JOIN ticketplusplus.status
 				INNER JOIN ticketplusplus.users
 				INNER JOIN ticketplusplus.priority
-				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND (tickets.agent_id = '$userid' OR tickets.agent_id = 11)
+				WHERE tickets.user_id = users.id AND status.status_id = tickets.status_id AND priority.priority_id = tickets.priority_id AND (tickets.agent_id = '$userid' OR tickets.agent_id IS NULL)
 				)AS Resulttable
 				WHERE ticket_id LIKE '$ftsearch' OR stat LIKE '$ftsearch' OR username LIKE '$ftsearch' OR prio LIKE '$ftsearch' OR erstell_datum LIKE '$ftsearch' OR betreff LIKE '$ftsearch' OR loesung LIKE '$ftsearch' OR notizen LIKE '$ftsearch'";
  
@@ -502,8 +509,9 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 				$stmt2 = "SELECT users.username
 					FROM ticketplusplus.users 
 					INNER JOIN ticketplusplus.tickets
-					WHERE (tickets.agent_id = users.id OR tickets.agent_id = 11) AND tickets.ticket_id = '$ticketid'";
+					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
@@ -538,10 +546,11 @@ function fillTicketTable($username, $mysqli, $filterkey, $ftsearch) {
 					INNER JOIN ticketplusplus.tickets
 					WHERE tickets.agent_id = users.id AND tickets.ticket_id = '$ticketid'";
 				$result2 = mysqli_query($mysqli,$stmt2) or die(mysqli_error($mysqli));
+				$tickettech = "ohne Techniker";
 				while(list($temp) = mysqli_fetch_row($result2)) {
 					$tickettech = $temp;
 				}
-            
+
 				echo "<tr><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketid."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketbetreff."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketstat."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketerst."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$tickettech."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketprio."</a></td><td><a href='viewticket.php?ticketid=$ticketid'>".$ticketdate."</a></td></tr>";
 			}
 		}
