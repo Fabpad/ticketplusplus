@@ -189,6 +189,13 @@ function createnewticket(form, betreff, beschreibung, user, agent, status, prior
         return false;
     }
 
+    if(document.getElementById('txt_user').disabled == true){
+        document.getElementById('txt_user').disabled = false;
+    }
+    if(document.getElementById('choose_agent_id').disabled == true){
+        document.getElementById('choose_agent_id').disabled = false;
+    }
+    
 	form.submit();
     return true;
 }

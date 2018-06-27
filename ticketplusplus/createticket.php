@@ -89,6 +89,16 @@
 	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
 
 		<?php if($roleperm == 1) : ?>
+		<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<label for="txt_user">Techniker</label>
+			<input id="choose_agent_id" list="choose_agent" name="agent" class="form-control" type="text" value="<?php
+					$stmt = "SELECT DISTINCT username FROM ticketplusplus.users WHERE username = 'ohne'";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while($agentlist = mysqli_fetch_row($result)){
+						echo $agentlist[0];
+					}
+				?>" disabled>
+		</div>
 		<?php  else : ?>
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 			<label for="choose_agent_id">Techniker</label>

@@ -67,7 +67,7 @@
 <!-- SUCCESS MODAL END -->
 
 <form action="" method="post" name="viewticket_form">
-<?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' ) : ?>
+<?php if (($roleperm == '1' && htmlentities($_SESSION['username']) == $username) || ($roleperm == '2' && htmlentities($_SESSION['username']) == $agentname) || $roleperm == '3' || $username = 'ohne') : ?>
 	
 	<input id="ticketid" name="ticketid" type="hidden" value="<?php echo $id ?>" />
 
