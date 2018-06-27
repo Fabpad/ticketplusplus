@@ -2,7 +2,6 @@
 - Abschlussdatum und Bearbeitungszeit (Nicht v1.0)
 
 Bugfixes:
-- Change Ticket funktioniert nicht als Agent und User
 
 QoL Changes:
 

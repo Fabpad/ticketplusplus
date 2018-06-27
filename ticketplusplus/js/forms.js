@@ -330,7 +330,7 @@ function changeticket(form, ticketid, betreff, beschreibung, anforderer, technik
             prio == ''          ||
             kategorie == ''     ||
             unterkategorie == '') {
- 
+
         alert('Bitte füllen Sie alle nötigen Felder aus.');
         return false;
     }
@@ -340,6 +340,11 @@ function changeticket(form, ticketid, betreff, beschreibung, anforderer, technik
     form.appendChild(chadel);
     chadel.name = "change";
     chadel.type = "hidden";
+    
+    if (document.getElementById('category_menu').disabled == true) {
+        document.getElementById('category_menu').disabled = false;
+        document.getElementById('specification_menu').disabled = false;
+    }
     
     form.submit();
     return true; 
