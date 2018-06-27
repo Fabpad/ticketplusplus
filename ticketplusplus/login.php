@@ -27,7 +27,9 @@ if (login_check($mysqli) == true) {
 		<?php
 			if ( $logged == "in")
 			{
-				header("Location: home.php");
+				echo "<script>
+            		window.location.href = 'home.php';
+            	</script>";
 			}
 		?>
 

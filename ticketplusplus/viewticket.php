@@ -312,17 +312,17 @@
 
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<button type="button" class="btn btn-secondary" id="btnSave" value="Change" onclick="return changeticket(	this.form, 
-																																this.form.ticketid.value, 
-																																this.form.txt_betreff.value, 
-																																this.form.txt_beschreibung.value, 
-																																this.form.txt_user.value, 
-																																this.form.txt_agent.value, 
-																																this.form.status_menu.value, 
-																																this.form.priority_menu.value, 
-																																this.form.category_menu.value, 
-																																this.form.specification_menu.value,
-																																this.form.txt_loesung.value,
-																																this.form.txt_notizen.value);">
+																													this.form.ticketid.value, 
+																													this.form.txt_betreff.value, 
+																													this.form.txt_beschreibung.value, 
+																													this.form.txt_user.value, 
+																													this.form.txt_agent.value, 
+																													this.form.status_menu.value, 
+																													this.form.priority_menu.value, 
+																													this.form.category_menu.value, 
+																													this.form.specification_menu.value,
+																													this.form.txt_loesung.value,
+																													this.form.txt_notizen.value);">
 			Änderungen speichern
 		</button>
 		<?php
