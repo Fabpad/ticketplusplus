@@ -182,7 +182,7 @@ CREATE TABLE `tickets` (
   `betreff` varchar(50) COLLATE latin1_german1_ci NOT NULL,
   `beschreibung` text COLLATE latin1_german1_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `agent_id` int(10) UNSIGNED NOT NULL,
+  `agent_id` int(10) UNSIGNED DEFAULT NULL,
   `status_id` int(10) UNSIGNED NOT NULL,
   `priority_id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
@@ -206,7 +206,10 @@ INSERT INTO `tickets` (`ticket_id`, `betreff`, `beschreibung`, `user_id`, `agent
 (7, 'Passwort vergessen', 'Habe mein Passwort vergessen bitte zurÃ¼cksetzen.', 10, 7, 3, 2, 3, 12, '', 'Passwort wurde zurÃ¼ckgesetzt. Warte auf Antwort', '2018-06-14 11:20:39'),
 (8, 'Festplatte voll', 'Hallo,\r\n\r\naufgrund meiner TÃ¤tigkeiten als Marketing Grafikdesigner reicht mein Festplattenspeicher nicht mehr aus.\r\n\r\nKÃ¶nnen Sie diesen erweitern? Ausgabe ist genehmigt.\r\n\r\nDanke!', 11, 6, 4, 2, 1, 1, NULL, NULL, '2018-06-14 08:59:38'),
 (9, 'Kennwort vergessen', 'User Drei hat sein Kennwort vergessen und wÃ¼nscht ein neues Kennwort', 12, 5, 1, 1, 3, 12, 'Kennwort wurde zurÃ¼ckgesetzt.', '---', '2018-06-14 09:02:23'),
-(10, 'Programm XY startet nicht', 'Hallo,\r\n\r\nmein Programm XY startet nicht, kÃ¶nnen Sie den Fehler beheben?\r\n\r\nDanke!', 13, 4, 1, 2, 2, 8, 'Programm wurde neu installiert.', 'Diverse Versuche in den Windows Einstellungen haben nicht geholfen.', '2018-06-14 10:35:01');
+(10, 'Programm XY startet nicht', 'Hallo,\r\n\r\nmein Programm XY startet nicht, kÃ¶nnen Sie den Fehler beheben?\r\n\r\nDanke!', 13, 4, 1, 2, 2, 8, 'Programm wurde neu installiert.', 'Diverse Versuche in den Windows Einstellungen haben nicht geholfen.', '2018-06-14 10:35:01'),
+(11, 'Ich kann nicht mehr telefonieren', 'Hilfe!', 10, 1, 2, 1, 2, 8, '', '', '2018-06-27 12:20:32'),
+(12, 'Drucker druckt streifig', 'Hilfe!', 11, 1, 3, 2, 3, 12, NULL, NULL, '2018-06-27 12:23:18'),
+(13, 'FEUER!', 'Mein PC ist in Flammen aufgegangen.\r\nJetzt kann ich kein SAP mehr benutzen. Bitte installieren.', 12, 1, 4, 1, 2, 8, NULL, NULL, '2018-06-27 12:24:30');
 
 -- --------------------------------------------------------
 

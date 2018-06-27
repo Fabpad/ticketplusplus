@@ -182,7 +182,7 @@ CREATE TABLE `tickets` (
   `betreff` varchar(50) COLLATE latin1_german1_ci NOT NULL,
   `beschreibung` text COLLATE latin1_german1_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `agent_id` int(10) UNSIGNED NOT NULL,
+  `agent_id` int(10) UNSIGNED DEFAULT NULL,
   `status_id` int(10) UNSIGNED NOT NULL,
   `priority_id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
