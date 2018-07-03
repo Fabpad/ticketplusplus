@@ -29,6 +29,15 @@ if (isset($_POST['change'])){
             $statusID = $temp;
         }
 
+        if ($statusID == 1) {
+            $abschlussdatum = date('Y-m-d H:i:s');
+        }
+        else {
+            $abschlussdatum = NULL;
+        }
+
+        $bearbeitungszeit = NULL;
+
         $priorityname = $_POST['priority_menu'];
         $stmt = "SELECT priority_id FROM ticketplusplus.priority WHERE beschreibung = '$priorityname'";
         $result = mysqli_query($mysqli,$stmt) or die($mysqli);
@@ -55,7 +64,7 @@ if (isset($_POST['change'])){
 
 
         $sql = "UPDATE ticketplusplus.tickets
-                SET betreff = '$betreff', beschreibung = '$beschreibung', user_id = '$userID', agent_id = '$agentID', status_id = '$statusID', priority_id = '$priorityID', category_id = '$categoryID', specification_id = '$specificationsID', loesung = '$loesung', notizen = '$notizen' 
+                SET betreff = '$betreff', beschreibung = '$beschreibung', user_id = '$userID', agent_id = '$agentID', status_id = '$statusID', priority_id = '$priorityID', category_id = '$categoryID', specification_id = '$specificationsID', loesung = '$loesung', notizen = '$notizen', bearbeitungszeit = '$bearbeitungszeit', abschluss_datum = '$abschlussdatum' 
                 WHERE ticket_id = $ticketid";
             
         if ($mysqli->query($sql) === TRUE) {
