@@ -23,55 +23,6 @@
 	</h5>
 	<br>
 
-	Sie haben 
-	<?php if($roleperm == 1) : ?>
-		<?php 
-			$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.user_id WHERE tickets.status_id = 4 AND users.username = '$_SESSION[username]'";
-			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-			while(list($temp) = mysqli_fetch_row($result)){
-				$openTicketsUser = $temp;
-				echo $temp;
-			}
-		?>
-	<?php else : ?>
-		<?php 
-			$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.agent_id WHERE tickets.status_id = 4 AND users.username = '$_SESSION[username]'";
-			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-			while(list($temp) = mysqli_fetch_row($result)){
-				$openTicketsUser = $temp;
-				echo $temp;
-			}
-		?>
-	<?php endif; ?>
-	 offene(s) Ticket(s).
-
-	<br>
-	<br>
-
-	<?php if($roleperm == 1) : ?>
-		<?php 
-			$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.user_id WHERE tickets.status_id = 3 AND users.username = '$_SESSION[username]'";
-			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-			while(list($temp) = mysqli_fetch_row($result)){
-				$waitTicketsUser = $temp;
-				echo $temp; 
-			}
-		?>
-	<?php else : ?>
-		<?php 
-			$stmt = "SELECT COUNT(*) FROM ticketplusplus.tickets INNER JOIN ticketplusplus.users ON users.id=tickets.agent_id WHERE tickets.status_id = 3 AND users.username = '$_SESSION[username]'";
-			$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
-			while(list($temp) = mysqli_fetch_row($result)){
-				$waitTicketsUser = $temp;
-				echo $temp; 
-			}
-		?>
-	<?php endif; ?>
-	 Ticket(s) erwartet/erwarten Ihre Antwort.
-
-	<br>
-	<br>
-
 	<div class="row">
 	
 		<?php if($roleperm == 1) : ?>
