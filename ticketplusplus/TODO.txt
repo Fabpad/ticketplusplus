@@ -1,5 +1,4 @@
 ﻿Features:
-- Abschlussdatum und Bearbeitungszeit (Nicht v1.0)
 
 Bugfixes:
 

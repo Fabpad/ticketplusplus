@@ -310,6 +310,54 @@
 			?></textarea>
 	</div>
 
+	<div class="ml-5 mt-3 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 row">
+		<div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<label for="txt_erstelldatum">Erstelldatum</label>
+			<input class="form-control" id="txt_erstelldatum" name="txt_erstelldatum" type="text" readonly="readonly" value=
+			"<?php
+				$stmt = "SELECT erstell_datum FROM ticketplusplus.tickets WHERE ticket_id = $id";
+				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+				while(list($temp) = mysqli_fetch_row($result)){
+					echo $temp;
+				}
+			?>"
+		/>
+		</div>
+
+		<div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<label for="txt_abschlussdatum">Abschlussdatum</label>
+			<input class="form-control" id="txt_abschlussdatum" name="txt_abschlussdatum" type="text" placeholder="Abschlussdatum des Tickets" readonly="readonly" value=
+			"<?php
+				$stmt = "SELECT abschluss_datum FROM ticketplusplus.tickets WHERE ticket_id = $id";
+				$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+				while(list($temp) = mysqli_fetch_row($result)){
+					if ($temp == '0000-00-00 00:00:00') {
+						echo '';
+					}
+					else {
+						echo $temp;
+					}
+				}
+			?>"
+		/>
+		</div>
+
+		<?php if ($roleperm != 1) : ?>
+			<div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+				<label for="txt_bearbeitungszeit">Bearbeitungszeit</label>
+				<input class="form-control" id="txt_bearbeitungszeit" name="txt_bearbeitungszeit" placeholder="Bearbeitungszeit des Tickets" type="text" value=
+				"<?php
+					$stmt = "SELECT bearbeitungszeit FROM ticketplusplus.tickets WHERE ticket_id = $id";
+					$result = mysqli_query($mysqli,$stmt) or die(mysqli_error($mysqli));
+					while(list($temp) = mysqli_fetch_row($result)){
+						echo $temp;
+					}
+				?>"
+			/>
+			</div>
+		<?php endif; ?>
+	</div>
+
 	<div class="ml-5 mt-3 mr-5 col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 		<button type="button" class="btn btn-secondary" id="btnSave" value="Change" onclick="return changeticket(	this.form, 
 																													this.form.ticketid.value, 

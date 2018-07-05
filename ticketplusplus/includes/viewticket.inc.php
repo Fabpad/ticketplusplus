@@ -36,7 +36,7 @@ if (isset($_POST['change'])){
             $abschlussdatum = NULL;
         }
 
-        $bearbeitungszeit = NULL;
+        $bearbeitungszeit = filter_input(INPUT_POST, 'txt_bearbeitungszeit', FILTER_SANITIZE_STRING);
 
         $priorityname = $_POST['priority_menu'];
         $stmt = "SELECT priority_id FROM ticketplusplus.priority WHERE beschreibung = '$priorityname'";
@@ -61,7 +61,6 @@ if (isset($_POST['change'])){
 
         $loesung =  filter_input(INPUT_POST, 'txt_loesung', FILTER_SANITIZE_STRING);
         $notizen =  filter_input(INPUT_POST, 'txt_notizen', FILTER_SANITIZE_STRING);
-
 
         $sql = "UPDATE ticketplusplus.tickets
                 SET betreff = '$betreff', beschreibung = '$beschreibung', user_id = '$userID', agent_id = '$agentID', status_id = '$statusID', priority_id = '$priorityID', category_id = '$categoryID', specification_id = '$specificationsID', loesung = '$loesung', notizen = '$notizen', bearbeitungszeit = '$bearbeitungszeit', abschluss_datum = '$abschlussdatum' 
